@@ -10,12 +10,14 @@
 
 ## 3. 本阶段必须产生什么
 
-- 研发底座：Docker、Git 仓库、对象存储、向量库、项目模板、备份/恢复机制。
-- 真实痛点池（≥10 个）+ 问题类型判断（纯软件 / AI / 自动化 / 视觉 / 物理世界 / 机器人）。
-- 一个经过验证的 DA-01 候选（问题 → 用户 → 场景 → 价值 → 技术组合 → 主候选）。
-- 一个可运行的 DA-01 MVP + README + Demo。
-- AI/感知-决策最小能力：LLM 调用链、Embedding、向量检索、RAG、20 条测试集、Bad Case 记录（如 DA-01 需要，加视觉/感知最小实验）。
+- 研发底座：Docker、Git 仓库、对象存储、向量库、项目模板、备份/恢复机制（C 线）。
+- AI 岗位能力矩阵（D 线）：JD 高频能力 → 当前水平 → 项目证明方式。
+- 真实痛点池（≥10 个）+ 问题类型判断（纯软件 / AI / 自动化 / 视觉 / 物理世界 / 机器人）（A 线基础）。
+- P1 个人AI知识库助手 v1（B 线）：LLM API → Structured Output → RAG → AI Full-Stack → Docker部署，含 README / Demo / Evaluation / Badcase。
+- AI/感知-决策最小能力：LLM 调用链、Embedding、向量检索、RAG、20 条测试集、Bad Case 记录。
 - 可复用模板：项目 / Docker / README / 部署 / 备份 / RAG 测试 / 解决方案验证 / 周复盘。
+
+> 主线优先级：B > D > A > C
 
 ## 4. 本阶段不应该做什么
 
@@ -26,7 +28,13 @@
 
 ## 5. 本阶段核心能力
 
-容器化部署、Git 规范、对象存储与向量检索基础、真实问题验证方法、问题类型判断、最小 AI/RAG 链路、备份恢复。
+**B 线（AI Engineering）**：Python / FastAPI / LLM API / Structured Output / Streaming / Embedding / RAG / Chunking / Retrieval / AI Full-Stack。
+
+**D 线（Job Market）**：AI 岗位能力矩阵、JD 分析、学习-求职映射、P1 Portfolio 包装（README / Architecture / Demo / Evaluation / Badcases / Docker / Deployment）。
+
+**A 线（产品）**：痛点池、问题类型判断、DA-01 候选验证。
+
+**C 线（基建）**：Docker、Git、对象存储、向量库、备份恢复。
 
 ## 6. 本阶段与 DA-01 的关系
 
@@ -44,10 +52,16 @@
 
 第 8 周「8 周最终验收清单」A/B/C/D 四类全部 PASS，或核心项 PASS + 非核心项 CONDITIONAL。
 
+同时新增 D 线验收：
+- [ ] P1 项目具备可展示的 README + Architecture + Demo
+- [ ] AI 岗位能力矩阵已建立，至少覆盖 10+ 项招聘高频能力
+- [ ] 能独立向他人解释 P1 的技术方案（3 分钟讲清）
+
 ## 10. 下一阶段依赖什么
 
 阶段二依赖：已验证的 DA-01 主候选、可运行 MVP、完整 README、可恢复的环境——这些是第 9 周「产品打磨测试」的输入。
+阶段二同时需要：P1 Portfolio 和初步的求职能力矩阵——这些是 D 线在中后期发力的基础。
 
 ## 完成本阶段后，DA-01 比阶段开始前多了什么？
 
-从「什么都没有」变成：一个固定的研发底座 + 一个已经验证方向、可运行、可恢复、有 AI 能力的第一版数字资产 + 一套可复用模板。
+从「什么都没有」变成：一个固定的研发底座 + 一个已经验证方向、可运行、可恢复、有 AI 能力的第一版数字资产 + 一套可复用模板 + P1 求职作品集素材。

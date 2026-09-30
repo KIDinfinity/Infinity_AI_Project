@@ -10,6 +10,9 @@
 
 ## 3. 本阶段必须产生什么
 
+- P2 AI Research Agent v2（B 线）：Tool Calling → Agent Workflow → LangGraph 框架 → MCP → Evaluation → Observability。
+- P2 Portfolio 产出（D 线）：README / Architecture / Demo / Evaluation / Badcases / Docker / Deployment。
+- AI 简历初版（D 线）和每 2 周一次的 JD 高频能力更新。
 - 无功能性 bug、可商用的 DA-01 产品版本。
 - 全套售卖物料：部署文档、演示视频/截图、授权价格体系。
 - 上架与自助支付/自动交付能力。
@@ -19,6 +22,8 @@
 - 一轮 RAG 调优与 badcase 迭代。
 - 一次版本迭代（如轻量版）。
 
+> 主线优先级：B > D > A > C
+
 ## 4. 本阶段不应该做什么
 
 - 不接定制外包，不主动营销、不私聊拓客。
@@ -27,11 +32,17 @@
 
 ## 5. 本阶段核心能力
 
-产品测试与打磨、售卖交付体系、Agent 上线服务、SEO 被动引流、RAG 调优、线上部署运维。
+**B 线（AI Engineering）**：Tool Calling、Agent Workflow、LangGraph/LangChain、State/Memory、MCP、Evaluation、Observability（Trace/Log/Cost）。
+
+**D 线（Job Market）**：JD 分析、能力矩阵迭代、P2 Portfolio、AI 简历 v1、面试问题记录。
+
+**A 线（产品）**：产品打磨、上架、SEO、首单变现。
+
+**C 线（基建）**：生产部署、监控、成本追踪、安全、备份。
 
 ## 6. 本阶段与 DA-01 的关系
 
-DA-01 从「能运行的候选」变成「别人能买、能用、能带来收入」的标准化资产，并首次验证商业价值。
+DA-01 从「能运行的候选」变成「别人能买、能用、能带来收入」的标准化资产，并首次验证商业价值。同时 P2 形成第二份求职作品集。
 
 ## 7. 进入条件
 
@@ -47,11 +58,13 @@ DA-01 从「能运行的候选」变成「别人能买、能用、能带来收�
 - 上架可购买，自助支付/自动交付可用。
 - 官网 + Agent 在线可用。
 - 至少一笔付费订单。
+- **D 线**：P2 Portfolio 完成、AI 简历 v1 完成、每 2 周 JD 分析记录 ≥ 3 次。
 
 ## 10. 下一阶段依赖什么
 
 阶段三依赖：已上架产品、真实用户/订单数据、Agent 服务、SEO 流量、RAG 调优笔记——这些是第 17–26 周放大收入、沉淀资产、复盘规划的输入。
+阶段三同时需要：P2 求职作品集 + 简历 v1——作为 D 线在后期发力的基础。
 
 ## 完成本阶段后，DA-01 比阶段开始前多了什么？
 
-从一个「可运行 MVP」变成「已上架、有用户、有首单收入、有被动流量和 Agent 服务的真实售卖产品」。
+从一个「可运行 MVP」变成「已上架、有用户、有首单收入、有被动流量和 Agent 服务的真实售卖产品」，同时拥有 P1 + P2 两份求职作品集素材和一份 AI 简历初版。
