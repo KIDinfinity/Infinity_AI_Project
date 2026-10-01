@@ -1,145 +1,137 @@
 # plan — 半年智能解决方案孵化执行目录
 
-> 本目录是 DA-01 的**唯一执行工作空间**。历史文件在 `history/`，本目录只放当前可执行、可验收、可持续迭代的计划。
+> 本目录是 DA-01 的**唯一执行工作空间**。历史/总计划在 `history/`，本目录只放当前可执行、可验收、可持续迭代的计划。
+> **最终要交付什么**：见 [DA01_TARGET_ASSET.md](DA01_TARGET_ASSET.md)（目标数字资产蓝图，所有计划的锚点）。
 
 ---
 
 ## 1. 半年最终目标
 
-> **半年内完成至少一个经过真实验证、可以运行、可以交付、可以继续迭代的「智能解决方案资产」（DA-01），同时建立可直接用于求职的 AI 工程能力矩阵、GitHub 作品集、简历面试材料，形成以后可以重复「发现痛点 → 组合技术 → 验证 → 开发 → 发布 → 迭代 → 变现」的方法。**
+> **半年内交付 DA-01 = WorkPilot（工作代号）：一个可私有部署、经过评测、可运行可交付可迭代的「研发工作 AI 助手平台」；它同时是 P1/P2/P3 三份求职作品集、个人日常效率工具、可售卖的标准化资产，以及可复用工程模板的来源。**
 
-最终结果不是「学会技术」，而是：一个真实智能解决方案资产 + 一套可复制的解决方案生产能力 + 一套可求职的 AI 工程作品集。
-
----
+最终结果 = 1 个真实智能解决方案资产 + 1 套「问题 → 解决方案 → 资产」生产方法 + 1 套可求职的 AI 工程作品集（简历 / Portfolio / 面试材料）。
 
 ## 1.1 通用解决方案闭环（最高方法论）
 
 ```text
-现实问题 → 感知 → AI → 决策 → 执行 → 反馈 → 学习优化
+现实问题 → 感知/数据 → AI 理解 → 决策/规划 → 工具执行 → 反馈 → Evaluation → Badcase → 优化
 ```
 
-拿到任何真实问题，先判断问题类型（纯软件 / AI / 自动化 / 视觉 / 物理世界 / 机器人），再按需组合技术。不是每个问题都需要物理世界能力。
+在 WorkPilot 中：研发痛点（M10）→ 文档/仓库导入（M2.1）→ LLM + 检索（M1/M2）→ Agent 规划（M7）→ 工具（M6）→ 反馈/审批（F2/F3）→ 评测（M3）。
 
 ---
 
-## 2. DA-01 定义
+## 2. DA-01 与三个里程碑
 
-- **DA-01 = Intelligent Solution Asset 01**，本半年正在孵化的第一个智能解决方案资产，同时是求职作品集 Project 3（P3）的载体。
-- DA-01 是「解决一个真实痛点的 AI × 软件 × 自动化 ×（必要时）物理世界能力的组合」，数字资产只是沉淀形式之一。
-- 技术组合按需选择，不预设形态：
-  - 第一层 纯数字：SaaS / Agent / CLI / API / 插件 / 工作流 / 数据产品 / SDK
-  - 第二层 数字+现实：摄像头+AI / IoT+Agent / 机器人+Agent / 计算机视觉+自动化 / 传感器+决策
-  - 第三层 完整解决方案：现实问题 → 感知 → AI → 决策 → 执行 → 反馈
-- 决定顺序：**问题 → 用户 → 场景 → 价值 → 验证 → 解决方案形态 → 技术组合 → 技术栈**，而不是「技术 → 项目 → 找问题」。
-- 最晚 **第 3 周** 明确 DA-01 的问题与技术组合；第 1–2 周处于问题探索状态。
-- 不擅自编造产品名称、用户、商业模式。
+| 里程碑                  | 版本 | 周     | 内容                                                                        | 求职对应                                 |
+| ----------------------- | ---- | ------ | --------------------------------------------------------------------------- | ---------------------------------------- |
+| P1 WorkPilot Knowledge  | v0.5 | W2–8   | LLM Gateway + RAG + 评测 + Web Console + 云部署                             | AI Engineer / GenAI Application Engineer |
+| P2 WorkPilot Agent      | v1.0 | W9–16  | Tools + Agent(LangGraph) + Memory + HITL + MCP + Agent Eval + Observability | AI Agent Engineer / LLM Engineer         |
+| P3 WorkPilot Production | v2.0 | W17–23 | 场景包 + 多空间/认证 + 安全护栏 + 回归体系 + 在线 Demo + Pro Kit            | AI Full-Stack / AI Platform Engineer     |
 
-## 2.1 三个锚点项目（求职作品集）
+- 能力骨架（M0–M9、M11）固定；**具体解决哪个痛点（M10 场景包）第 3 周 Day13 从真实问题池选出**。
+- 决策顺序仍是：问题 → 用户 → 场景 → 价值 → 验证 → 形态 → 技术组合 → 技术栈。
+- 数据合规红线见 [DA01_TARGET_ASSET.md §8](DA01_TARGET_ASSET.md)：公司机密不进外部 LLM。
 
-| 项目 | 代码 | 周范围 | 覆盖能力 | 求职对应 |
-|---|---|---|---|---|
-| P1 个人AI知识库助手 | P1-RAG-Assistant | 4–8 | LLM API / RAG / Chunk / Retrieval / Docker / Deployment | AI Engineer / GenAI Application |
-| P2 AI Research Agent | P2-AI-Agent | 10–16 | Tool Calling / Agent Workflow / MCP / Evaluation / Observability | AI Agent Engineer / LLM Engineer |
-| P3 完整AI生产级应用 | P3-AI-Solution | 17–26 | RAG + Agent + Production + Security + Guardrail | AI Full-Stack / AI Platform Engineer |
+## 2.1 四条能力线
 
-> 原则：同一个项目既是产品探索的里程碑，也是求职作品集的可解释成果。
+| 能力线                       | 目标                                   | 在 WorkPilot 中                    |
+| ---------------------------- | -------------------------------------- | ---------------------------------- |
+| A 线：AI 产品 / 变现         | 真实问题 + 标准化交付                  | M10 场景包、M12 开源核心 + Pro Kit |
+| B 线：AI Engineering         | RAG + Agent + Eval + Production AI     | M1 M2 M3 M6 M7 M8                  |
+| C 线：Infrastructure         | Docker + Cloud + CI/CD + Observability | M0 M5 M9 M11                       |
+| D 线：Job Market / Portfolio | 简历 / GitHub / Demo / 面试            | M13                                |
 
-## 2.2 四条能力线（贯穿所有周）
-
-| 能力线 | 目标 | 代表内容 |
-|---|---|---|
-| **A线：AI产品 / 变现** | 做一个真实AI解决方案 | DA-01、用户、收入、SEO |
-| **B线：AI Engineering** | RAG + Agent + Evaluation + Production AI | P1、P2、P3 的核心链路 |
-| **C线：Infrastructure** | Docker + Cloud + CI/CD + Observability | 部署、监控、安全、备份 |
-| **D线：Job Market / Portfolio** | 把项目转化成简历、GitHub、Demo、面试能力 | JD分析、能力矩阵、简历、面试 |
-
-各阶段主线优先级：
-- **第 1–8 周**：B > D > A > C
-- **第 9–16 周**：B > D > A > C
-- **第 17–26 周**：D ≈ B > A > C
+优先级：W1–8 **B > A > C > D**；W9–16 **B > D > A > C**；W17–26 **D ≈ B > A > C**。
 
 ---
 
 ## 3. 三阶段关系
 
-| 阶段 | 周范围 | 生命周期 | 核心问题 |
-|---|---|---|---|
-| phase_01 探索与沉淀期 | 第 1–8 周 | 探索 / 建立 / 验证 | 解决什么真实问题？DA-01 是什么？最小可行方案是什么？ |
-| phase_02 方案落地变现期 | 第 9–16 周 | 开发 / 交付 / 验证 | 能不能做出来？能不能运行？能不能让别人使用？能不能产生首笔收入？ |
-| phase_03 迭代放大期 | 第 17–26 周 | 发布 / 商业化验证 / 迭代 / 沉淀 | 能不能形成可持续智能资产？能否验证商业价值？能否复制到 DA-02？ |
+| 阶段                  | 周 / Day          | WorkPilot 版本推进                  | 核心问题                                                    |
+| --------------------- | ----------------- | ----------------------------------- | ----------------------------------------------------------- |
+| phase_01 探索与 P1    | W1–8 / Day01–33   | 无 → v0.5（P1 发布）                | 解决哪个真实痛点？RAG 知识助手能否上线并被评测？            |
+| phase_02 Agent 与 P2  | W9–16 / Day34–57  | v0.5 → v1.0（P2 发布）              | Agent 能否可靠调用工具、可审批、可评测、可观测？            |
+| phase_03 生产化与求职 | W17–26 / Day58–77 | v1.0 → v2.0（P3 发布）→ 求职 / 复盘 | 能否成为安全的生产级方案？能否转化为 offer 证据和收入验证？ |
 
 ---
 
-## 4. 26 周路线
+## 4. 26 周路线（周 = 2–5 天冲刺，每天 1–2 小时）
 
-| 周 | 阶段 | 主线 | 核心目标 | 能力线侧重 | 产出 |
-|---|---|---|---|---|---|
-| 1 | 短期 | B/D | 研发底座 + AI岗位能力地图 | D: JD能力矩阵 / B: Docker+Git | 问题池、能力矩阵、Docker环境 |
-| 2 | 短期 | B/D | 存储/向量库/备份 + Python/FastAPI/LLM API | B: API调用 / C: 基建 | AI API可用、已分类问题池 |
-| 3 | 短期 | B | Structured Output / Streaming / LLM应用v0 | B: LLM基础 | LLM应用v0 (P1前导) |
-| 4 | 短期 | B | 明确 DA-01 + RAG Pipeline | B: RAG MVP | P1-RAG v0、DA-01 冻结 |
-| 5 | 短期 | B | Chunk / Retrieval / Evaluation | B: RAG优化 | evaluation_dataset、badcases |
-| 6 | 短期 | A/B | AI Full-Stack 应用 | B: React+FastAPI | P1前端+后端完整链路 |
-| 7 | 短期 | C/B | Docker + Deployment | C: 生产部署 | P1 Cloud MVP上线 |
-| 8 | 短期 | D | 项目包装 / P1 Portfolio | D: 作品集 | P1 Portfolio、8周总验收 |
-| 9 | 中期 | B/D | Tool Calling + 方案打磨 | B: Tool / D: 求职验证 | Tool Demo |
-| 10 | 中期 | B/D | Agent Workflow + 简历初版 | B: Agent / D: 简历 | P2-Agent v0、简历初版 |
-| 11 | 中期 | B/D | Agent框架 (LangGraph) + 上架准备 | B: 框架 | Agent v1 |
-| 12 | 中期 | B/D | Memory/State/MCP + Agent落地 | B: MCP | MCP Demo、Agent v2 |
-| 13 | 中期 | B | MCP Tool Integration + 被动引流 | B: 集成 / A: SEO | MCP集成完成 |
-| 14 | 中期 | B | Evaluation框架 + 首单变现 | B: Eval / A: 收入 | Eval Harness、首单 |
-| 15 | 中期 | C/B | Production AI + 能力调优 | C: 日志/监控/成本 | Production就绪 |
-| 16 | 中期 | D/B | P2 Portfolio + 简历迭代 | D: 作品集/简历 | P2 Portfolio、简历v1 |
-| 17 | 长期 | A/B | 完整AI应用 / P3定义 | B: 问题定义 | P3定义完成 |
-| 18 | 长期 | A/B | P3核心AI链路 | B: 开发 | P3 MVP |
-| 19 | 长期 | B/C | P3工程化 | C: 生产化 | Production v1 |
-| 20 | 长期 | B | P3 Evaluation | B: 自动评估 | P3 Eval完成 |
-| 21 | 长期 | C | Security / Guardrail / 稳定运维 | C: 安全加固 | Security审计完成 |
-| 22 | 长期 | B/D | Badcase / Regression + AI资产沉淀 | B: 质量 / D: 资产 | AI资产文档 |
-| 23 | 长期 | D | Portfolio网站 | D: GitHub/Demo | 个人AI Portfolio上线 |
-| 24 | 长期 | D | 简历最终版 | D: 简历 | AI简历完成 |
-| 25 | 长期 | D/B | 面试准备 + System Design | D: 面试 | 系统设计能力 |
-| 26 | 长期 | 全部 | 半年复盘 | 全部 | 半年报告、DA-02规划 |
+| 周  | Day   | 主线  | 核心目标                                     | 资产锚点                  | 版本        |
+| --- | ----- | ----- | -------------------------------------------- | ------------------------- | ----------- |
+| 1   | 01–05 | C/A   | 研发底座 + 痛点池 + 项目规范/模板            | M0.1–M0.3 M10             | v0.0        |
+| 2   | 06–10 | D/B/C | 能力矩阵 + FastAPI + LLM Gateway + 存储/备份 | M13.1 M1.1 M1.2 M0.4 M0.5 | —           |
+| 3   | 11–14 | B/A   | 结构化输出 / 流式 / 成本 + DA-01 场景选型    | M1.3–M1.6 M10             | v0.1        |
+| 4   | 15–18 | B     | RAG Pipeline                                 | M2 M3.1                   | v0.2        |
+| 5   | 19–21 | B     | RAG 评测与优化                               | M2.2 M2.4 M3.2 M3.4       | v0.3        |
+| 6   | 22–25 | B/A   | AI Full-Stack Web Console                    | M4.1 M4.2 M3.6            | v0.4        |
+| 7   | 26–29 | C     | Docker / 云部署 / CI / 备份                  | M5 M9.1                   | —           |
+| 8   | 30–33 | D     | P1 作品集 + 8 周验收                         | M13.2 M12.1               | **v0.5 P1** |
+| 9   | 34–36 | B     | Tool Calling                                 | M6                        | v0.6        |
+| 10  | 37–39 | B/D   | 手写 Agent + Research Agent + 简历 v0        | M7.1 M7.5 M4.3 M13.3      | v0.7        |
+| 11  | 40–42 | B     | LangGraph                                    | M7.2                      | —           |
+| 12  | 43–45 | B     | Memory / HITL                                | M7.3 M7.4                 | v0.8        |
+| 13  | 46–48 | B     | MCP                                          | M8                        | v0.9        |
+| 14  | 49–51 | B     | Agent Evaluation + 回归                      | M3.3 M3.5                 | —           |
+| 15  | 52–54 | C/B   | Production AI（Trace/成本/限流/护栏）        | M9 M11.3 M4.4             | —           |
+| 16  | 55–57 | D     | P2 作品集 + 开源/产品页 + 简历 v1            | M13 M12                   | **v1.0 P2** |
+| 17  | 58–59 | A/B   | P3 问题定义 + 架构 v2                        | M10 M11                   | —           |
+| 18  | 60–61 | A/B   | 主场景包 MVP                                 | M10                       | v1.1        |
+| 19  | 62–63 | C/B   | Postgres + 认证 + 多空间 + 自动部署          | M11.1 M11.2 M5.4          | v1.2        |
+| 20  | 64–65 | B     | 场景评测 + 反馈闭环                          | M3 M4.4                   | v1.3        |
+| 21  | 66–67 | C     | 安全加固（OWASP LLM Top 10）                 | M11                       | v1.4        |
+| 22  | 68–69 | B/A   | Eval v2 + 模板库 + Pro Kit                   | M3.5 M14 M12.2            | **v2.0 P3** |
+| 23  | 70–71 | D     | Portfolio 网站 + 在线 Demo                   | M13.5 M12.4               | —           |
+| 24  | 72–73 | D     | 简历 ×3 + 小批量投递                         | M13.3                     | —           |
+| 25  | 74–75 | D/B   | 面试题库 + System Design                     | M13.4                     | —           |
+| 26  | 76–77 | 全部  | 半年验收 + DA-02 规划                        | 全部                      | —           |
+
+逐日明细：[DA01_TARGET_ASSET.md 附录 A](DA01_TARGET_ASSET.md)。
 
 ---
 
 ## 5. 当前所在阶段 / 周
 
-以 `PROJECT_CONFIG.md` 的「当前状态」为准（当前：阶段一 · 第 1 周）。
+以 `PROJECT_CONFIG.md` 的「当前状态」为准。Day01（Docker）、Day02（Gitea）已完成。
 
 ---
 
 ## 6. 如何使用这个目录
 
-Agent 执行某一周任务时，**按最小必要上下文逐层加载**：
+Agent 执行任务时**按最小必要上下文逐层加载**：
 
-```
-GLOBAL_CONTEXT.md      → 长期原则 / 防偏航 / 工作规则
-PROJECT_CONFIG.md      → 路径 / 当前状态
-plan/README.md         → 半年总路线
-plan/phase_XX/README.md → 阶段目标与进出条件
-plan/phase_XX/week_XX/README.md → 本周为什么做 / 产出 / 验收
-plan/phase_XX/week_XX/TASKS.md   → 具体执行任务
+```text
+GLOBAL_CONTEXT.md                → 长期原则 / 防偏航
+PROJECT_CONFIG.md                → 路径 / 当前状态
+plan/DA01_TARGET_ASSET.md        → 最终产品长什么样（模块编号 = 资产锚点）
+plan/README.md                   → 半年总路线
+plan/phase_XX/README.md          → 阶段目标、版本推进、进出条件
+plan/phase_XX/week_XX/README.md  → 本周模块、每日安排、验收
+plan/phase_XX/week_XX/TASKS.md   → 本周任务细节
+plan/phase_XX/week_XX/dayNN_*/PLAN.md → 当天可直接执行的步骤
 ```
 
 不要一次性读取全部 26 周。
+
+### 每日文件约定
+
+- `PLAN.md`：当天计划（计划生成后不随意改动）。
+- `draft.md`：执行时自己的笔记 / 勾选结果（Day01、Day02 已采用）。
+- 当天未完成：次日 PLAN 不改，只在 `draft.md` 记录「顺延项」，并优先完成 P0。
 
 ---
 
 ## 7. 阶段之间的产出关系
 
+```text
+phase_01：底座 + 痛点池 + DA-01 场景 + WorkPilot v0.5（P1：RAG 知识助手，已部署、已评测）
+   ↓ 作为输入
+phase_02：在同一仓库上加 Tools / Agent / MCP / Eval / Observability → v1.0（P2）
+   ↓ 作为输入
+phase_03：场景包 + 安全 + 多空间 + 回归 → v2.0（P3）→ 模板库 / Portfolio / 简历 / 面试 / DA-02
 ```
-阶段 1 产出（研发底座 + 已验证的 DA-01 候选 + MVP + AI/RAG 基础 + 模板）
-        ↓ 成为
-阶段 2 输入（把 MVP 打磨成可交付、可上架、可首单变现的产品 + Agent 服务）
-        ↓ 成为
-阶段 3 输入（放大收入、沉淀 AI 资产、复盘并规划 DA-02）
-        ↓
-最终形成 DA-01 可持续数字资产 + 可复制的生产方法
-```
-
----
 
 ## 8. 计划演化机制
 
-计划变化记录在 `plan/CHANGELOG.md`：为什么改、改了什么、哪一周受影响、DA-01 是否变化。
+计划变化记录在 `plan/CHANGELOG.md`：为什么改、改了什么、哪一周受影响、DA-01 / 目标资产是否变化。

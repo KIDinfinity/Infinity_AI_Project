@@ -1,7 +1,8 @@
 # 半年稳态成长 + AI求职能力 + AI实际应用 + 睡后收入终极落地计划
 
 > 每日投入：1--2小时｜周期：26周｜原则：可持续、可降量、可复用、可长期迭代  
-> 核心变化：在原有「资产化 + AI工程能力」框架上，增加一条明确的 **AI求职能力线**，让半年后的成果既能用于产品/收入，也能直接用于简历、作品集和面试。
+> 核心变化：在原有「资产化 + AI工程能力」框架上，增加一条明确的 **AI求职能力线**，让半年后的成果既能用于产品/收入，也能直接用于简历、作品集和面试。  
+> **2026-10-01 新增**：明确「目标数字资产」——DA-01 = **WorkPilot（工作代号）研发工作 AI 助手平台**，P1/P2/P3 是它的三个里程碑。完整蓝图见 `plan/DA01_TARGET_ASSET.md`（本文件 §2.6 为摘要）。
 
 ---
 
@@ -161,6 +162,16 @@ AI主要负责：
 - 部署
 - 最终决策
 
+## 1.5.1 数据与合规红线（2026-10-01 新增）
+
+目标资产要「结合工作内容」，因此必须先划红线：
+
+- 公司机密代码 / 文档 / 工单**一律不进入外部 LLM API**。
+- 开发与评测语料只用：自己的笔记、公开开源文档、手工改写脱敏的工作场景样例。
+- 工作中只「记录痛点」，不在主业时间「开发副业」。
+- 若想在公司内真实使用：先获许可，用公司基础设施 + 本地模型，不属于本计划范围。
+- 任何对外公开（GitHub / Demo / 文章）前做一次敏感信息检查。
+
 ---
 
 # 1.6 通用解决方案闭环
@@ -275,10 +286,10 @@ AI辅助开发能力
 
 参考招聘样本：
 
-- Accenture Federal Services：GenAI Applications Engineer，强调 Agentic Workflow、RAG、Evaluation、生产部署、质量/延迟/成本。  
-- Ford：Full Stack Software Engineer - AI Applications，强调 Python、JavaScript/TypeScript、React、LLM、RAG、Agent、Evaluation、Cloud、AI-assisted development。  
-- Accenture：Full Stack AI Developer，强调 Python + Frontend、LLM Application、Agent、MCP、RAG Evaluation、CI/CD、Cloud。  
-- GM：AI Agent Engineer，强调 Python/TypeScript/Java、LLM Application、RAG、API、生产服务、测试和可观测性。  
+- Accenture Federal Services：GenAI Applications Engineer，强调 Agentic Workflow、RAG、Evaluation、生产部署、质量/延迟/成本。
+- Ford：Full Stack Software Engineer - AI Applications，强调 Python、JavaScript/TypeScript、React、LLM、RAG、Agent、Evaluation、Cloud、AI-assisted development。
+- Accenture：Full Stack AI Developer，强调 Python + Frontend、LLM Application、Agent、MCP、RAG Evaluation、CI/CD、Cloud。
+- GM：AI Agent Engineer，强调 Python/TypeScript/Java、LLM Application、RAG、API、生产服务、测试和可观测性。
 - Cognizant：AI Engineer / Generative AI Engineer，强调 LLM、RAG、Agent、LangChain/LlamaIndex/LangGraph、Vector Store、Evaluation。
 
 因此，本计划不追求：
@@ -294,6 +305,8 @@ AI辅助开发能力
 # 2.3 战略目标B：AI实际应用能力
 
 半年内至少完成：
+
+> **2026-10-01 优化**：P1 / P2 / P3 不再是三个独立 Demo，而是**同一个目标资产 WorkPilot 的三个版本里程碑**（P1 = v0.5 Knowledge，P2 = v1.0 Agent，P3 = v2.0 Production Solution）。好处：代码与数据持续复用；面试时讲的是「一个系统如何从 RAG 演进到生产级 Agent 平台」，比三个零散项目更有说服力。详见 §2.6。
 
 ## 项目P1：AI知识 / 文档助手
 
@@ -449,6 +462,53 @@ SEO内容
 
 ---
 
+# 2.6 目标数字资产：DA-01 = WorkPilot（2026-10-01 新增）
+
+> 完整版：`plan/DA01_TARGET_ASSET.md`。所有 phase / week / day 计划必须引用其中的「模块编号 Mx.y + 版本号」作为资产锚点。
+
+## 2.6.1 一句话定义
+
+**WorkPilot：一个可私有部署的「研发工作 AI 助手平台」**——接入团队/个人研发知识（文档、规范、代码仓库、Issue、运行手册），用带引用的 RAG 回答问题，用可审批的 Agent 调用工具完成高频研发工作流（调研、需求拆解、评审、排障、周报），通过 MCP 嵌入 IDE，自带评测、可观测、安全护栏和一键部署。
+
+## 2.6.2 为什么是它
+
+1. **求职对齐**：§2.2 中每一项 JD 高频能力（RAG / Agent / MCP / Evaluation / Observability / React+FastAPI / Docker+Cloud）都对应 WorkPilot 的一个真实模块。
+2. **工作对齐**：「企业知识 + 研发效能 Agent」是当前 AI 落地最成熟的方向之一；场景就是自己每天的研发工作，痛点真实、可自测。
+3. **资产对齐**：开源核心（作品集 + 被动流量）+ 付费 Pro Kit（标准化、不接外包）。
+4. **与「问题决定技术」不冲突**：能力骨架固定；具体解决哪个痛点（场景包 M10）在第 3 周从真实问题池中选出。
+
+## 2.6.3 由哪些部分组成
+
+| 模块                | 作用                                                            | 里程碑          |
+| ------------------- | --------------------------------------------------------------- | --------------- |
+| M0 研发底座         | Docker / Gitea / 模板 / MinIO / Qdrant / 备份                   | W1–2            |
+| M1 LLM Gateway      | 多模型切换、结构化输出、流式、重试、成本                        | v0.1            |
+| M2 Knowledge Engine | 导入 → 分块 → 向量化 → 检索 → 带引用回答                        | v0.2–0.3（P1）  |
+| M3 Eval Kit         | 数据集、RAG/Agent 指标、Badcase、回归门禁                       | 贯穿            |
+| M4 Web Console      | React 聊天 / 知识库 / Agent 时间线 / 看板                       | v0.4 起         |
+| M5 Deploy Kit       | Docker Compose、云部署、CI/CD、备份恢复                         | v0.5（P1 发布） |
+| M6 Tool Layer       | 工具注册、权限等级、kb/web/gitea 工具                           | v0.6            |
+| M7 Agent Runtime    | 手写循环 → LangGraph → Memory → HITL                            | v0.7–0.8        |
+| M8 MCP              | MCP Server 嵌入 IDE + MCP Client                                | v0.9            |
+| M9 Observability    | Trace、成本账本、预算守卫、限流                                 | v1.0（P2 发布） |
+| M10 场景包          | 知识问答 / 需求拆解 / 评审 / 排障 / 周报 / 调研（选 1 主 1 辅） | v1.1            |
+| M11 安全与多租户    | 认证、空间隔离、注入防护、审计                                  | v1.2–1.4        |
+| M12 交付与商业化    | 开源核心、Pro Kit、产品页、在线 Demo                            | v1.0 / v2.0     |
+| M13 求职包          | 能力矩阵、作品集写作、简历 ×3、面试题、Portfolio                | 贯穿            |
+| M14 模板库          | `personal-ai-engineering`                                       | v2.0（P3 发布） |
+
+## 2.6.4 最终用户可见功能（v2.0）
+
+知识空间（多空间隔离、文档/仓库接入）→ 带引用问答（拒答、反馈）→ Agent 任务中心（步骤可视化、写操作审批）→ IDE 集成（MCP）→ 评测中心（数据集、回归、Badcase）→ 运维看板（延迟/错误/成本/预算）→ 安全（登录、角色、注入防护、审计）→ 一键部署与恢复。
+
+## 2.6.5 每层计划如何使用它
+
+- **Phase**：说明本阶段把 WorkPilot 从哪个版本推进到哪个版本。
+- **Week**：说明本周构建哪些模块、达到哪个可演示状态。
+- **Day**：第 1 节「资产锚点」写清模块编号 + 「今天之后 WorkPilot 多了什么能被演示/测量的东西」。答不出来就是跑偏。
+
+---
+
 # 3. 第二层级：半年阶段目标
 
 ## 半年最终目标
@@ -565,22 +625,22 @@ AI岗位能力矩阵.md
 
 至少分：
 
-| 能力 | 当前水平 | 招聘重要性 | 项目证明方式 |
-|---|---|---|---|
-| React/TS | 已有基础 | 高 | AI UI |
-| Python | 待强化 | 高 | FastAPI |
-| LLM API | 新增 | 高 | AI Feature |
-| RAG | 新增 | 高 | P1 |
-| Agent | 新增 | 高 | P2 |
-| Evaluation | 新增 | 高 | Eval |
-| Vector DB | 新增 | 中高 | P1 |
-| Tool Calling | 新增 | 高 | P2 |
-| Docker | 已有/强化 | 高 | 部署 |
-| Cloud | 强化 | 高 | 上线 |
-| CI/CD | 强化 | 中高 | GitHub Actions |
-| Observability | 新增 | 中高 | Trace/Log |
-| MCP | 了解并做小实验 | 中高 | Tool integration Demo |
-| Fine-tuning | 暂不作为主线 | 低于上述能力 | 后置 |
+| 能力          | 当前水平       | 招聘重要性   | 项目证明方式          |
+| ------------- | -------------- | ------------ | --------------------- |
+| React/TS      | 已有基础       | 高           | AI UI                 |
+| Python        | 待强化         | 高           | FastAPI               |
+| LLM API       | 新增           | 高           | AI Feature            |
+| RAG           | 新增           | 高           | P1                    |
+| Agent         | 新增           | 高           | P2                    |
+| Evaluation    | 新增           | 高           | Eval                  |
+| Vector DB     | 新增           | 中高         | P1                    |
+| Tool Calling  | 新增           | 高           | P2                    |
+| Docker        | 已有/强化      | 高           | 部署                  |
+| Cloud         | 强化           | 高           | 上线                  |
+| CI/CD         | 强化           | 中高         | GitHub Actions        |
+| Observability | 新增           | 中高         | Trace/Log             |
+| MCP           | 了解并做小实验 | 中高         | Tool integration Demo |
+| Fine-tuning   | 暂不作为主线   | 低于上述能力 | 后置                  |
 
 > 注意：这不是给个人能力打分，而是为了确定半年内项目应该证明什么。
 
@@ -1418,34 +1478,36 @@ P0减量
 
 # 8. 26周执行路线
 
-| 周 | 阶段 | 主线 | 核心目标 | 主要产出 |
-|---|---|---|---|---|
-| 1 | 短期 | D/B | AI岗位能力地图 | JD能力矩阵 |
-| 2 | 短期 | B | Python/FastAPI/LLM API | AI API |
-| 3 | 短期 | B | Structured Output/Streaming | LLM应用v0 |
-| 4 | 短期 | B | RAG Pipeline | RAG MVP |
-| 5 | 短期 | B | Chunk/Retrieval | Evaluation Dataset |
-| 6 | 短期 | A/B | AI Full-Stack | React+FastAPI |
-| 7 | 短期 | C | Docker/部署 | Cloud MVP |
-| 8 | 短期 | D | 项目包装 | P1 Portfolio |
-| 9 | 中期 | B | Tool Calling | Tool Demo |
-| 10 | 中期 | B | Agent Workflow | Research Agent v0 |
-| 11 | 中期 | B | Agent框架 | Agent v1 |
-| 12 | 中期 | B | Memory/State | Agent v2 |
-| 13 | 中期 | B | MCP/Tool Integration | MCP Demo |
-| 14 | 中期 | B | Evaluation | Eval Harness |
-| 15 | 中期 | C/B | Production AI | Logging/Cost/Trace |
-| 16 | 中期 | D | 求职作品集 | P2 Portfolio |
-| 17 | 长期 | A/B | 真实问题定义 | P3 Definition |
-| 18 | 长期 | A/B | 核心AI链路 | P3 MVP |
-| 19 | 长期 | B/C | 工程化 | Production v1 |
-| 20 | 长期 | B | Evaluation | P3 Eval |
-| 21 | 长期 | C | Security/Guardrail | Production Hardening |
-| 22 | 长期 | B | Badcase/Regression | Eval v2 |
-| 23 | 长期 | D | Portfolio | 个人AI Portfolio |
-| 24 | 长期 | D | 简历 | AI Resume |
-| 25 | 长期 | D/B | 面试 | System Design/Interview |
-| 26 | 长期 | 全部 | 半年复盘 | 半年报告 |
+| 周  | 阶段 | 主线  | 核心目标                                       | 主要产出                     | WorkPilot 资产锚点 / 版本      |
+| --- | ---- | ----- | ---------------------------------------------- | ---------------------------- | ------------------------------ |
+| 1   | 短期 | C/A/D | 研发底座 + 痛点池 + 项目规范                   | 模板、workpilot 仓库、痛点池 | M0.1–M0.3 / v0.0               |
+| 2   | 短期 | B/D/C | AI岗位能力地图 + Python/FastAPI/LLM API + 存储 | JD能力矩阵、AI API           | M13.1 M1.1 M1.2 M0.4 M0.5      |
+| 3   | 短期 | B/A   | Structured Output/Streaming + DA-01 场景选型   | LLM应用v0                    | M1.3–M1.6 M10 / v0.1           |
+| 4   | 短期 | B     | RAG Pipeline                                   | RAG MVP                      | M2.1–M2.6 / v0.2               |
+| 5   | 短期 | B     | Chunk/Retrieval/Eval                           | Evaluation Dataset           | M2.2 M2.4 M3.1–M3.4 / v0.3     |
+| 6   | 短期 | A/B   | AI Full-Stack                                  | React+FastAPI                | M4.1 M4.2 M3.6 / v0.4          |
+| 7   | 短期 | C     | Docker/部署                                    | Cloud MVP                    | M5.1–M5.5 M9.1                 |
+| 8   | 短期 | D     | 项目包装                                       | P1 Portfolio                 | M13.2 M12.1 / **v0.5 = P1**    |
+| 9   | 中期 | B     | Tool Calling                                   | Tool Demo                    | M6 / v0.6                      |
+| 10  | 中期 | B     | Agent Workflow                                 | Research Agent v0            | M7.1 M7.5 M4.3 / v0.7          |
+| 11  | 中期 | B     | Agent框架                                      | Agent v1                     | M7.2                           |
+| 12  | 中期 | B     | Memory/State/HITL                              | Agent v2                     | M7.3 M7.4 / v0.8               |
+| 13  | 中期 | B     | MCP/Tool Integration                           | MCP Demo                     | M8 / v0.9                      |
+| 14  | 中期 | B     | Evaluation                                     | Eval Harness                 | M3.3 M3.5                      |
+| 15  | 中期 | C/B   | Production AI                                  | Logging/Cost/Trace           | M9 M11.3 M4.4                  |
+| 16  | 中期 | D     | 求职作品集                                     | P2 Portfolio                 | M13 M12 / **v1.0 = P2**        |
+| 17  | 长期 | A/B   | 真实问题定义                                   | P3 Definition                | M10 M11 设计                   |
+| 18  | 长期 | A/B   | 核心AI链路                                     | P3 MVP                       | M10 / v1.1                     |
+| 19  | 长期 | B/C   | 工程化                                         | Production v1                | M11.1 M11.2 M5.4 / v1.2        |
+| 20  | 长期 | B     | Evaluation                                     | P3 Eval                      | M3 M4.4 / v1.3                 |
+| 21  | 长期 | C     | Security/Guardrail                             | Production Hardening         | M11 / v1.4                     |
+| 22  | 长期 | B     | Badcase/Regression + 模板抽取                  | Eval v2 + 模板库             | M3.5 M14 M12.2 / **v2.0 = P3** |
+| 23  | 长期 | D     | Portfolio                                      | 个人AI Portfolio             | M13.5 M12.4                    |
+| 24  | 长期 | D     | 简历                                           | AI Resume                    | M13.3                          |
+| 25  | 长期 | D/B   | 面试                                           | System Design/Interview      | M13.4                          |
+| 26  | 长期 | 全部  | 半年复盘                                       | 半年报告                     | 全部                           |
+
+> **节奏说明（2026-10-01）**：执行目录 `plan/` 中「周」是 2–5 天的冲刺（Day01–Day77 连续日期，每天 1–2 小时）。逐日安排见 `plan/DA01_TARGET_ASSET.md` 附录 A。
 
 ---
 
@@ -1533,6 +1595,16 @@ P0减量
 记录：
 
 > 这个能力以后可以如何写进简历？
+
+## ⑩ 今日资产锚点（2026-10-01 新增，必填）
+
+必须写清：
+
+- 本任务构建的是 WorkPilot 哪个模块（`plan/DA01_TARGET_ASSET.md` §5 的 Mx.y）；
+- 推进的是哪个版本里程碑（§9）；
+- 「今天之后，WorkPilot 多了什么能被演示或被测量的东西？」
+
+答不出来的任务，按 GLOBAL_CONTEXT §10 降级或删除。
 
 ---
 
@@ -1796,6 +1868,8 @@ personal-ai-engineering/
 └── projects/
 ```
 
+> 来源：第 22 周从 WorkPilot 真实代码中抽取（M14），不单独从零写模板。
+
 ---
 
 # 12.5 收入
@@ -2018,11 +2092,11 @@ Badcase
 
 以下招聘信息用于确定本计划中的岗位能力映射，具体职位要求会随公司、地区、级别和时间变化，不应理解为所有AI岗位的统一要求。
 
-- Accenture Federal Services — Generative AI Applications Engineer：Agentic workflows、RAG、LLM evaluation、tool use、production deployment、quality/latency/cost。  
-- Ford — Full Stack Software Engineer - AI Applications：Python、JavaScript/TypeScript、React、LLM、RAG、agents、evaluation、cloud、AI-assisted development。  
-- Accenture — Full Stack AI Developer：Python + frontend、LLM applications、agents、MCP、RAG evaluation、CI/CD、cloud。  
-- GM — AI Agent Engineer：Python/TypeScript/Java、LLM applications、RAG、REST API、production services、observability/testing。  
-- Cognizant — AI Engineer / Generative AI Engineer：LLM、RAG、Agentic AI、LangChain/LlamaIndex/LangGraph、vector stores、evaluation。  
+- Accenture Federal Services — Generative AI Applications Engineer：Agentic workflows、RAG、LLM evaluation、tool use、production deployment、quality/latency/cost。
+- Ford — Full Stack Software Engineer - AI Applications：Python、JavaScript/TypeScript、React、LLM、RAG、agents、evaluation、cloud、AI-assisted development。
+- Accenture — Full Stack AI Developer：Python + frontend、LLM applications、agents、MCP、RAG evaluation、CI/CD、cloud。
+- GM — AI Agent Engineer：Python/TypeScript/Java、LLM applications、RAG、REST API、production services、observability/testing。
+- Cognizant — AI Engineer / Generative AI Engineer：LLM、RAG、Agentic AI、LangChain/LlamaIndex/LangGraph、vector stores、evaluation。
 - NTT DATA — Agentic AI Engineer：agent workflows、RAG、tool calling、full-stack AI applications、cloud deployment、enterprise integration。
 
 > 招聘市场观察的使用方式：**看共同能力，不追逐单个公司的全部技术栈。**

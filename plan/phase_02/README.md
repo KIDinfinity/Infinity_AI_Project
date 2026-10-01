@@ -1,70 +1,72 @@
-# Phase 02 · 产品落地变现期（第 9–16 周）
+# Phase 02 · Agent 与 P2（第 9–16 周 · Day34–Day57 · 10-31 → 11-23）
 
 ## 1. 阶段目标
 
-把阶段一的 DA-01 MVP 打磨成可交付、可上架、可首单变现的产品，并用 Agent 承接被动咨询、搭建免费流量、跑通第一笔睡后收入。
+在 WorkPilot v0.5 的同一仓库上，加入工具层、Agent 运行时、记忆与人工审批、MCP 集成、Agent 评测和生产级可观测，推进到 **v1.0 = P2 WorkPilot Agent**；同时启动求职验证（JD 追踪、简历 v0 → v1），并完成开源发布与产品页。
 
-## 2. 为什么这个阶段存在
+## 2. 资产锚点
 
-阶段一证明了「方向是否值得做」，阶段二要证明「能不能真的做出来、交付出去、收到第一笔钱」。这是从「有产品」到「有收入」的关键转折。
+| 项                     | 内容                                                                                                                                                                             |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 版本推进               | v0.5 → v0.6（Tools）→ v0.7（Research Agent v0）→ v0.8（LangGraph + Memory + HITL）→ v0.9（MCP）→ **v1.0（P2 发布）**                                                             |
+| 构建模块               | M6 Tool Layer、M7 Agent Runtime、M8 MCP、M3.3/M3.5 Agent Eval、M9 Observability、M11.3 Guardrail v0、M4.3/M4.4 前端、M12.1/M12.3 开源与产品页、M13 求职                          |
+| 完成后最终产品多了什么 | WorkPilot 从「会回答」变成「会做事」：能规划、调用工具（知识库/网页/Gitea）、写操作需审批、能在 IDE 中通过 MCP 使用、每次修改能用评测判断变好变坏、能看到每次请求的 trace 与成本 |
 
-## 3. 本阶段必须产生什么
+```text
+W9 Tools → W10 手写 Agent → W11 LangGraph → W12 Memory/HITL → W13 MCP → W14 Agent Eval → W15 Production → W16 P2 发布
+```
 
-- P2 AI Research Agent v2（B 线）：Tool Calling → Agent Workflow → LangGraph 框架 → MCP → Evaluation → Observability。
-- P2 Portfolio 产出（D 线）：README / Architecture / Demo / Evaluation / Badcases / Docker / Deployment。
-- AI 简历初版（D 线）和每 2 周一次的 JD 高频能力更新。
-- 无功能性 bug、可商用的 DA-01 产品版本。
-- 全套售卖物料：部署文档、演示视频/截图、授权价格体系。
-- 上架与自助支付/自动交付能力。
-- 官网 + 嵌入 Agent 自动承接咨询。
-- 免费 SEO 被动流量渠道（文章、收录、sitemap）。
-- 第一笔睡后收入订单。
-- 一轮 RAG 调优与 badcase 迭代。
-- 一次版本迭代（如轻量版）。
+## 3. 为什么这个阶段存在
 
-> 主线优先级：B > D > A > C
+JD 中 Agent / Tool Calling / MCP / Evaluation / Observability 是区分「会调 API」与「AI 工程师」的关键。这些能力也正是 DA-01 「结合工作内容提升效率」的执行层——没有工具和审批，WorkPilot 只是问答机器人。
 
-## 4. 本阶段不应该做什么
+## 4. 本阶段必须产生什么（文件级）
 
-- 不接定制外包，不主动营销、不私聊拓客。
-- 不为追求「完整」无限加功能。
-- 不因首单延迟就扩大技术范围或增加服务。
+| 线  | 产出                                              | 位置                                                                |
+| --- | ------------------------------------------------- | ------------------------------------------------------------------- |
+| B   | Tool Registry + ≥5 个内置工具 + 单测              | `apps/api/app/tools/`                                               |
+| B   | 手写循环 v0 + LangGraph v1 + Memory + HITL        | `apps/api/app/agent/`                                               |
+| B   | MCP Server（stdio + HTTP）+ MCP Client            | `apps/mcp-server/`、`app/tools/mcp_client.py`                       |
+| B   | Agent 评测集 30 任务 + runner + CI 门禁           | `eval/datasets/agent_tasks.jsonl`、`eval/runners/run_agent_eval.py` |
+| C   | Trace / 成本账本 / 预算守卫 / 限流 / Guardrail v0 | `apps/api/app/obs/`、`app/security/guardrails.py`                   |
+| B/D | Agent 时间线 + 审批 UI + Ops 看板                 | `apps/web/src/pages/`                                               |
+| A   | 开源边界、产品页、首篇技术文章                    | `docs/product/`、产品页                                             |
+| D   | JD 追踪 ≥ 3 次、简历 v0/v1、面试题 ≥ 25           | `projects/career/`                                                  |
 
-## 5. 本阶段核心能力
+## 5. 本阶段不应该做什么
 
-**B 线（AI Engineering）**：Tool Calling、Agent Workflow、LangGraph/LangChain、State/Memory、MCP、Evaluation、Observability（Trace/Log/Cost）。
+- 不做 Multi-Agent、不做 Agent 群聊、不追新框架（只用 LangGraph）。
+- 不做认证 / 多租户 / Postgres（phase_03）。
+- 不把「学 LangGraph / MCP」本身当目标：每个知识点必须落到 WorkPilot 的一个可演示功能。
+- 不接定制外包、不主动私聊拓客。
+- JD 出现新技术 ≠ 加入计划；只有「多个岗位反复出现 + 与 WorkPilot 相关 + 1–2 周内能出成果」才考虑。
 
-**D 线（Job Market）**：JD 分析、能力矩阵迭代、P2 Portfolio、AI 简历 v1、面试问题记录。
+## 6. 本阶段核心能力
 
-**A 线（产品）**：产品打磨、上架、SEO、首单变现。
-
-**C 线（基建）**：生产部署、监控、成本追踪、安全、备份。
-
-## 6. 本阶段与 DA-01 的关系
-
-DA-01 从「能运行的候选」变成「别人能买、能用、能带来收入」的标准化资产，并首次验证商业价值。同时 P2 形成第二份求职作品集。
+- **B**：Function Calling、Tool Schema、ReAct / Plan-Execute、LangGraph（State/Node/Edge/Checkpointer/Interrupt）、Memory、MCP、Agent Evaluation、LLM-as-a-judge。
+- **C**：Tracing、Token/Cost、Rate Limit、Timeout/Retry、Guardrail、CI 门禁。
+- **D**：JD 追踪、简历 v0/v1、P2 作品集、面试题库。
+- **A**：开源核心 / Pro Kit 边界、产品页、SEO 文章。
 
 ## 7. 进入条件
 
-阶段一第 8 周总验收通过（核心项 PASS）。
+phase_01 核心验收 PASS：WorkPilot v0.5 已部署、50 题评测基线存在、P1 作品集完成。
 
-## 8. 完成条件
+## 8. 完成条件 / 阶段验收（第 16 周 Day57）
 
-拿到第一笔付费订单，Agent 能承接大部分被动咨询，产品有免费流量入口。
+- [ ] v1.0 tag 已打，云端已更新
+- [ ] Agent 30 任务评测报告：任务成功率、工具选择准确率、平均步数、P95 延迟、平均成本均有数值
+- [ ] 未经审批的写操作 = 0（有测试证明）
+- [ ] 在 VS Code / Cursor / Claude Desktop 任一 IDE 中通过 MCP 调用 WorkPilot 成功（录屏）
+- [ ] 任一请求可在 Trace 页面看到 LLM / 检索 / 工具调用明细与成本
+- [ ] `make eval` 在 CI 中运行，回归下降会失败
+- [ ] P2 作品集：README + 架构 + Demo + 评测报告 + 技术文章
+- [ ] 简历 v1 完成；JD 追踪记录 ≥ 3 次；面试题 ≥ 25 道
 
-## 9. 阶段验收标准
+## 9. 下一阶段依赖什么
 
-- 产品无功能性 bug、可商用。
-- 上架可购买，自助支付/自动交付可用。
-- 官网 + Agent 在线可用。
-- 至少一笔付费订单。
-- **D 线**：P2 Portfolio 完成、AI 简历 v1 完成、每 2 周 JD 分析记录 ≥ 3 次。
-
-## 10. 下一阶段依赖什么
-
-阶段三依赖：已上架产品、真实用户/订单数据、Agent 服务、SEO 流量、RAG 调优笔记——这些是第 17–26 周放大收入、沉淀资产、复盘规划的输入。
-阶段三同时需要：P2 求职作品集 + 简历 v1——作为 D 线在后期发力的基础。
+phase_03 复用：Agent 运行时（场景包就是一个 LangGraph 工作流）、HITL（场景写操作）、Eval Kit（场景评测与回归）、Observability（生产运维）、Guardrail v0（安全加固起点）、开源仓库与产品页（Portfolio 与 Pro Kit 入口）。
 
 ## 完成本阶段后，DA-01 比阶段开始前多了什么？
 
-从一个「可运行 MVP」变成「已上架、有用户、有首单收入、有被动流量和 Agent 服务的真实售卖产品」，同时拥有 P1 + P2 两份求职作品集素材和一份 AI 简历初版。
+从「带引用的知识助手」变成「可审批、可评测、可观测、可嵌入 IDE 的研发 Agent 平台」（v1.0 / P2），并已公开发布，有第二份作品集和简历 v1。

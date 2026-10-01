@@ -7,28 +7,29 @@
 
 ## 1. 基础路径
 
-| 配置项 | 值 |
-|---|---|
-| 项目根目录 | `/Users/infinity/Documents/a_future` |
-| Global Context 路径 | `/Users/infinity/Documents/a_future/GLOBAL_CONTEXT.md` |
-| 计划执行目录（PLAN_ROOT） | `/Users/infinity/Documents/a_future/plan/` |
-| 每日拆解目录（旧，参考） | `/Users/infinity/Documents/a_future/半年计划-每日拆解/` |
-| 草稿目录 | `/Users/infinity/Documents/a_future/draft/` |
-| History 目录 | `/Users/infinity/Documents/a_future/history/` |
-| Prompt 目录 | `/Users/infinity/Documents/a_future/prompt/` |
-| DA-01 根目录（DA01_ROOT） | 待定（第 3 周明确后回填） |
+| 配置项                    | 值                                                                    |
+| ------------------------- | --------------------------------------------------------------------- |
+| 项目根目录                | `/Users/infinity/Documents/a_future`                                  |
+| Global Context 路径       | `/Users/infinity/Documents/a_future/GLOBAL_CONTEXT.md`                |
+| 计划执行目录（PLAN_ROOT） | `/Users/infinity/Documents/a_future/plan/`                            |
+| 每日拆解目录（旧，参考）  | `/Users/infinity/Documents/a_future/半年计划-每日拆解/`               |
+| 草稿目录                  | `/Users/infinity/Documents/a_future/draft/`                           |
+| History 目录              | `/Users/infinity/Documents/a_future/history/`                         |
+| Prompt 目录               | `/Users/infinity/Documents/a_future/prompt/`                          |
+| 目标资产蓝图              | `plan/DA01_TARGET_ASSET.md`（DA-01 = WorkPilot，模块编号 = 资产锚点） |
+| DA-01 根目录（DA01_ROOT） | 计划为 `~/lab/workpilot`（Gitea 仓库 `workpilot`，Day05 创建后确认）  |
 
 ---
 
 ## 2. 当前状态
 
-| 配置项 | 值 |
-|---|---|
-| 当前阶段 | 阶段一 · 探索与沉淀期（第 1–8 周） |
-| 当前周 | 第 1 周 |
+| 配置项     | 值                                                                                                      |
+| ---------- | ------------------------------------------------------------------------------------------------------- |
+| 当前阶段   | 阶段一 · 探索与沉淀期（第 1–8 周）                                                                      |
+| 当前周     | 第 1 周                                                                                                 |
 | DA-01 定义 | 第一个智能解决方案资产（Intelligent Solution Asset 01），可组合软件 / AI / 自动化 / 视觉 / IoT / 机器人 |
-| DA-01 状态 | 尚未明确（第 1–2 周探索痛点，最晚第 3 周确定问题与技术组合） |
-| DA-01 路径 | 待定（第 3 周明确后回填） |
+| DA-01 状态 | 方向已定：WorkPilot 研发工作 AI 助手平台（见目标资产蓝图）；主场景包（M10）待第 3 周 Day13 从痛点池选出 |
+| DA-01 路径 | 计划 `~/lab/workpilot`（Day05 创建后回填确认）                                                          |
 
 ---
 
@@ -43,11 +44,11 @@
 
 ## 4. 三条工作线（阶段一固定）
 
-| 线 | 名称 | 时间占比 |
-|---|---|---|
-| C | 个人工程 / 私有云基础设施 | 30% |
-| A | 智能解决方案验证与 MVP | 45% |
-| B | AI / Agent / 感知-决策能力 | 25% |
+| 线  | 名称                       | 时间占比 |
+| --- | -------------------------- | -------- |
+| C   | 个人工程 / 私有云基础设施  | 30%      |
+| A   | 智能解决方案验证与 MVP     | 45%      |
+| B   | AI / Agent / 感知-决策能力 | 25%      |
 
 > 第 3 周开始，A 线是核心，不允许基础设施无限扩张。
 
