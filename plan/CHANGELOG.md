@@ -4,6 +4,18 @@
 
 ---
 
+## 2026-10-01 · 项目结构改造：支持多 Project
+
+- 原因：项目需要支持多个不同 project 的计划管理，而非仅 WorkPilot 一个。
+- 改动：
+  1. `plan/` 下新增 `plan_ai/`，将 `phase_01/` `phase_02/` `phase_03/` 移入。
+  2. `plan/README.md` 改为多 project 总览；原 WorkPilot 详细内容移至 `plan/plan_ai/README.md`。
+  3. `PROJECT_CONFIG.md` 新增「当前活跃 Project 计划」配置项。
+  4. 目录结构变为：`plan/<project>/phase_XX/week_XX/dayNN_*/`。
+  5. `DA01_TARGET_ASSET.md` 从 `plan/` 移至 `plan/plan_ai/`（属于 WorkPilot project）。
+- 受影响周：全部（路径变更，内容不变）。
+- DA-01 变化：无。
+
 ## 2026-09-26 · 初始化执行目录
 
 - 原因：把两份源计划（26 周总计划 + 第 1–8 周详细版）结构化，建立 Agent 可长期执行的目录系统。
