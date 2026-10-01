@@ -7,18 +7,18 @@
 
 ## 1. 基础路径
 
-| 配置项                    | 值                                                                    |
-| ------------------------- | --------------------------------------------------------------------- |
-| 项目根目录                | `/Users/infinity/Documents/a_future`                                  |
-| Global Context 路径       | `/Users/infinity/Documents/a_future/GLOBAL_CONTEXT.md`                |
-| 计划执行目录（PLAN_ROOT） | `/Users/infinity/Documents/a_future/plan/`                            |
-| 当前活跃 Project 计划     | `plan/plan_ai/`（DA-01 = WorkPilot）                                  |
-| 每日拆解目录（旧，参考）  | `/Users/infinity/Documents/a_future/半年计划-每日拆解/`               |
-| 草稿目录                  | `/Users/infinity/Documents/a_future/draft/`                           |
-| History 目录              | `/Users/infinity/Documents/a_future/history/`                         |
-| Prompt 目录               | `/Users/infinity/Documents/a_future/prompt/`                          |
+| 配置项                    | 值                                                                            |
+| ------------------------- | ----------------------------------------------------------------------------- |
+| 项目根目录                | `/Users/infinity/Documents/a_future`                                          |
+| Global Context 路径       | `/Users/infinity/Documents/a_future/GLOBAL_CONTEXT.md`                        |
+| 计划执行目录（PLAN_ROOT） | `/Users/infinity/Documents/a_future/plan/`                                    |
+| 当前活跃 Project 计划     | `plan/plan_ai/`（DA-01 = WorkPilot）                                          |
+| 每日拆解目录（旧，参考）  | `/Users/infinity/Documents/a_future/半年计划-每日拆解/`                       |
+| 草稿目录                  | `/Users/infinity/Documents/a_future/draft/`                                   |
+| History 目录              | `/Users/infinity/Documents/a_future/history/`                                 |
+| Prompt 目录               | `/Users/infinity/Documents/a_future/prompt/`                                  |
 | 目标资产蓝图              | `plan/plan_ai/DA01_TARGET_ASSET.md`（DA-01 = WorkPilot，模块编号 = 资产锚点） |
-| DA-01 根目录（DA01_ROOT） | 计划为 `~/lab/workpilot`（Gitea 仓库 `workpilot`，Day05 创建后确认）  |
+| DA-01 根目录（DA01_ROOT） | 计划为 `~/lab/workpilot`（Gitea 仓库 `workpilot`，Day05 创建后确认）          |
 
 ---
 
