@@ -60,14 +60,14 @@
 
 ## 7. 本周验收标准
 
-- [ ] PASS / FAIL：`docker version` 同时显示 Client 与 Server
-- [ ] PASS / FAIL：Gitea Web UI 可登录，能看到 `projects`、`ai-project-template`、`workpilot` 三个仓库
-- [ ] PASS / FAIL：`pain-pool.md` ≥ 8 条亲历痛点，11 列齐全，无公司名 / 人名 / 业务数据
-- [ ] PASS / FAIL：不看文档能说出模板中每个顶层目录的用途（apps / prompts / eval / data / deploy / scripts / docs / .gitea）
-- [ ] PASS / FAIL：`git check-ignore .env` 有输出，`git check-ignore .env.example` 无输出
-- [ ] PASS / FAIL：在 `~/lab/workpilot` 执行 `make help` 列出 ≥ 8 个命令；`make up && make down` 成功
-- [ ] PASS / FAIL：`git ls-remote --tags origin` 能看到 `v0.0.0`
-- [ ] PASS / FAIL：`PROJECT_CONFIG.md` 的 DA-01 路径已回填 `~/lab/workpilot`
+- [x] PASS：`docker version` 同时显示 Client 与 Server（29.8.0 / 29.8.0）
+- [x] PASS：Gitea 可见 `projects`、`ai-project-template`、`workpilot` 三个仓库
+- [x] FAIL：`pain-pool.md` 不存在（Day03 待补，≥ 8 条未完成）
+- [x] PASS：不看文档能说出模板中每个顶层目录的用途（apps / prompts / eval / data / deploy / scripts / docs / .gitea）
+- [x] PASS：`git check-ignore .env` 有输出，`git check-ignore .env.example` 无输出
+- [x] 部分 PASS：`make help` 列出 10 个命令；`make up && make down` 未过（Docker 拉取 whoami 镜像需配代理 `http://127.0.0.1:7890`）
+- [x] PASS：`git ls-remote --tags origin` 能看到 `v0.0.0`
+- [x] PASS：`PROJECT_CONFIG.md` 的 DA-01 路径已回填 `~/lab/workpilot`
 
 ## 8. 求职映射
 
@@ -98,10 +98,10 @@
 
 ## 11. 周复盘（周末填写）
 
-- 完成：\_\_\_\_
-- 未完成：\_**\_　原因：\_\_**
-- WorkPilot 本周多了什么可演示的东西：\_\_\_\_
-- 是否出现无效学习或范围扩张（如去研究 Gitea 高级功能、写太长的规范）：\_\_\_\_
-- 痛点池现在有几条？最痛的 3 条是：\_\_\_\_
+- 完成：Docker 底座、Gitea、`PROJECT_STANDARD.md` + 骨架三件套、模板仓库（README/ADR/Makefile/compose/bootstrap）、workpilot 由模板生成、tag `v0.0.0`。
+- 未完成：**痛点池 pain-pool.md（Day03）**　原因：日期已过仍未产出，需 Day06 前补齐 ≥ 8 条。
+- WorkPilot 本周多了什么可演示的东西：Gitea 上有 `workpilot` 仓库 + tag `v0.0.0`；`make help` 列出 10 个统一入口；README 写清一句话定位与版本路线；`docs/product/target-asset.md` 摘要。
+- 是否出现无效学习或范围扩张（如去研究 Gitea 高级功能、写太长的规范）：无；但发现 `infinity/projects` 仓库此前已丢失（Gitea 404），本次通过 API 重建并回推。
+- 痛点池现在有几条？最痛的 3 条是：0 条（未建），待补。
 - 实际总用时：\_\_\_\_ 分钟（目标 ≤ 5 × 120）
-- 下周调整：\_\_\_\_
+- 下周调整：Day06 开头先补痛点池；Docker Desktop 配代理 127.0.0.1:7890 后重跑 `make up/down` 验收；Day07 起在 `apps/api/` 接 FastAPI。

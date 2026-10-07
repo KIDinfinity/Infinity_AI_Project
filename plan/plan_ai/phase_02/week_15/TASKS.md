@@ -1,6 +1,6 @@
 # Week 15 · TASKS
 
-## Task 1：Trace / Span + Trace 查看（Day52 · 11-18）
+## Task 1：Trace / Span + Trace 查看（Day52 · 01-04）
 
 ### 做什么
 
@@ -47,7 +47,7 @@ P0 = trace.py + 表 + Gateway 与 tool 埋点 + JSON 接口；瀑布图与 graph
 
 ---
 
-## Task 2：成本账本 + 预算守卫 + 限流（Day53 · 11-19）
+## Task 2：成本账本 + 预算守卫 + 限流（Day53 · 01-05）
 
 ### 做什么
 
@@ -94,7 +94,7 @@ P0 = LLMCall 写入 + 100% 拒绝 + ask 限流；降级与迁移脚本顺延到 
 
 ---
 
-## Task 3：Guardrail v0 + Ops 看板（Day54 · 11-20）
+## Task 3：Guardrail v0 + Ops 看板（Day54 · 01-06）
 
 ### 做什么
 

@@ -1,4 +1,4 @@
-# Week 03 · 结构化输出 / 流式 / 成本 + DA-01 场景选型（Phase 1 · Day11–Day14 · 10-08 → 10-11）
+# Week 03 · 结构化输出 / 流式 / 成本 + DA-01 场景选型（Phase 1 · Day11–Day14 · 10-12 → 10-15）
 
 ## 1. 本周核心目标
 
@@ -38,10 +38,10 @@ W4 输入：da01-definition.md 的语料计划、StructuredAnswer schema、promp
 
 | Day   | 日期  | Task                                        | 当日 P0 产出                                                                                                                    | 模块        | 状态 |
 | ----- | ----- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ----------- | ---- |
-| Day11 | 10-08 | Task 1：Structured Output + Prompt 版本化   | `app/llm/structured.py`、`app/llm/prompts.py`、`prompts/*.v1.md`、`POST /v1/structured/answer` + `/breakdown`、5 输入校验通过率 | M1.3 M1.6   | TODO |
-| Day12 | 10-09 | Task 2：Streaming SSE + 成本记录 + CLI 聊天 | `gateway.stream()`、`POST /v1/chat/stream`、`app/llm/pricing.py`、`data/logs/llm_calls.jsonl`、`scripts/chat.py`                | M1.4 M1.5   | TODO |
-| Day13 | 10-10 | Task 3：DA-01 决策——场景包选型              | 评分矩阵 + `docs/product/da01-definition.md`（含 W4 语料计划）+ 三处状态回填                                                    | M10         | TODO |
-| Day14 | 10-11 | Task 4：LLM 应用 v0 + 10 题冒烟             | `POST /v1/ask`(+stream)、`eval/datasets/smoke_v0.jsonl`、`scripts/run_smoke.py`、`eval/badcases/badcases.md`、tag `v0.1.0`      | v0.1 / M3.4 | TODO |
+| Day11 | 10-12 | Task 1：Structured Output + Prompt 版本化   | `app/llm/structured.py`、`app/llm/prompts.py`、`prompts/*.v1.md`、`POST /v1/structured/answer` + `/breakdown`、5 输入校验通过率 | M1.3 M1.6   | TODO |
+| Day12 | 10-13 | Task 2：Streaming SSE + 成本记录 + CLI 聊天 | `gateway.stream()`、`POST /v1/chat/stream`、`app/llm/pricing.py`、`data/logs/llm_calls.jsonl`、`scripts/chat.py`                | M1.4 M1.5   | TODO |
+| Day13 | 10-14 | Task 3：DA-01 决策——场景包选型              | 评分矩阵 + `docs/product/da01-definition.md`（含 W4 语料计划）+ 三处状态回填                                                    | M10         | TODO |
+| Day14 | 10-15 | Task 4：LLM 应用 v0 + 10 题冒烟             | `POST /v1/ask`(+stream)、`eval/datasets/smoke_v0.jsonl`、`scripts/run_smoke.py`、`eval/badcases/badcases.md`、tag `v0.1.0`      | v0.1 / M3.4 | TODO |
 
 ## 6. 本周必须留下的资产（文件路径级）
 
@@ -63,7 +63,7 @@ apps/api/app/routes/ask.py           # /v1/ask、/v1/ask/stream
 apps/api/tests/test_structured.py  test_pricing.py  test_sse.py
 scripts/chat.py  scripts/run_smoke.py
 eval/datasets/smoke_v0.jsonl
-eval/reports/20261011-smoke-v0.1.md
+eval/reports/20261015-smoke-v0.1.md
 eval/badcases/badcases.md
 docs/product/da01-definition.md
 README.md（v0.1 章节）  .env.example（价格键、PROMPTS_DIR）

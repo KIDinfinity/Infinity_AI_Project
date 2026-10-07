@@ -1,4 +1,4 @@
-# Week 20 · 场景评测 + 反馈闭环（Phase 3 · Day64–Day65 · 11-30 → 12-01）
+# Week 20 · 场景评测 + 反馈闭环（Phase 3 · Day64–Day65 · 02-08 → 02-09）
 
 ## 1. 本周核心目标
 
@@ -31,16 +31,16 @@
 
 | Day   | 日期  | Task                                    | 当日 P0 产出                                                                      | 模块      | 状态 |
 | ----- | ----- | --------------------------------------- | --------------------------------------------------------------------------------- | --------- | ---- |
-| Day64 | 11-30 | Task 1：场景评测集 + rubric + 人审表    | `scenario_spb.jsonl` 20 条 + `judge_scenario.v1.md` + 评测报告 + 人审 10 条一致率 | M3        | TODO |
-| Day65 | 12-01 | Task 2：在线反馈闭环 + 评测看板（v1.3） | 编辑 diff 入 Feedback + Badcase 队列页 + EvalRun + 趋势页 + tag `v1.3.0`          | M3.6 M4.4 | TODO |
+| Day64 | 02-08 | Task 1：场景评测集 + rubric + 人审表    | `scenario_spb.jsonl` 20 条 + `judge_scenario.v1.md` + 评测报告 + 人审 10 条一致率 | M3        | TODO |
+| Day65 | 02-09 | Task 2：在线反馈闭环 + 评测看板（v1.3） | 编辑 diff 入 Feedback + Badcase 队列页 + EvalRun + 趋势页 + tag `v1.3.0`          | M3.6 M4.4 | TODO |
 
 ## 6. 本周必须留下的资产
 
 - `eval/datasets/scenario_spb.jsonl`
 - `prompts/judge_scenario.v1.md`
 - `eval/runners/run_scenario_eval.py`
-- `eval/human_review/20261130.csv`
-- `eval/reports/20261130-scenario-spb.md`、`eval/reports/20261201-p3-eval-v1.md`
+- `eval/human_review/20270208.csv`
+- `eval/reports/20270208-scenario-spb.md`、`eval/reports/20270209-p3-eval-v1.md`
 - `apps/api/app/eval/feedback.py`（diff 计算）、`apps/api/app/routes/eval.py`（EvalRun / badcase 接口）
 - `apps/web/src/pages/BadcaseQueuePage.tsx`、`apps/web/src/pages/EvalTrendPage.tsx`
 - `scripts/export_regression.py`

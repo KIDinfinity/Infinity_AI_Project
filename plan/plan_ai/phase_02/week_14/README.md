@@ -1,4 +1,4 @@
-# Week 14 · Agent Evaluation + 回归门禁（Phase 2 · Day49–Day51 · 11-15 → 11-17）
+# Week 14 · Agent Evaluation + 回归门禁（Phase 2 · Day49–Day51 · 12-28 → 12-30）
 
 ## 1. 本周核心目标
 
@@ -36,9 +36,9 @@ W15 输入：每次加 Trace/预算/护栏后跑 eval-smoke 证明不退化；�
 
 | Day   | 日期  | Task                                    | 当日 P0 产出                                                                    | 模块      | 状态 |
 | ----- | ----- | --------------------------------------- | ------------------------------------------------------------------------------- | --------- | ---- |
-| Day49 | 11-15 | Task 1：Agent 评测集 30 任务 + 轨迹记录 | `agent_tasks.jsonl` 30 条 + runner 跑通并产出轨迹 JSON                          | M3.3      | TODO |
-| Day50 | 11-16 | Task 2：Agent 评测器 + 报告             | `judge_agent.v1.md` + 8 条校准 + `eval/reports/YYYYMMDD-agent-v0.9.md`          | M3.3 M3.4 | TODO |
-| Day51 | 11-17 | Task 3：回归 + CI 门禁                  | `eval/baseline/*.json` + `compare_eval.py` + CI `eval-smoke` + 一次修复前后对比 | M3.5      | TODO |
+| Day49 | 12-28 | Task 1：Agent 评测集 30 任务 + 轨迹记录 | `agent_tasks.jsonl` 30 条 + runner 跑通并产出轨迹 JSON                          | M3.3      | TODO |
+| Day50 | 12-29 | Task 2：Agent 评测器 + 报告             | `judge_agent.v1.md` + 8 条校准 + `eval/reports/YYYYMMDD-agent-v0.9.md`          | M3.3 M3.4 | TODO |
+| Day51 | 12-30 | Task 3：回归 + CI 门禁                  | `eval/baseline/*.json` + `compare_eval.py` + CI `eval-smoke` + 一次修复前后对比 | M3.5      | TODO |
 
 ## 6. 本周必须留下的资产
 
@@ -50,7 +50,7 @@ W15 输入：每次加 Trace/预算/护栏后跑 eval-smoke 证明不退化；�
 | `eval/runners/agent_metrics.py`                                              | 规则指标计算                                          |
 | `prompts/judge_agent.v1.md`                                                  | Agent judge rubric                                    |
 | `eval/calibration/agent_judge_human.jsonl`                                   | 8 条人工标注                                          |
-| `eval/reports/20261116-agent-v0.9.md`                                        | 首份 Agent 评测报告                                   |
+| `eval/reports/20261229-agent-v0.9.md`                                        | 首份 Agent 评测报告                                   |
 | `eval/badcases/badcases.md`                                                  | 新增 Agent 失败分类与条目                             |
 | `eval/baseline/rag.json`、`eval/baseline/agent.json`                         | 基线                                                  |
 | `scripts/compare_eval.py`、`Makefile`（eval-smoke / eval-full / eval-agent） | 回归判定                                              |

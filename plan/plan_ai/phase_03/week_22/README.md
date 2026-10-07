@@ -1,4 +1,4 @@
-# Week 22 · Eval v2 + 模板库 + Pro Kit（v2.0）（Phase 3 · Day68–Day69 · 12-04 → 12-05）
+# Week 22 · Eval v2 + 模板库 + Pro Kit（v2.0）（Phase 3 · Day68–Day69 · 02-22 → 02-23）
 
 ## 1. 本周核心目标
 
@@ -31,14 +31,14 @@
 
 | Day   | 日期  | Task                                      | 当日 P0 产出                                                                                              | 模块      | 状态 |
 | ----- | ----- | ----------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------- | ---- |
-| Day68 | 12-04 | Task 1：Badcase 总库 + 回归套件 + Eval v2 | `eval/badcases/` 总库 + regression 用例 + `make eval-all` + Eval v2 报告 + CI 门禁                        | M3.4 M3.5 | TODO |
-| Day69 | 12-05 | Task 2：抽取模板库 + Pro Kit 打包（v2.0） | `personal-ai-engineering` 骨架 + fastapi/docker 模板可跑 + tag `v2.0.0` + Release notes（Pro Kit zip P1） | M14 M12.2 | TODO |
+| Day68 | 02-22 | Task 1：Badcase 总库 + 回归套件 + Eval v2 | `eval/badcases/` 总库 + regression 用例 + `make eval-all` + Eval v2 报告 + CI 门禁                        | M3.4 M3.5 | TODO |
+| Day69 | 02-23 | Task 2：抽取模板库 + Pro Kit 打包（v2.0） | `personal-ai-engineering` 骨架 + fastapi/docker 模板可跑 + tag `v2.0.0` + Release notes（Pro Kit zip P1） | M14 M12.2 | TODO |
 
 ## 6. 本周必须留下的资产
 
 - `eval/badcases/README.md`（分类法 + 状态机）、`eval/badcases/badcases.jsonl`、`eval/badcases/summary.md`（生成）
 - 各数据集中 `tags: ["regression"]` 用例
-- `eval/runners/run_all.py`、`eval/reports/20261204-eval-v2.md`
+- `eval/runners/run_all.py`、`eval/reports/20270222-eval-v2.md`
 - `.gitea/workflows/ci.yml`（eval-smoke 覆盖 rag + agent + scenario + security）
 - `~/lab/personal-ai-engineering/`（Gitea + GitHub 公开）
 - `scripts/build_pro_kit.sh`、`dist/workpilot-pro-kit-v2.0.0.zip`（dist 不入库）

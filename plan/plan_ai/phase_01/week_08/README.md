@@ -1,4 +1,4 @@
-# Week 08 · P1 作品集 + 8 周总验收（Phase 1 · Day30–Day33 · 10-27 → 10-30）
+# Week 08 · P1 作品集 + 8 周总验收（Phase 1 · Day30–Day33 · 11-16 → 11-19）
 
 ## 1. 本周核心目标
 
@@ -39,10 +39,10 @@ W9 输入：v0.5.0（app/llm、app/rag、eval/、apps/web、deploy/ 全部可复
 
 | Day | 日期  | Task                                        | 当日 P0 产出                                                        | 模块              | 状态 |
 | --- | ----- | ------------------------------------------- | ------------------------------------------------------------------- | ----------------- | ---- |
-| 30  | 10-27 | Task 1：README + 架构图 + ADR               | `README.md`、`docs/architecture.md`、ADR 0001/0002/0004/0005        | M13.2             | TODO |
-| 31  | 10-28 | Task 2：Demo 录制 + 技术复盘 8 问           | `docs/assets/demo.gif`（<10MB）、`docs/portfolio/p1.md`、3 分钟讲稿 | M13.2             | TODO |
-| 32  | 10-29 | Task 3：GitHub 公开 + 简历条目 + 面试 10 题 | gitleaks 通过、GitHub 公共仓库、简历 bullets、10 题                 | M12.1 M13.3 M13.4 | TODO |
-| 33  | 10-30 | Task 4：8 周总验收 + 干净环境恢复           | 恢复计时 < 30 分钟、验收表、tag `v0.5.0`、阶段复盘                  | v0.5              | TODO |
+| 30  | 11-16 | Task 1：README + 架构图 + ADR               | `README.md`、`docs/architecture.md`、ADR 0001/0002/0004/0005        | M13.2             | TODO |
+| 31  | 11-17 | Task 2：Demo 录制 + 技术复盘 8 问           | `docs/assets/demo.gif`（<10MB）、`docs/portfolio/p1.md`、3 分钟讲稿 | M13.2             | TODO |
+| 32  | 11-18 | Task 3：GitHub 公开 + 简历条目 + 面试 10 题 | gitleaks 通过、GitHub 公共仓库、简历 bullets、10 题                 | M12.1 M13.3 M13.4 | TODO |
+| 33  | 11-19 | Task 4：8 周总验收 + 干净环境恢复           | 恢复计时 < 30 分钟、验收表、tag `v0.5.0`、阶段复盘                  | v0.5              | TODO |
 
 ## 6. 本周必须留下的资产（文件路径级）
 

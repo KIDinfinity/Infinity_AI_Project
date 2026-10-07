@@ -1,6 +1,6 @@
 # Week 19 · TASKS
 
-## Task 1：Postgres + Alembic + 认证 + 空间隔离（Day62 · 11-28）
+## Task 1：Postgres + Alembic + 认证 + 空间隔离（Day62 · 02-01）
 
 ### 做什么
 
@@ -54,7 +54,7 @@ compose 加 postgres:16；Alembic 初始化 + autogenerate 首个迁移（User/W
 
 ---
 
-## Task 2：异步导入 + 自动部署（v1.2）（Day63 · 11-29）
+## Task 2：异步导入 + 自动部署（v1.2）（Day63 · 02-02）
 
 ### 做什么
 

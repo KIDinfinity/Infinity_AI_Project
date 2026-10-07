@@ -1,6 +1,6 @@
 # Week 07 · TASKS
 
-## Task 1：Dockerfile + compose 全栈（Day26 · 10-23）
+## Task 1：Dockerfile + compose 全栈（Day26 · 11-09）
 
 ### 做什么
 
@@ -47,7 +47,7 @@ v0.4.0；`apps/api/uv.lock` 已提交；`apps/web/pnpm-lock.yaml` 已提交；Ol
 
 ---
 
-## Task 2：配置 / 健康检查 / JSON 日志 / request_id（Day27 · 10-24）
+## Task 2：配置 / 健康检查 / JSON 日志 / request_id（Day27 · 11-10）
 
 ### 做什么
 
@@ -95,7 +95,7 @@ Task 1 完成（compose 可用，便于验证 /ready 失败场景）。
 
 ---
 
-## Task 3：云部署 + HTTPS + 访问保护（Day28 · 10-25）
+## Task 3：云部署 + HTTPS + 访问保护（Day28 · 11-11）
 
 ### 做什么
 
@@ -142,7 +142,7 @@ Fail2ban、自动安全更新、监控告警 → P2；CDN → 不做。
 
 ---
 
-## Task 4：CI + 云端备份恢复演练（Day29 · 10-26）
+## Task 4：CI + 云端备份恢复演练（Day29 · 11-12）
 
 ### 做什么
 

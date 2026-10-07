@@ -1,6 +1,6 @@
 # Week 13 · TASKS
 
-## Task 1：MCP Server（stdio）+ Inspector（Day46 · 11-12）
+## Task 1：MCP Server（stdio）+ Inspector（Day46 · 12-21）
 
 ### 做什么
 
@@ -49,7 +49,7 @@ MCP Server 实现 / 工具协议设计 / 解耦适配层 → AI Agent Engineer�
 
 ---
 
-## Task 2：IDE 接入 + HTTP 传输 + MCP Client（Day47 · 11-13）
+## Task 2：IDE 接入 + HTTP 传输 + MCP Client（Day47 · 12-22）
 
 ### 做什么
 
@@ -98,7 +98,7 @@ P0 = VS Code stdio 接入 + MCP Client；HTTP 鉴权可推迟到 Day48 前 30 �
 
 ---
 
-## Task 3：MCP Demo + 文档 + JD 追踪（v0.9）（Day48 · 11-14）
+## Task 3：MCP Demo + 文档 + JD 追踪（v0.9）（Day48 · 12-23）
 
 ### 做什么
 

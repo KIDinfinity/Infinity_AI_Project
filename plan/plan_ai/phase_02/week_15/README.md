@@ -1,4 +1,4 @@
-# Week 15 · Production AI：Trace / 成本 / 限流 / 护栏（Phase 2 · Day52–Day54 · 11-18 → 11-20）
+# Week 15 · Production AI：Trace / 成本 / 限流 / 护栏（Phase 2 · Day52–Day54 · 01-04 → 01-06）
 
 ## 1. 本周核心目标
 
@@ -39,9 +39,9 @@ W16 输入：Trace 截图、Ops 看板截图、成本/延迟数字、护栏说�
 
 | Day   | 日期  | Task                               | 当日 P0 产出                                                                        | 模块            | 状态 |
 | ----- | ----- | ---------------------------------- | ----------------------------------------------------------------------------------- | --------------- | ---- |
-| Day52 | 11-18 | Task 1：Trace / Span + Trace 查看  | `app/obs/trace.py` + Trace/Span 表 + 4 处埋点 + `/v1/ops/traces` + TracePage 瀑布图 | M9.1            | TODO |
-| Day53 | 11-19 | Task 2：成本账本 + 预算守卫 + 限流 | `LLMCall` 表 + 迁移脚本 + 预算降级/拒绝 + slowapi + runbook 参数表 + 测试           | M9.2 M9.3       | TODO |
-| Day54 | 11-20 | Task 3：Guardrail v0 + Ops 看板    | `app/security/guardrails.py` + `security.jsonl` 8 条 + OpsPage                      | M11.3 M4.4 M9.4 | TODO |
+| Day52 | 01-04 | Task 1：Trace / Span + Trace 查看  | `app/obs/trace.py` + Trace/Span 表 + 4 处埋点 + `/v1/ops/traces` + TracePage 瀑布图 | M9.1            | TODO |
+| Day53 | 01-05 | Task 2：成本账本 + 预算守卫 + 限流 | `LLMCall` 表 + 迁移脚本 + 预算降级/拒绝 + slowapi + runbook 参数表 + 测试           | M9.2 M9.3       | TODO |
+| Day54 | 01-06 | Task 3：Guardrail v0 + Ops 看板    | `app/security/guardrails.py` + `security.jsonl` 8 条 + OpsPage                      | M11.3 M4.4 M9.4 | TODO |
 
 ## 6. 本周必须留下的资产
 

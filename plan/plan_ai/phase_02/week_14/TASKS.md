@@ -1,6 +1,6 @@
 # Week 14 · TASKS
 
-## Task 1：Agent 评测集 30 任务 + 轨迹记录（Day49 · 11-15）
+## Task 1：Agent 评测集 30 任务 + 轨迹记录（Day49 · 12-28）
 
 ### 做什么
 
@@ -46,7 +46,7 @@ v0.9 工具集稳定；`app/agent/graph.py` 可构建 graph；W9 的 `tool_selec
 
 ---
 
-## Task 2：Agent 评测器 + 报告（Day50 · 11-16）
+## Task 2：Agent 评测器 + 报告（Day50 · 12-29）
 
 ### 做什么
 
@@ -80,7 +80,7 @@ Task 1 的 30 个轨迹 JSON；RAG 的 `judge` 实现（W5）可复用调用方�
 
 ### 完成后的产出（文件路径）
 
-`eval/runners/agent_metrics.py`、`prompts/judge_agent.v1.md`、`eval/calibration/agent_judge_human.jsonl`、`eval/reports/20261116-agent-v0.9.md`、`eval/badcases/badcases.md`
+`eval/runners/agent_metrics.py`、`prompts/judge_agent.v1.md`、`eval/calibration/agent_judge_human.jsonl`、`eval/reports/20261229-agent-v0.9.md`、`eval/badcases/badcases.md`
 
 ### 求职映射
 
@@ -92,7 +92,7 @@ P0 = 规则指标 + judge + 报告；校准减为 5 条；失败分类只标主�
 
 ---
 
-## Task 3：回归 + CI 门禁（Day51 · 11-17）
+## Task 3：回归 + CI 门禁（Day51 · 12-30）
 
 ### 做什么
 
@@ -127,7 +127,7 @@ Task 2 报告；W5 RAG runner 支持输出 JSON 汇总；W7 CI 已有 lint/test/
 
 ### 完成后的产出（文件路径）
 
-`eval/baseline/rag.json`、`eval/baseline/agent.json`、`scripts/compare_eval.py`、`Makefile`、`.gitea/workflows/ci.yml`、`eval/reports/20261117-agent-v0.9.1.md`
+`eval/baseline/rag.json`、`eval/baseline/agent.json`、`scripts/compare_eval.py`、`Makefile`、`.gitea/workflows/ci.yml`、`eval/reports/20261230-agent-v0.9.1.md`
 
 ### 求职映射
 

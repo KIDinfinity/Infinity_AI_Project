@@ -1,4 +1,4 @@
-# Week 10 · 手写 Agent + Research Agent v0（Phase 2 · Day37–Day39 · 11-03 → 11-05）
+# Week 10 · 手写 Agent + Research Agent v0（Phase 2 · Day37–Day39 · 11-30 → 12-02）
 
 ## 1. 本周核心目标
 
@@ -11,7 +11,7 @@
 | M7.1 手写循环 v0       | v0.7       | CLI 跑任务，打印 plan / tool_call / observation / decision 完整 trace                                         |
 | M7.5 Research Agent    | v0.7       | 输出 `ResearchReport`（结论 / 发现 / 冲突 / 待确认问题 / 来源表），每条发现可追溯到 KB chunk / URL / 仓库路径 |
 | M4.3 Agent 运行视图    | v0.7       | Web「Agent」页：输入任务 → 时间线逐步出现 → 最终报告 + 来源列表 + tokens/成本                                 |
-| M3.3（前置）Agent 冒烟 | v0.7       | 10 个任务冒烟报告 `eval/reports/20261105-agent-v0-smoke.md`                                                   |
+| M3.3（前置）Agent 冒烟 | v0.7       | 10 个任务冒烟报告 `eval/reports/20261202-agent-v0-smoke.md`                                                   |
 | M13.3 简历             | —          | `career/resume/` 三版骨架（frontend / ai-fullstack / ai-engineer）                                            |
 
 ## 3. 为什么这一周存在
@@ -34,9 +34,9 @@
 
 | Day   | 日期  | Task                                       | 当日 P0 产出                                                                              | 模块       | 状态 |
 | ----- | ----- | ------------------------------------------ | ----------------------------------------------------------------------------------------- | ---------- | ---- |
-| Day37 | 11-03 | Task 1：手写 plan→act→observe 循环 v0      | `app/agent/loop_v0.py` + `prompts/planner.v1.md` `decider.v1.md` + CLI 3 个任务 trace     | M7.1       | TODO |
-| Day38 | 11-04 | Task 2：Research Agent 报告 + SSE 步骤事件 | `ResearchReport` + `POST /v1/agent/run`（SSE）+ `AgentRun`/`AgentStep` 表 + `docs/api.md` | M7.5       | TODO |
-| Day39 | 11-05 | Task 3：Agent 时间线 UI + 简历 v0（v0.7）  | `pages/AgentPage.tsx` + 10 任务冒烟报告 + 三版简历骨架 + tag `v0.7.0`                     | M4.3 M13.3 | TODO |
+| Day37 | 11-30 | Task 1：手写 plan→act→observe 循环 v0      | `app/agent/loop_v0.py` + `prompts/planner.v1.md` `decider.v1.md` + CLI 3 个任务 trace     | M7.1       | TODO |
+| Day38 | 12-01 | Task 2：Research Agent 报告 + SSE 步骤事件 | `ResearchReport` + `POST /v1/agent/run`（SSE）+ `AgentRun`/`AgentStep` 表 + `docs/api.md` | M7.5       | TODO |
+| Day39 | 12-02 | Task 3：Agent 时间线 UI + 简历 v0（v0.7）  | `pages/AgentPage.tsx` + 10 任务冒烟报告 + 三版简历骨架 + tag `v0.7.0`                     | M4.3 M13.3 | TODO |
 
 ## 6. 本周必须留下的资产
 
@@ -58,7 +58,7 @@
 ├── apps/web/src/components/agent/{AgentTimeline,TimelineItem,ReportView}.tsx
 ├── apps/web/src/pages/AgentPage.tsx
 ├── eval/datasets/agent_smoke.jsonl      # 10 任务（W11 对比复用）
-└── eval/reports/20261105-agent-v0-smoke.md
+└── eval/reports/20261202-agent-v0-smoke.md
 ~/lab/projects/career/resume/{resume-frontend,resume-ai-fullstack,resume-ai-engineer}.md
 ```
 

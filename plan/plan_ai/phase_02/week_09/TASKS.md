@@ -1,6 +1,6 @@
 # Week 09 · TASKS
 
-## Task 1：Tool Calling 原理 + Registry（Day34 · 10-31）
+## Task 1：Tool Calling 原理 + Registry（Day34 · 11-23）
 
 ### 做什么
 
@@ -52,7 +52,7 @@ Function Calling 协议、JSON Schema、Pydantic v2、异步超时控制 → AI 
 
 ---
 
-## Task 2：内置工具（Day35 · 11-01）
+## Task 2：内置工具（Day35 · 11-24）
 
 ### 做什么
 
@@ -101,7 +101,7 @@ M6.2 内置工具、M6.3 执行保护 → v0.6
 
 ---
 
-## Task 3：多工具循环 Demo + 工具选择测试 + JD 追踪（Day36 · 11-02）
+## Task 3：多工具循环 Demo + 工具选择测试 + JD 追踪（Day36 · 11-25）
 
 ### 做什么
 
@@ -139,7 +139,7 @@ Task 1、Task 2 完成；至少 `kb_search` + `gitea_repo_read` + `calculator` �
 
 ### 完成后的产出（文件路径）
 
-`apps/api/app/agent/tool_loop.py`、`scripts/tool_demo.py`、`eval/datasets/tool_selection.jsonl`、`eval/runners/run_tool_selection.py`、`eval/reports/20261102-tool-selection.md`、`~/lab/projects/career/job-market.md`、（P2）`docs/product/open-core.md`
+`apps/api/app/agent/tool_loop.py`、`scripts/tool_demo.py`、`eval/datasets/tool_selection.jsonl`、`eval/runners/run_tool_selection.py`、`eval/reports/20261125-tool-selection.md`、`~/lab/projects/career/job-market.md`、（P2）`docs/product/open-core.md`
 
 ### 求职映射
 

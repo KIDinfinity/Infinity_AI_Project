@@ -510,72 +510,72 @@ workpilot/
 | 08  | 10-05 | W2  | LLM Gateway v0                            | M1.1 M1.2           | `/v1/chat` + 重试超时                   |
 | 09  | 10-06 | W2  | MinIO + Qdrant + Ollama bge-m3            | M0.4                | `infra/compose` + 冒烟脚本              |
 | 10  | 10-07 | W2  | 备份恢复 + 痛点分类 + 周复盘              | M0.5 / M10          | `backup.sh` 恢复演练                    |
-| 11  | 10-08 | W3  | Structured Output + Prompt 版本化         | M1.3 M1.6           | `/v1/extract` + `prompts/`              |
-| 12  | 10-09 | W3  | Streaming SSE + 成本记录 + CLI 聊天       | M1.4 M1.5           | `/v1/chat/stream` + `scripts/chat.py`   |
-| 13  | 10-10 | W3  | DA-01 决策：场景包选型                    | M10                 | `docs/product/da01-definition.md`       |
-| 14  | 10-11 | W3  | LLM 应用 v0 + 10 题冒烟                   | v0.1                | tag `v0.1.0`                            |
-| 15  | 10-12 | W4  | 语料准备 + Ingest                         | M2.1                | `rag/loaders` + 语料 ≥ 30 篇            |
-| 16  | 10-13 | W4  | Chunking + Embedding + Qdrant 入库        | M2.2 M2.3           | `scripts/ingest.sh` 跑通                |
-| 17  | 10-14 | W4  | 检索 + 带引用回答 + KB API                | M2.4 M2.5 M2.6      | `/v1/kb/ask`                            |
-| 18  | 10-15 | W4  | 20 题种子集 + 首批 Badcase                | M3.1 M3.4 / v0.2    | tag `v0.2.0`                            |
-| 19  | 10-16 | W5  | 评测集 50 题 + 检索指标 runner            | M3.1 M3.2           | `run_rag_eval.py` 基线报告              |
-| 20  | 10-17 | W5  | 检索实验（chunk/topk/hybrid/rewrite）     | M2.2 M2.4           | 实验对比表                              |
-| 21  | 10-18 | W5  | LLM-judge + Badcase 分类 + 定配置         | M3.2 M3.4 / v0.3    | 评测报告 v1                             |
-| 22  | 10-19 | W6  | Web 脚手架 + 聊天页                       | M4.1                | `apps/web` 可对话                       |
-| 23  | 10-20 | W6  | 流式渲染 + 引用面板 + 状态                | M4.1                | 引用可点击                              |
-| 24  | 10-21 | W6  | 会话历史（SQLite）+ 反馈                  | M4.1 M3.6           | 👍👎 入库                               |
-| 25  | 10-22 | W6  | 知识库管理页 + E2E 冒烟                   | M4.2 / v0.4         | 上传 → 可问答                           |
-| 26  | 10-23 | W7  | Dockerfile + compose 全栈                 | M5.1                | `make up` 一键起                        |
-| 27  | 10-24 | W7  | 配置/健康检查/JSON 日志/request_id        | M5.2 M9.1           | `/health` `/ready`                      |
-| 28  | 10-25 | W7  | 云部署 + HTTPS + 访问保护                 | M5.3                | 公网可访问                              |
-| 29  | 10-26 | W7  | CI + 云端备份恢复演练                     | M5.4 M5.5           | CI 绿 + 恢复记录                        |
-| 30  | 10-27 | W8  | README + 架构图 + ADR                     | M13.2               | `README.md` `docs/architecture.md`      |
-| 31  | 10-28 | W8  | Demo 录制 + 技术复盘 8 问                 | M13.2               | `docs/portfolio/p1.md`                  |
-| 32  | 10-29 | W8  | GitHub 公开 + 简历条目 + 面试 10 题       | M12.1 M13.3 M13.4   | 公开仓库                                |
-| 33  | 10-30 | W8  | 8 周总验收 + 干净环境恢复                 | v0.5                | 验收清单                                |
-| 34  | 10-31 | W9  | Tool Calling 原理 + Registry              | M6.1                | `tools/registry.py`                     |
-| 35  | 11-01 | W9  | 内置工具：kb_search/web_search/gitea_read | M6.2 M6.3           | 3 个工具单测                            |
-| 36  | 11-02 | W9  | 多工具循环 Demo + 工具选择测试 + JD 追踪  | M6 / v0.6 / M13.1   | 15 条工具选择用例                       |
-| 37  | 11-03 | W10 | 手写 plan-act-observe 循环                | M7.1                | `agent/loop_v0.py`                      |
-| 38  | 11-04 | W10 | Research Agent 报告 + SSE 步骤事件        | M7.5                | `/v1/agent/run`                         |
-| 39  | 11-05 | W10 | Agent 时间线 UI + 简历 v0                 | M4.3 / v0.7 / M13.3 | 时间线页面                              |
-| 40  | 11-06 | W11 | LangGraph 迁移                            | M7.2                | `agent/graph.py`                        |
-| 41  | 11-07 | W11 | 重试/降级/checkpoint                      | M7.2 M1.2           | 故障注入测试                            |
-| 42  | 11-08 | W11 | v0 vs v1 对比 + ADR + JD 追踪             | M7 / M13.1          | 对比报告                                |
-| 43  | 11-09 | W12 | 会话记忆 + 上下文压缩                     | M7.3                | thread 续聊                             |
-| 44  | 11-10 | W12 | 长期记忆                                  | M7.3                | `memories` collection                   |
-| 45  | 11-11 | W12 | HITL 审批 + SP-B 试点 + 简历更新          | M7.4 / v0.8         | 审批流跑通                              |
-| 46  | 11-12 | W13 | MCP Server（stdio）+ Inspector            | M8.1                | `apps/mcp-server`                       |
-| 47  | 11-13 | W13 | IDE 接入 + HTTP 传输 + MCP Client         | M8.1 M8.2           | VS Code 调用成功                        |
-| 48  | 11-14 | W13 | MCP Demo + 文档 + JD 追踪                 | v0.9                | 演示录屏                                |
-| 49  | 11-15 | W14 | Agent 评测集 30 任务 + 轨迹记录           | M3.3                | `agent_tasks.jsonl`                     |
-| 50  | 11-16 | W14 | Agent 评测器 + 报告                       | M3.3                | 评测报告                                |
-| 51  | 11-17 | W14 | 回归 + CI 门禁                            | M3.5                | `make eval` 门禁                        |
-| 52  | 11-18 | W15 | Trace/Span + Trace 查看                   | M9.1                | trace 表 + 页面                         |
-| 53  | 11-19 | W15 | 成本账本 + 预算守卫 + 限流                | M9.2 M9.3           | 预算超限降级                            |
-| 54  | 11-20 | W15 | Guardrail v0 + Ops 看板                   | M11.3 M4.4 M9.4     | 看板页面                                |
-| 55  | 11-21 | W16 | P2 README/架构/评测报告                   | M13.2 / v1.0        | tag `v1.0.0`                            |
-| 56  | 11-22 | W16 | Demo + 技术文章 + 产品页/开源边界         | M12.1 M12.3         | 文章 + 产品页                           |
-| 57  | 11-23 | W16 | 简历 v1 + 面试题 + Phase2 复盘            | M13.3 M13.4         | 复盘文档                                |
-| 58  | 11-24 | W17 | P3 问题定义（8 要素）                     | M10                 | `docs/product/p3-definition.md`         |
-| 59  | 11-25 | W17 | 架构 v2 + 数据模型                        | M11 / M10           | `docs/architecture-v2.md`               |
-| 60  | 11-26 | W18 | 主场景包工作流实现                        | M10                 | 场景 graph 跑通                         |
-| 61  | 11-27 | W18 | 场景页面 + 5 个真实样例                   | M10 M4 / v1.1       | 端到端演示                              |
-| 62  | 11-28 | W19 | Postgres + Alembic + 认证 + 空间隔离      | M11.1 M11.2         | 多空间登录                              |
-| 63  | 11-29 | W19 | 异步导入 + 自动部署                       | M5.4 / v1.2         | push 即部署                             |
-| 64  | 11-30 | W20 | 场景评测集 + rubric + 人审表              | M3                  | `scenario_*.jsonl`                      |
-| 65  | 12-01 | W20 | 在线反馈闭环 + 评测看板                   | M3.6 M4.4 / v1.3    | P3 评测报告                             |
-| 66  | 12-02 | W21 | 威胁建模（OWASP LLM Top 10）+ 攻击集      | M11.3               | `security.jsonl` 20 条                  |
-| 67  | 12-03 | W21 | 防护实现 + 审计 + 恢复演练                | M11 / v1.4          | 攻击集 100% 拦截                        |
-| 68  | 12-04 | W22 | Badcase 总库 + 回归套件 + Eval v2         | M3.4 M3.5           | Eval v2 报告                            |
-| 69  | 12-05 | W22 | 抽取模板库 + Pro Kit 打包                 | M14 M12.2 / v2.0    | `personal-ai-engineering`               |
-| 70  | 12-06 | W23 | Portfolio 网站                            | M13.5               | 网站上线                                |
-| 71  | 12-07 | W23 | 在线 Demo + 演示视频 + 发布前安全检查     | M12.4               | Demo 可访问                             |
-| 72  | 12-08 | W24 | 三版简历                                  | M13.3               | 3 份简历                                |
-| 73  | 12-09 | W24 | JD 定制 + 模拟筛选 + 小批量投递           | M13.3               | 投递记录                                |
-| 74  | 12-10 | W25 | 面试题库 30+（RAG/Agent/Eng）             | M13.4               | `interview-questions.md`                |
-| 75  | 12-11 | W25 | System Design ×2 + STAR ×3 + 模拟面试     | M13.4               | 设计图 + 录音复盘                       |
-| 76  | 12-12 | W26 | 半年验收（§11 全指标）                    | 全部                | 半年报告                                |
-| 77  | 12-13 | W26 | DA-02 规划 + 下半年计划                   | —                   | `da02-proposal.md`                      |
+| 11  | 10-12 | W3  | Structured Output + Prompt 版本化         | M1.3 M1.6           | `/v1/extract` + `prompts/`              |
+| 12  | 10-13 | W3  | Streaming SSE + 成本记录 + CLI 聊天       | M1.4 M1.5           | `/v1/chat/stream` + `scripts/chat.py`   |
+| 13  | 10-14 | W3  | DA-01 决策：场景包选型                    | M10                 | `docs/product/da01-definition.md`       |
+| 14  | 10-15 | W3  | LLM 应用 v0 + 10 题冒烟                   | v0.1                | tag `v0.1.0`                            |
+| 15  | 10-19 | W4  | 语料准备 + Ingest                         | M2.1                | `rag/loaders` + 语料 ≥ 30 篇            |
+| 16  | 10-20 | W4  | Chunking + Embedding + Qdrant 入库        | M2.2 M2.3           | `scripts/ingest.sh` 跑通                |
+| 17  | 10-21 | W4  | 检索 + 带引用回答 + KB API                | M2.4 M2.5 M2.6      | `/v1/kb/ask`                            |
+| 18  | 10-22 | W4  | 20 题种子集 + 首批 Badcase                | M3.1 M3.4 / v0.2    | tag `v0.2.0`                            |
+| 19  | 10-26 | W5  | 评测集 50 题 + 检索指标 runner            | M3.1 M3.2           | `run_rag_eval.py` 基线报告              |
+| 20  | 10-27 | W5  | 检索实验（chunk/topk/hybrid/rewrite）     | M2.2 M2.4           | 实验对比表                              |
+| 21  | 10-28 | W5  | LLM-judge + Badcase 分类 + 定配置         | M3.2 M3.4 / v0.3    | 评测报告 v1                             |
+| 22  | 11-02 | W6  | Web 脚手架 + 聊天页                       | M4.1                | `apps/web` 可对话                       |
+| 23  | 11-03 | W6  | 流式渲染 + 引用面板 + 状态                | M4.1                | 引用可点击                              |
+| 24  | 11-04 | W6  | 会话历史（SQLite）+ 反馈                  | M4.1 M3.6           | 👍👎 入库                               |
+| 25  | 11-05 | W6  | 知识库管理页 + E2E 冒烟                   | M4.2 / v0.4         | 上传 → 可问答                           |
+| 26  | 11-09 | W7  | Dockerfile + compose 全栈                 | M5.1                | `make up` 一键起                        |
+| 27  | 11-10 | W7  | 配置/健康检查/JSON 日志/request_id        | M5.2 M9.1           | `/health` `/ready`                      |
+| 28  | 11-11 | W7  | 云部署 + HTTPS + 访问保护                 | M5.3                | 公网可访问                              |
+| 29  | 11-12 | W7  | CI + 云端备份恢复演练                     | M5.4 M5.5           | CI 绿 + 恢复记录                        |
+| 30  | 11-16 | W8  | README + 架构图 + ADR                     | M13.2               | `README.md` `docs/architecture.md`      |
+| 31  | 11-17 | W8  | Demo 录制 + 技术复盘 8 问                 | M13.2               | `docs/portfolio/p1.md`                  |
+| 32  | 11-18 | W8  | GitHub 公开 + 简历条目 + 面试 10 题       | M12.1 M13.3 M13.4   | 公开仓库                                |
+| 33  | 11-19 | W8  | 8 周总验收 + 干净环境恢复                 | v0.5                | 验收清单                                |
+| 34  | 11-23 | W9  | Tool Calling 原理 + Registry              | M6.1                | `tools/registry.py`                     |
+| 35  | 11-24 | W9  | 内置工具：kb_search/web_search/gitea_read | M6.2 M6.3           | 3 个工具单测                            |
+| 36  | 11-25 | W9  | 多工具循环 Demo + 工具选择测试 + JD 追踪  | M6 / v0.6 / M13.1   | 15 条工具选择用例                       |
+| 37  | 11-30 | W10 | 手写 plan-act-observe 循环                | M7.1                | `agent/loop_v0.py`                      |
+| 38  | 12-01 | W10 | Research Agent 报告 + SSE 步骤事件        | M7.5                | `/v1/agent/run`                         |
+| 39  | 12-02 | W10 | Agent 时间线 UI + 简历 v0                 | M4.3 / v0.7 / M13.3 | 时间线页面                              |
+| 40  | 12-07 | W11 | LangGraph 迁移                            | M7.2                | `agent/graph.py`                        |
+| 41  | 12-08 | W11 | 重试/降级/checkpoint                      | M7.2 M1.2           | 故障注入测试                            |
+| 42  | 12-09 | W11 | v0 vs v1 对比 + ADR + JD 追踪             | M7 / M13.1          | 对比报告                                |
+| 43  | 12-14 | W12 | 会话记忆 + 上下文压缩                     | M7.3                | thread 续聊                             |
+| 44  | 12-15 | W12 | 长期记忆                                  | M7.3                | `memories` collection                   |
+| 45  | 12-16 | W12 | HITL 审批 + SP-B 试点 + 简历更新          | M7.4 / v0.8         | 审批流跑通                              |
+| 46  | 12-21 | W13 | MCP Server（stdio）+ Inspector            | M8.1                | `apps/mcp-server`                       |
+| 47  | 12-22 | W13 | IDE 接入 + HTTP 传输 + MCP Client         | M8.1 M8.2           | VS Code 调用成功                        |
+| 48  | 12-23 | W13 | MCP Demo + 文档 + JD 追踪                 | v0.9                | 演示录屏                                |
+| 49  | 12-28 | W14 | Agent 评测集 30 任务 + 轨迹记录           | M3.3                | `agent_tasks.jsonl`                     |
+| 50  | 12-29 | W14 | Agent 评测器 + 报告                       | M3.3                | 评测报告                                |
+| 51  | 12-30 | W14 | 回归 + CI 门禁                            | M3.5                | `make eval` 门禁                        |
+| 52  | 01-04 | W15 | Trace/Span + Trace 查看                   | M9.1                | trace 表 + 页面                         |
+| 53  | 01-05 | W15 | 成本账本 + 预算守卫 + 限流                | M9.2 M9.3           | 预算超限降级                            |
+| 54  | 01-06 | W15 | Guardrail v0 + Ops 看板                   | M11.3 M4.4 M9.4     | 看板页面                                |
+| 55  | 01-11 | W16 | P2 README/架构/评测报告                   | M13.2 / v1.0        | tag `v1.0.0`                            |
+| 56  | 01-12 | W16 | Demo + 技术文章 + 产品页/开源边界         | M12.1 M12.3         | 文章 + 产品页                           |
+| 57  | 01-13 | W16 | 简历 v1 + 面试题 + Phase2 复盘            | M13.3 M13.4         | 复盘文档                                |
+| 58  | 01-18 | W17 | P3 问题定义（8 要素）                     | M10                 | `docs/product/p3-definition.md`         |
+| 59  | 01-19 | W17 | 架构 v2 + 数据模型                        | M11 / M10           | `docs/architecture-v2.md`               |
+| 60  | 01-25 | W18 | 主场景包工作流实现                        | M10                 | 场景 graph 跑通                         |
+| 61  | 01-26 | W18 | 场景页面 + 5 个真实样例                   | M10 M4 / v1.1       | 端到端演示                              |
+| 62  | 02-01 | W19 | Postgres + Alembic + 认证 + 空间隔离      | M11.1 M11.2         | 多空间登录                              |
+| 63  | 02-02 | W19 | 异步导入 + 自动部署                       | M5.4 / v1.2         | push 即部署                             |
+| 64  | 02-08 | W20 | 场景评测集 + rubric + 人审表              | M3                  | `scenario_*.jsonl`                      |
+| 65  | 02-09 | W20 | 在线反馈闭环 + 评测看板                   | M3.6 M4.4 / v1.3    | P3 评测报告                             |
+| 66  | 02-15 | W21 | 威胁建模（OWASP LLM Top 10）+ 攻击集      | M11.3               | `security.jsonl` 20 条                  |
+| 67  | 02-16 | W21 | 防护实现 + 审计 + 恢复演练                | M11 / v1.4          | 攻击集 100% 拦截                        |
+| 68  | 02-22 | W22 | Badcase 总库 + 回归套件 + Eval v2         | M3.4 M3.5           | Eval v2 报告                            |
+| 69  | 02-23 | W22 | 抽取模板库 + Pro Kit 打包                 | M14 M12.2 / v2.0    | `personal-ai-engineering`               |
+| 70  | 03-01 | W23 | Portfolio 网站                            | M13.5               | 网站上线                                |
+| 71  | 03-02 | W23 | 在线 Demo + 演示视频 + 发布前安全检查     | M12.4               | Demo 可访问                             |
+| 72  | 03-08 | W24 | 三版简历                                  | M13.3               | 3 份简历                                |
+| 73  | 03-09 | W24 | JD 定制 + 模拟筛选 + 小批量投递           | M13.3               | 投递记录                                |
+| 74  | 03-15 | W25 | 面试题库 30+（RAG/Agent/Eng）             | M13.4               | `interview-questions.md`                |
+| 75  | 03-16 | W25 | System Design ×2 + STAR ×3 + 模拟面试     | M13.4               | 设计图 + 录音复盘                       |
+| 76  | 03-22 | W26 | 半年验收（§11 全指标）                    | 全部                | 半年报告                                |
+| 77  | 03-23 | W26 | DA-02 规划 + 下半年计划                   | —                   | `da02-proposal.md`                      |
 
 > 说明：当前目录的「周」实际是 2–5 天的冲刺（Day01–Day77 连续日期），每天 1–2 小时。总投入约 115–150 小时，因此每个任务都按「最小可演示」设计；时间不足时按 P0 → P1 → P2 顺序裁剪，绝不加时长。

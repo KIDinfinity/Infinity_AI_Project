@@ -1,6 +1,6 @@
 # Week 22 · TASKS
 
-## Task 1：Badcase 总库 + 回归套件 + Eval v2（Day68 · 12-04）
+## Task 1：Badcase 总库 + 回归套件 + Eval v2（Day68 · 02-22）
 
 ### 做什么
 
@@ -38,7 +38,7 @@
 ### 完成后的产出
 
 - `eval/badcases/{README.md, badcases.jsonl, summary.md}`
-- `eval/runners/run_all.py`、`eval/reports/20261204-eval-v2.md`
+- `eval/runners/run_all.py`、`eval/reports/20270222-eval-v2.md`
 - `.gitea/workflows/ci.yml`、`Makefile`
 
 ### 求职映射
@@ -52,7 +52,7 @@
 
 ---
 
-## Task 2：抽取模板库 + Pro Kit 打包（v2.0）（Day69 · 12-05）
+## Task 2：抽取模板库 + Pro Kit 打包（v2.0）（Day69 · 02-23）
 
 ### 做什么
 

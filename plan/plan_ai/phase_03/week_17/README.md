@@ -1,4 +1,4 @@
-# Week 17 · P3 问题定义 + 架构 v2（Phase 3 · Day58–Day59 · 11-24 → 11-25）
+# Week 17 · P3 问题定义 + 架构 v2（Phase 3 · Day58–Day59 · 01-18 → 01-19）
 
 ## 1. 本周核心目标
 
@@ -31,8 +31,8 @@
 
 | Day   | 日期  | Task                       | 当日 P0 产出                                                                                          | 模块      | 状态 |
 | ----- | ----- | -------------------------- | ----------------------------------------------------------------------------------------------------- | --------- | ---- |
-| Day58 | 11-24 | Task 1：P3 问题定义        | `docs/product/p3-definition.md`（8 要素 + 成功指标 + 范围）+ `data/scenarios/` ≥ 10 个样例（冲刺 20） | M10       | TODO |
-| Day59 | 11-25 | Task 2：架构 v2 + 数据模型 | `docs/architecture-v2.md`（含 ER 图、场景图）+ `docs/adr/0007-multi-tenancy.md`                       | M11 / M10 | TODO |
+| Day58 | 01-18 | Task 1：P3 问题定义        | `docs/product/p3-definition.md`（8 要素 + 成功指标 + 范围）+ `data/scenarios/` ≥ 10 个样例（冲刺 20） | M10       | TODO |
+| Day59 | 01-19 | Task 2：架构 v2 + 数据模型 | `docs/architecture-v2.md`（含 ER 图、场景图）+ `docs/adr/0007-multi-tenancy.md`                       | M11 / M10 | TODO |
 
 ## 6. 本周必须留下的资产
 

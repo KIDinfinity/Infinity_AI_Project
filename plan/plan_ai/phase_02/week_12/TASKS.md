@@ -1,6 +1,6 @@
 # Week 12 · TASKS
 
-## Task 1：会话记忆 + 上下文压缩（Day43 · 11-09）
+## Task 1：会话记忆 + 上下文压缩（Day43 · 12-14）
 
 ### 做什么
 
@@ -47,7 +47,7 @@ Agent 短期记忆、上下文窗口管理、LangGraph reducer 深入 → AI Age
 
 ---
 
-## Task 2：长期记忆（Day44 · 11-10）
+## Task 2：长期记忆（Day44 · 12-15）
 
 ### 做什么
 
@@ -94,7 +94,7 @@ DELETE 接口推迟；抽取只支持 preference 一类。
 
 ---
 
-## Task 3：HITL 审批 + SP-B 试点 + 简历更新（v0.8）（Day45 · 11-11）
+## Task 3：HITL 审批 + SP-B 试点 + 简历更新（v0.8）（Day45 · 12-16）
 
 ### 做什么
 

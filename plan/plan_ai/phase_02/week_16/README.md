@@ -1,4 +1,4 @@
-# Week 16 · P2 发布：作品集 + 开源 + 简历 v1（Phase 2 · Day55–Day57 · 11-21 → 11-23）
+# Week 16 · P2 发布：作品集 + 开源 + 简历 v1（Phase 2 · Day55–Day57 · 01-11 → 01-13）
 
 ## 1. 本周核心目标
 
@@ -36,9 +36,9 @@ W17 输入（phase_03）：v1.0 稳定基线 + 评测/可观测/护栏底座 + �
 
 | Day   | 日期  | Task                                        | 当日 P0 产出                                                                                                   | 模块         | 状态 |
 | ----- | ----- | ------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ------------ | ---- |
-| Day55 | 11-21 | Task 1：P2 README / 架构 / 评测报告（v1.0） | README P2 章节 + `docs/architecture.md` v1 + `docs/portfolio/p2.md` + 云端 v1.0 + tag `v1.0.0` + Release notes | M13.2 / v1.0 | TODO |
-| Day56 | 11-22 | Task 2：Demo + 技术文章 + 产品页 / 开源边界 | Demo 视频 + 文章发布 + `docs/product/open-core.md` + 产品页 + gitleaks 通过                                    | M12.1 M12.3  | TODO |
-| Day57 | 11-23 | Task 3：简历 v1 + 面试题 + Phase 2 复盘     | 两版简历 v1 + 面试题 ≥ 25 + `phase02-review.md` + PROJECT_CONFIG 更新                                          | M13.3 M13.4  | TODO |
+| Day55 | 01-11 | Task 1：P2 README / 架构 / 评测报告（v1.0） | README P2 章节 + `docs/architecture.md` v1 + `docs/portfolio/p2.md` + 云端 v1.0 + tag `v1.0.0` + Release notes | M13.2 / v1.0 | TODO |
+| Day56 | 01-12 | Task 2：Demo + 技术文章 + 产品页 / 开源边界 | Demo 视频 + 文章发布 + `docs/product/open-core.md` + 产品页 + gitleaks 通过                                    | M12.1 M12.3  | TODO |
+| Day57 | 01-13 | Task 3：简历 v1 + 面试题 + Phase 2 复盘     | 两版简历 v1 + 面试题 ≥ 25 + `phase02-review.md` + PROJECT_CONFIG 更新                                          | M13.3 M13.4  | TODO |
 
 ## 6. 本周必须留下的资产
 

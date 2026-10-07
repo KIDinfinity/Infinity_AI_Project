@@ -1,4 +1,4 @@
-# Week 04 · RAG Pipeline MVP（Phase 1 · Day15–Day18 · 10-12 → 10-15）
+# Week 04 · RAG Pipeline MVP（Phase 1 · Day15–Day18 · 10-19 → 10-22）
 
 ## 1. 本周核心目标
 
@@ -35,10 +35,10 @@ W5 输入：kb_qa.jsonl（20 题 schema）、run_kb_smoke.py、Qdrant collection
 
 | Day   | 日期  | Task                                       | 当日 P0 产出                                                                                                                                 | 模块             | 状态 |
 | ----- | ----- | ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ---- |
-| Day15 | 10-12 | Task 1：语料准备 + Ingest                  | `data/corpus/` ≥30 篇 + `SOURCES.md` + 合规检查；`app/rag/models.py`、`loaders/{markdown,pdf,html}.py`；`ingest --dry-run` 统计；loader 单测 | M2.1             | TODO |
-| Day16 | 10-13 | Task 2：Chunking + Embedding + Qdrant 入库 | `chunking.py`、`embedding.py`、`store.py`、`ingest` 正式入库（幂等）、`scripts/ingest.sh`                                                    | M2.2 M2.3        | TODO |
-| Day17 | 10-14 | Task 3：检索 + 带引用回答 + KB API         | `retrieve.py`、`answer.py`、`prompts/qa_answer.v1.md`、`/v1/kb/ask`、`/v1/kb/search`（P1：`/ask/stream`、`/docs`）                           | M2.4 M2.5 M2.6   | TODO |
-| Day18 | 10-15 | Task 4：20 题种子集 + 首批 Badcase         | `eval/datasets/kb_qa.jsonl`(20)、`scripts/run_kb_smoke.py`、`eval/reports/20261015-rag-v0.2.md`、badcases ≥5、tag `v0.2.0`                   | M3.1 M3.4 / v0.2 | TODO |
+| Day15 | 10-19 | Task 1：语料准备 + Ingest                  | `data/corpus/` ≥30 篇 + `SOURCES.md` + 合规检查；`app/rag/models.py`、`loaders/{markdown,pdf,html}.py`；`ingest --dry-run` 统计；loader 单测 | M2.1             | TODO |
+| Day16 | 10-20 | Task 2：Chunking + Embedding + Qdrant 入库 | `chunking.py`、`embedding.py`、`store.py`、`ingest` 正式入库（幂等）、`scripts/ingest.sh`                                                    | M2.2 M2.3        | TODO |
+| Day17 | 10-21 | Task 3：检索 + 带引用回答 + KB API         | `retrieve.py`、`answer.py`、`prompts/qa_answer.v1.md`、`/v1/kb/ask`、`/v1/kb/search`（P1：`/ask/stream`、`/docs`）                           | M2.4 M2.5 M2.6   | TODO |
+| Day18 | 10-22 | Task 4：20 题种子集 + 首批 Badcase         | `eval/datasets/kb_qa.jsonl`(20)、`scripts/run_kb_smoke.py`、`eval/reports/20261022-rag-v0.2.md`、badcases ≥5、tag `v0.2.0`                   | M3.1 M3.4 / v0.2 | TODO |
 
 ## 6. 本周必须留下的资产（文件路径级）
 
@@ -60,7 +60,7 @@ prompts/qa_answer.v1.md
 scripts/ingest.sh  scripts/run_kb_smoke.py
 data/index_manifest/kb_default.json         # 入库配置快照（gitignore）
 eval/datasets/kb_qa.jsonl
-eval/reports/20261015-rag-v0.2.md
+eval/reports/20261022-rag-v0.2.md
 eval/badcases/badcases.md                   # 完整模板 + ≥5 条
 README.md（v0.2 章节）  git tag v0.2.0
 ```

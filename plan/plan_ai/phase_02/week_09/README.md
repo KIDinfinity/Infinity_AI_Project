@@ -1,4 +1,4 @@
-# Week 09 · Tool Calling + 工具层（Phase 2 · Day34–Day36 · 10-31 → 11-02）
+# Week 09 · Tool Calling + 工具层（Phase 2 · Day34–Day36 · 11-23 → 11-25）
 
 ## 1. 本周核心目标
 
@@ -34,9 +34,9 @@
 
 | Day   | 日期  | Task                                             | 当日 P0 产出                                                                     | 模块      | 状态 |
 | ----- | ----- | ------------------------------------------------ | -------------------------------------------------------------------------------- | --------- | ---- |
-| Day34 | 10-31 | Task 1：Tool Calling 原理 + Registry             | 裸实验脚本 + `app/tools/registry.py` + `calculator` + 单测                       | M6.1      | TODO |
-| Day35 | 11-01 | Task 2：内置工具                                 | `kb_search` `web_search` `gitea_repo_read` `gitea_issue_read` + respx 单测       | M6.2 M6.3 | TODO |
-| Day36 | 11-02 | Task 3：多工具循环 Demo + 工具选择测试 + JD 追踪 | `app/agent/tool_loop.py` + `scripts/tool_demo.py` + 15 条用例报告 + tag `v0.6.0` | M6 M13.1  | TODO |
+| Day34 | 11-23 | Task 1：Tool Calling 原理 + Registry             | 裸实验脚本 + `app/tools/registry.py` + `calculator` + 单测                       | M6.1      | TODO |
+| Day35 | 11-24 | Task 2：内置工具                                 | `kb_search` `web_search` `gitea_repo_read` `gitea_issue_read` + respx 单测       | M6.2 M6.3 | TODO |
+| Day36 | 11-25 | Task 3：多工具循环 Demo + 工具选择测试 + JD 追踪 | `app/agent/tool_loop.py` + `scripts/tool_demo.py` + 15 条用例报告 + tag `v0.6.0` | M6 M13.1  | TODO |
 
 ## 6. 本周必须留下的资产
 
@@ -62,7 +62,7 @@
 ├── scripts/tool_demo.py
 ├── eval/datasets/tool_selection.jsonl
 ├── eval/runners/run_tool_selection.py
-├── eval/reports/20261102-tool-selection.md
+├── eval/reports/20261125-tool-selection.md
 └── docs/product/open-core.md        # P2 草稿
 ~/lab/projects/career/job-market.md  # 第 1 轮 JD 追踪
 ```

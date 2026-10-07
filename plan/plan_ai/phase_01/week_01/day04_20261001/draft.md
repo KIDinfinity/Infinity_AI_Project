@@ -1,3 +1,5 @@
+创建ai-project-template（这个是后面的project template，可以基于这个创建项目）
+
 [✅] Gitea 上存在 Private 仓库 ai-project-template，本地在 ~/lab/ai-project-template
 [✅] find . -path ./.git -prune -o -print | sort 输出与本计划 Step 2「预期输出」一致
 [✅] git check-ignore -v .env .env.local data/x.csv eval/runs/a.json 4 行均有输出

@@ -1,10 +1,10 @@
 # Week 20 · TASKS
 
-## Task 1：场景评测集 + rubric + 人审表（Day64 · 11-30）
+## Task 1：场景评测集 + rubric + 人审表（Day64 · 02-08）
 
 ### 做什么
 
-把 `data/scenarios/` 中二次脱敏的 20 个样例转成 `eval/datasets/scenario_spb.jsonl`（`{id, requirement, context_docs, expected_tasks_min, must_cover[], forbidden[], notes}`）；写 `prompts/judge_scenario.v1.md`（覆盖度 / 粒度 / 验收标准可测性 / 估时合理性 / 规范符合度，各 0–2，≥ 7/10 通过）；写 `eval/runners/run_scenario_eval.py`（只跑到审批前）；人审 10 条写 `eval/human_review/20261130.csv` 并算一致率；出报告。
+把 `data/scenarios/` 中二次脱敏的 20 个样例转成 `eval/datasets/scenario_spb.jsonl`（`{id, requirement, context_docs, expected_tasks_min, must_cover[], forbidden[], notes}`）；写 `prompts/judge_scenario.v1.md`（覆盖度 / 粒度 / 验收标准可测性 / 估时合理性 / 规范符合度，各 0–2，≥ 7/10 通过）；写 `eval/runners/run_scenario_eval.py`（只跑到审批前）；人审 10 条写 `eval/human_review/20270208.csv` 并算一致率；出报告。
 
 ### 为什么做
 
@@ -38,7 +38,7 @@
 ### 完成后的产出
 
 - `eval/datasets/scenario_spb.jsonl`、`prompts/judge_scenario.v1.md`、`eval/runners/run_scenario_eval.py`
-- `eval/human_review/20261130.csv`、`eval/reports/20261130-scenario-spb.md`
+- `eval/human_review/20270208.csv`、`eval/reports/20270208-scenario-spb.md`
 
 ### 求职映射
 
@@ -51,7 +51,7 @@
 
 ---
 
-## Task 2：在线反馈闭环 + 评测看板（v1.3）（Day65 · 12-01）
+## Task 2：在线反馈闭环 + 评测看板（v1.3）（Day65 · 02-09）
 
 ### 做什么
 
@@ -91,7 +91,7 @@
 
 - `apps/api/app/eval/feedback.py`、`apps/api/app/routes/eval.py`
 - `apps/web/src/pages/BadcaseQueuePage.tsx`、`EvalTrendPage.tsx`
-- `scripts/export_regression.py`、`eval/reports/20261201-p3-eval-v1.md`
+- `scripts/export_regression.py`、`eval/reports/20270209-p3-eval-v1.md`
 - tag `v1.3.0`
 
 ### 求职映射

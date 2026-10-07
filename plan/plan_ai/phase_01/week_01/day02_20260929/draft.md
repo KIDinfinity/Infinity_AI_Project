@@ -1,3 +1,5 @@
+gitea使用
+
 - [✅] 自托管 Git 服务可访问（浏览器能打开 Web UI，能登录）
 - [✅] 能独立在 Web UI 创建新仓库（不看教程）
 - [✅] 本地 `clone / commit / push` 跑通一次

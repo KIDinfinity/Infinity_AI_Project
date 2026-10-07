@@ -1,4 +1,4 @@
-# Week 26 · 半年复盘 + DA-02 提案（Phase 3 · Day76–Day77 · 12-12 → 12-13）
+# Week 26 · 半年复盘 + DA-02 提案（Phase 3 · Day76–Day77 · 03-22 → 03-23）
 
 ## 1. 本周核心目标
 
@@ -31,8 +31,8 @@
 
 | Day   | 日期  | Task                      | 当日 P0 产出                             | 模块  | 状态 |
 | ----- | ----- | ------------------------- | ---------------------------------------- | ----- | ---- |
-| Day76 | 12-12 | Task 1：半年复盘报告      | `half-year-review.md`（四线指标 + 数字） | M13.5 | TODO |
-| Day77 | 12-13 | Task 2：DA-02 提案 + 收尾 | `da02-proposal.md` + PROJECT_CONFIG 更新 | DA-02 | TODO |
+| Day76 | 03-22 | Task 1：半年复盘报告      | `half-year-review.md`（四线指标 + 数字） | M13.5 | TODO |
+| Day77 | 03-23 | Task 2：DA-02 提案 + 收尾 | `da02-proposal.md` + PROJECT_CONFIG 更新 | DA-02 | TODO |
 
 ## 6. 本周必须留下的资产
 

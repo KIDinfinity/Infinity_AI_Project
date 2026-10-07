@@ -1,6 +1,6 @@
 # Week 21 · TASKS
 
-## Task 1：威胁建模 + 攻击集（Day66 · 12-02）
+## Task 1：威胁建模 + 攻击集（Day66 · 02-15）
 
 ### 做什么
 
@@ -38,7 +38,7 @@
 
 - `docs/security/threat-model.md`、`eval/datasets/security.jsonl`、`eval/runners/run_security_eval.py`
 - `eval/datasets/security_fixtures/`（恶意文档 / 网页种子）
-- `eval/reports/20261202-security-baseline.md`
+- `eval/reports/20270215-security-baseline.md`
 
 ### 求职映射
 
@@ -51,7 +51,7 @@
 
 ---
 
-## Task 2：防护实现 + 审计 + 恢复演练（v1.4）（Day67 · 12-03）
+## Task 2：防护实现 + 审计 + 恢复演练（v1.4）（Day67 · 02-16）
 
 ### 做什么
 
@@ -91,7 +91,7 @@
 ### 完成后的产出
 
 - `apps/api/app/security/{policy.py, ssrf.py, output_filter.py, redact.py, audit.py}`
-- `eval/reports/20261203-security-v1.4.md`、`docs/security/risk-acceptance.md`、`docs/runbook.md`
+- `eval/reports/20270216-security-v1.4.md`、`docs/security/risk-acceptance.md`、`docs/runbook.md`
 - tag `v1.4.0`
 
 ### 求职映射

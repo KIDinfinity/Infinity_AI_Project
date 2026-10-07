@@ -1,4 +1,4 @@
-# Week 11 · LangGraph Agent v1（Phase 2 · Day40–Day42 · 11-06 → 11-08）
+# Week 11 · LangGraph Agent v1（Phase 2 · Day40–Day42 · 12-07 → 12-09）
 
 ## 1. 本周核心目标
 
@@ -11,7 +11,7 @@
 | M7.2 LangGraph 工作流 | 为 v0.8 做准备 | `docs/agent-graph.md` 中由代码生成的 Mermaid 图；同一 SSE 事件协议下前端无改动即可跑 v1 |
 | M7.2 + M1.2 可靠性    | 为 v0.8 做准备 | 故障注入：工具超时 / 主 LLM 500 时，运行优雅完成或明确失败；主 provider 挂掉自动切备用  |
 | M7.2 checkpoint       | 为 v0.8 做准备 | 运行中 Ctrl+C，`--resume <run_id>` 从上一个已完成节点继续                               |
-| M7 对比 + ADR         | 为 v0.8 做准备 | `eval/reports/20261108-agent-v0-vs-v1.md` + `docs/adr/0006-why-langgraph.md`            |
+| M7 对比 + ADR         | 为 v0.8 做准备 | `eval/reports/20261209-agent-v0-vs-v1.md` + `docs/adr/0006-why-langgraph.md`            |
 | M13.1 JD 追踪         | —              | `career/job-market.md` 第 2 轮 + `capability-matrix.md` 更新                            |
 
 ## 3. 为什么这一周存在
@@ -34,9 +34,9 @@
 
 | Day   | 日期  | Task                                  | 当日 P0 产出                                                                        | 模块      | 状态 |
 | ----- | ----- | ------------------------------------- | ----------------------------------------------------------------------------------- | --------- | ---- |
-| Day40 | 11-06 | Task 1：LangGraph 迁移                | `app/agent/state.py` `graph.py` `nodes.py` + `docs/agent-graph.md` + v0/v1 对齐测试 | M7.2      | TODO |
-| Day41 | 11-07 | Task 2：重试 / 降级 / checkpoint      | RetryPolicy + Gateway fallback + AsyncSqliteSaver + 恢复演示 + 故障注入测试         | M7.2 M1.2 | TODO |
-| Day42 | 11-08 | Task 3：v0 vs v1 对比 + ADR + JD 追踪 | 对比报告 + ADR-0006 + `AGENT_VERSION` 开关 + JD 第 2 轮                             | M7 M13.1  | TODO |
+| Day40 | 12-07 | Task 1：LangGraph 迁移                | `app/agent/state.py` `graph.py` `nodes.py` + `docs/agent-graph.md` + v0/v1 对齐测试 | M7.2      | TODO |
+| Day41 | 12-08 | Task 2：重试 / 降级 / checkpoint      | RetryPolicy + Gateway fallback + AsyncSqliteSaver + 恢复演示 + 故障注入测试         | M7.2 M1.2 | TODO |
+| Day42 | 12-09 | Task 3：v0 vs v1 对比 + ADR + JD 追踪 | 对比报告 + ADR-0006 + `AGENT_VERSION` 开关 + JD 第 2 轮                             | M7 M13.1  | TODO |
 
 ## 6. 本周必须留下的资产
 
@@ -55,7 +55,7 @@
 ├── docs/agent-graph.md          # draw_mermaid() 生成
 ├── docs/adr/0006-why-langgraph.md
 ├── eval/runners/compare_agents.py
-└── eval/reports/20261108-agent-v0-vs-v1.md
+└── eval/reports/20261209-agent-v0-vs-v1.md
 ~/lab/projects/career/{job-market.md,capability-matrix.md}
 ```
 

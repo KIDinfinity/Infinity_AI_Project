@@ -1,6 +1,6 @@
 # Week 10 · TASKS
 
-## Task 1：手写 plan→act→observe 循环 v0（Day37 · 11-03）
+## Task 1：手写 plan→act→observe 循环 v0（Day37 · 11-30）
 
 ### 做什么
 
@@ -46,7 +46,7 @@ token 预算与重复检测推迟到 Day38 开头；CLI 只跑 1 个任务。
 
 ---
 
-## Task 2：Research Agent 报告 + SSE 步骤事件（Day38 · 11-04）
+## Task 2：Research Agent 报告 + SSE 步骤事件（Day38 · 12-01）
 
 ### 做什么
 
@@ -95,12 +95,12 @@ Task 1 的 `run_events()`；W9 工具返回的 `sources`；phase_01 的 SSE 实�
 
 ---
 
-## Task 3：Agent 时间线 UI + 简历 v0（v0.7）（Day39 · 11-05）
+## Task 3：Agent 时间线 UI + 简历 v0（v0.7）（Day39 · 12-02）
 
 ### 做什么
 
 1. `apps/web/src/pages/AgentPage.tsx`：任务输入、竖向时间线（按事件类型图标、折叠显示工具参数 / 结果、耗时、token 成本）、最终报告与来源列表；从 `useStreamingAnswer` 抽出 SSE 解析复用。
-2. 10 个任务冒烟（`eval/datasets/agent_smoke.jsonl`），结果写 `eval/reports/20261105-agent-v0-smoke.md`。
+2. 10 个任务冒烟（`eval/datasets/agent_smoke.jsonl`），结果写 `eval/reports/20261202-agent-v0-smoke.md`。
 3. `career/resume/` 建三版简历骨架（frontend / ai-fullstack / ai-engineer），填 P1 + P2（进行中）条目。
 4. tag `v0.7.0`，周复盘。
 
@@ -134,7 +134,7 @@ Task 2 的 SSE 接口与事件 schema；phase_01 的 `useStreamingAnswer`、reac
 
 ### 完成后的产出（文件路径）
 
-`apps/web/src/lib/sse.ts`、`apps/web/src/hooks/useAgentRun.ts`、`apps/web/src/components/agent/*`、`apps/web/src/pages/AgentPage.tsx`、`eval/datasets/agent_smoke.jsonl`、`eval/runners/run_agent_smoke.py`、`eval/reports/20261105-agent-v0-smoke.md`、`~/lab/projects/career/resume/*.md`
+`apps/web/src/lib/sse.ts`、`apps/web/src/hooks/useAgentRun.ts`、`apps/web/src/components/agent/*`、`apps/web/src/pages/AgentPage.tsx`、`eval/datasets/agent_smoke.jsonl`、`eval/runners/run_agent_smoke.py`、`eval/reports/20261202-agent-v0-smoke.md`、`~/lab/projects/career/resume/*.md`
 
 ### 求职映射
 

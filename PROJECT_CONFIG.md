@@ -18,7 +18,7 @@
 | History 目录              | `/Users/infinity/Documents/a_future/history/`                                 |
 | Prompt 目录               | `/Users/infinity/Documents/a_future/prompt/`                                  |
 | 目标资产蓝图              | `plan/plan_ai/DA01_TARGET_ASSET.md`（DA-01 = WorkPilot，模块编号 = 资产锚点） |
-| DA-01 根目录（DA01_ROOT） | 计划为 `~/lab/workpilot`（Gitea 仓库 `workpilot`，Day05 创建后确认）          |
+| DA-01 根目录（DA01_ROOT） | `~/lab/workpilot`（Gitea 仓库 `workpilot`，tag `v0.0.0`） |
 
 ---
 
@@ -27,10 +27,10 @@
 | 配置项     | 值                                                                                                      |
 | ---------- | ------------------------------------------------------------------------------------------------------- |
 | 当前阶段   | 阶段一 · 探索与沉淀期（第 1–8 周）                                                                      |
-| 当前周     | 第 1 周                                                                                                 |
+| 当前周     | 第 3 周                                                                                                 |
 | DA-01 定义 | 第一个智能解决方案资产（Intelligent Solution Asset 01），可组合软件 / AI / 自动化 / 视觉 / IoT / 机器人 |
 | DA-01 状态 | 方向已定：WorkPilot 研发工作 AI 助手平台（见目标资产蓝图）；主场景包（M10）待第 3 周 Day13 从痛点池选出 |
-| DA-01 路径 | 计划 `~/lab/workpilot`（Day05 创建后回填确认）                                                          |
+| DA-01 路径 | `~/lab/workpilot`（Gitea 仓库 `workpilot`，tag `v0.0.0`） |
 
 ---
 

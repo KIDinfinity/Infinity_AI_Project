@@ -1,4 +1,4 @@
-# Week 05 · RAG 评测与优化（Phase 1 · Day19–Day21 · 10-16 → 10-18）
+# Week 05 · RAG 评测与优化（Phase 1 · Day19–Day21 · 10-26 → 10-28）
 
 ## 1. 本周核心目标
 
@@ -10,7 +10,7 @@
 | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 构建模块                      | M3.1 数据集规范（50 题）、M3.2 RAG 指标（hit@k、MRR、拒答、judge）、M3.4 Badcase 分类统计、M2.2 Chunking 调参、M2.4 Retrieval（top_k / hybrid 实验）                                                                                                        |
 | 版本里程碑                    | **v0.3**（tag `v0.3.0`，Day21）                                                                                                                                                                                                                             |
-| 本周结束 WorkPilot 能演示什么 | ① `make eval-rag` 一条命令输出带配置快照的 JSON + Markdown 报告；② 实验对比表（chunk × overlap × top_k，P1 hybrid）与 ADR 0003；③ `eval/reports/20261018-rag-v0.3.md`：检索 + 生成指标、judge 与人工一致率、Badcase 分类统计；④ 默认配置写入 `.env.example` |
+| 本周结束 WorkPilot 能演示什么 | ① `make eval-rag` 一条命令输出带配置快照的 JSON + Markdown 报告；② 实验对比表（chunk × overlap × top_k，P1 hybrid）与 ADR 0003；③ `eval/reports/20261028-rag-v0.3.md`：检索 + 生成指标、judge 与人工一致率、Badcase 分类统计；④ 默认配置写入 `.env.example` |
 
 ## 3. 为什么这一周存在
 
@@ -35,9 +35,9 @@ W6 输入：定版的检索配置（.env.example）、/v1/kb/ask/stream 的事�
 
 | Day   | 日期  | Task                                      | 当日 P0 产出                                                                                                                                        | 模块             | 状态 |
 | ----- | ----- | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ---- |
-| Day19 | 10-16 | Task 1：评测集 50 题 + 检索指标 runner    | `kb_qa.jsonl` 50 题（30/12/8）、`eval/runners/run_rag_eval.py`、`make eval-rag`、基线报告 `eval/reports/20261016-rag-baseline.{json,md}`            | M3.1 M3.2        | TODO |
-| Day20 | 10-17 | Task 2：检索实验                          | `eval/configs/*.yaml`、`kb_exp_<variant>` collections、实验对比表、`docs/adr/0003-chunking-retrieval.md`                                            | M2.2 M2.4        | TODO |
-| Day21 | 10-18 | Task 3：LLM-judge + Badcase 分类 + 定配置 | `eval/runners/judge.py`、`prompts/judge_answer.v1.md`、人工 10 条一致率、`eval/reports/20261018-rag-v0.3.md`、`.env.example` 默认配置、tag `v0.3.0` | M3.2 M3.4 / v0.3 | TODO |
+| Day19 | 10-26 | Task 1：评测集 50 题 + 检索指标 runner    | `kb_qa.jsonl` 50 题（30/12/8）、`eval/runners/run_rag_eval.py`、`make eval-rag`、基线报告 `eval/reports/20261026-rag-baseline.{json,md}`            | M3.1 M3.2        | TODO |
+| Day20 | 10-27 | Task 2：检索实验                          | `eval/configs/*.yaml`、`kb_exp_<variant>` collections、实验对比表、`docs/adr/0003-chunking-retrieval.md`                                            | M2.2 M2.4        | TODO |
+| Day21 | 10-28 | Task 3：LLM-judge + Badcase 分类 + 定配置 | `eval/runners/judge.py`、`prompts/judge_answer.v1.md`、人工 10 条一致率、`eval/reports/20261028-rag-v0.3.md`、`.env.example` 默认配置、tag `v0.3.0` | M3.2 M3.4 / v0.3 | TODO |
 
 ## 6. 本周必须留下的资产（文件路径级）
 
@@ -47,9 +47,9 @@ eval/datasets/judge_gold.jsonl            # 人工标注 10 条
 eval/configs/{c300_o0,c300_o100,c600_o0,c600_o100,c1000_o0,c1000_o100,hybrid_c600_o100}.yaml
 eval/runners/run_rag_eval.py
 eval/runners/judge.py
-eval/reports/20261016-rag-baseline.{json,md}
-eval/reports/20261017-retrieval-experiments.md
-eval/reports/20261018-rag-v0.3.{json,md}
+eval/reports/20261026-rag-baseline.{json,md}
+eval/reports/20261027-retrieval-experiments.md
+eval/reports/20261028-rag-v0.3.{json,md}
 eval/badcases/badcases.md                 # 分类统计 + 前 2 类修复状态
 prompts/judge_answer.v1.md
 prompts/seed_question.v1.md

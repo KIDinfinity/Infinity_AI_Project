@@ -1,4 +1,4 @@
-# Week 12 · Memory + Human-in-the-loop（Phase 2 · Day43–Day45 · 11-09 → 11-11）
+# Week 12 · Memory + Human-in-the-loop（Phase 2 · Day43–Day45 · 12-14 → 12-16）
 
 ## 1. 本周核心目标
 
@@ -36,9 +36,9 @@
 
 | Day   | 日期  | Task                                             | 当日 P0 产出                                                                                            | 模块     | 状态 |
 | ----- | ----- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------- | -------- | ---- |
-| Day43 | 11-09 | Task 1：会话记忆 + 上下文压缩                    | `messages` / `summary` 状态 + summarize 节点 + 追问演示 + 测试                                          | M7.3     | TODO |
-| Day44 | 11-10 | Task 2：长期记忆                                 | `app/agent/memory.py` + remember 节点 + 注入 + `GET/DELETE /v1/memories` + 偏好演示                     | M7.3     | TODO |
-| Day45 | 11-11 | Task 3：HITL 审批 + SP-B 试点 + 简历更新（v0.8） | `gitea_issue_create` + approve 节点 + approve API + mock 断言测试 + 审批卡片 + SP-B 流程 + tag `v0.8.0` | M7.4 M10 | TODO |
+| Day43 | 12-14 | Task 1：会话记忆 + 上下文压缩                    | `messages` / `summary` 状态 + summarize 节点 + 追问演示 + 测试                                          | M7.3     | TODO |
+| Day44 | 12-15 | Task 2：长期记忆                                 | `app/agent/memory.py` + remember 节点 + 注入 + `GET/DELETE /v1/memories` + 偏好演示                     | M7.3     | TODO |
+| Day45 | 12-16 | Task 3：HITL 审批 + SP-B 试点 + 简历更新（v0.8） | `gitea_issue_create` + approve 节点 + approve API + mock 断言测试 + 审批卡片 + SP-B 流程 + tag `v0.8.0` | M7.4 M10 | TODO |
 
 ## 6. 本周必须留下的资产
 

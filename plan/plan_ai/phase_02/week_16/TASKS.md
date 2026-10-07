@@ -1,6 +1,6 @@
 # Week 16 · TASKS
 
-## Task 1：P2 README / 架构 / 评测报告（v1.0）（Day55 · 11-21）
+## Task 1：P2 README / 架构 / 评测报告（v1.0）（Day55 · 01-11）
 
 ### 做什么
 
@@ -47,7 +47,7 @@ P0 = README P2 章节 + 评测表 + tag；`p2.md` 先写大纲 + 数字；云端
 
 ---
 
-## Task 2：Demo + 技术文章 + 产品页 / 开源边界（Day56 · 11-22）
+## Task 2：Demo + 技术文章 + 产品页 / 开源边界（Day56 · 01-12）
 
 ### 做什么
 
@@ -94,7 +94,7 @@ P0 = 视频 + open-core + gitleaks；文章可先发 1500 字精简版；GitHub 
 
 ---
 
-## Task 3：简历 v1 + 面试题 + Phase 2 复盘（Day57 · 11-23）
+## Task 3：简历 v1 + 面试题 + Phase 2 复盘（Day57 · 01-13）
 
 ### 做什么
 

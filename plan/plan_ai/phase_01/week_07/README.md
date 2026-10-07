@@ -1,4 +1,4 @@
-# Week 07 · Docker 化 + 云部署 + CI + 备份（Phase 1 · Day26–Day29 · 10-23 → 10-26）
+# Week 07 · Docker 化 + 云部署 + CI + 备份（Phase 1 · Day26–Day29 · 11-09 → 11-12）
 
 ## 1. 本周核心目标
 
@@ -39,10 +39,10 @@ W8 输入：公网 Demo 地址、CI 徽章、runbook、可复现的 make up
 
 | Day | 日期  | Task                                             | 当日 P0 产出                                   | 模块      | 状态 |
 | --- | ----- | ------------------------------------------------ | ---------------------------------------------- | --------- | ---- |
-| 26  | 10-23 | Task 1：Dockerfile + compose 全栈                | `make up` → localhost:8080 上传 + 问答通过     | M5.1      | TODO |
-| 27  | 10-24 | Task 2：配置 / 健康检查 / JSON 日志 / request_id | `/ready` 明细 + 日志带 request_id + 统一错误体 | M5.2 M9.1 | TODO |
-| 28  | 10-25 | Task 3：云部署 + HTTPS + 访问保护                | 公网 HTTPS + basic auth + 问答可用             | M5.3      | TODO |
-| 29  | 10-26 | Task 4：CI + 云端备份恢复演练                    | CI 绿 + 恢复耗时记录 + 周复盘                  | M5.4 M5.5 | TODO |
+| 26  | 11-09 | Task 1：Dockerfile + compose 全栈                | `make up` → localhost:8080 上传 + 问答通过     | M5.1      | TODO |
+| 27  | 11-10 | Task 2：配置 / 健康检查 / JSON 日志 / request_id | `/ready` 明细 + 日志带 request_id + 统一错误体 | M5.2 M9.1 | TODO |
+| 28  | 11-11 | Task 3：云部署 + HTTPS + 访问保护                | 公网 HTTPS + basic auth + 问答可用             | M5.3      | TODO |
+| 29  | 11-12 | Task 4：CI + 云端备份恢复演练                    | CI 绿 + 恢复耗时记录 + 周复盘                  | M5.4 M5.5 | TODO |
 
 ## 6. 本周必须留下的资产（文件路径级）
 

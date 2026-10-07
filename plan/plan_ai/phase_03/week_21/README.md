@@ -1,4 +1,4 @@
-# Week 21 · 安全加固（OWASP LLM Top 10）（Phase 3 · Day66–Day67 · 12-02 → 12-03）
+# Week 21 · 安全加固（OWASP LLM Top 10）（Phase 3 · Day66–Day67 · 02-15 → 02-16）
 
 ## 1. 本周核心目标
 
@@ -31,14 +31,14 @@
 
 | Day   | 日期  | Task                                       | 当日 P0 产出                                                        | 模块  | 状态 |
 | ----- | ----- | ------------------------------------------ | ------------------------------------------------------------------- | ----- | ---- |
-| Day66 | 12-02 | Task 1：威胁建模 + 攻击集                  | `docs/security/threat-model.md` + `security.jsonl` 20 条 + 基线报告 | M11.3 | TODO |
-| Day67 | 12-03 | Task 2：防护实现 + 审计 + 恢复演练（v1.4） | 防护代码 + 攻击集 20/20 + AuditLog + tag `v1.4.0`（恢复演练 P1）    | M11   | TODO |
+| Day66 | 02-15 | Task 1：威胁建模 + 攻击集                  | `docs/security/threat-model.md` + `security.jsonl` 20 条 + 基线报告 | M11.3 | TODO |
+| Day67 | 02-16 | Task 2：防护实现 + 审计 + 恢复演练（v1.4） | 防护代码 + 攻击集 20/20 + AuditLog + tag `v1.4.0`（恢复演练 P1）    | M11   | TODO |
 
 ## 6. 本周必须留下的资产
 
 - `docs/security/threat-model.md`
 - `eval/datasets/security.jsonl`（20 条）、`eval/runners/run_security_eval.py`
-- `eval/reports/20261202-security-baseline.md`、`eval/reports/20261203-security-v1.4.md`
+- `eval/reports/20270215-security-baseline.md`、`eval/reports/20270216-security-v1.4.md`
 - `apps/api/app/security/{policy.py, ssrf.py, output_filter.py, redact.py, audit.py}`
 - `apps/api/app/db/models.py`（AuditLog）
 - `docs/security/risk-acceptance.md`（剩余风险接受记录）

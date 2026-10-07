@@ -1,6 +1,6 @@
 # Week 04 · TASKS
 
-## Task 1：语料准备 + Ingest（Day15 · 10-12）
+## Task 1：语料准备 + Ingest（Day15 · 10-19）
 
 ### 做什么
 
@@ -52,7 +52,7 @@ Day13 语料计划；Day09 MinIO（bucket `workpilot-raw`）运行中。
 
 ---
 
-## Task 2：Chunking + Embedding + Qdrant 入库（Day16 · 10-13）
+## Task 2：Chunking + Embedding + Qdrant 入库（Day16 · 10-20）
 
 ### 做什么
 
@@ -102,7 +102,7 @@ manifest 与 `ingest.sh` 可延期；幂等验证不可省（W5 实验依赖）�
 
 ---
 
-## Task 3：检索 + 带引用回答 + KB API（Day17 · 10-14）
+## Task 3：检索 + 带引用回答 + KB API（Day17 · 10-21）
 
 ### 做什么
 
@@ -153,7 +153,7 @@ stream 与 docs 接口延期到 W6 Day22 前；`/v1/kb/ask` 与拒答不可省�
 
 ---
 
-## Task 4：20 题种子集 + 首批 Badcase（Day18 · 10-15）
+## Task 4：20 题种子集 + 首批 Badcase（Day18 · 10-22）
 
 ### 做什么
 
@@ -191,7 +191,7 @@ Task 3。
 
 ### 完成后的产出（文件路径）
 
-`eval/datasets/kb_qa.jsonl`、`scripts/run_kb_smoke.py`、`eval/reports/20261015-rag-v0.2.md`、`eval/badcases/badcases.md`、`README.md`
+`eval/datasets/kb_qa.jsonl`、`scripts/run_kb_smoke.py`、`eval/reports/20261022-rag-v0.2.md`、`eval/badcases/badcases.md`、`README.md`
 
 ### 求职映射
 

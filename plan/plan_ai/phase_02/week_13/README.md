@@ -1,4 +1,4 @@
-# Week 13 · MCP Server / Client（Phase 2 · Day46–Day48 · 11-12 → 11-14）
+# Week 13 · MCP Server / Client（Phase 2 · Day46–Day48 · 12-21 → 12-23）
 
 ## 1. 本周核心目标
 
@@ -37,9 +37,9 @@ W14 输入：Agent 工具集（含 ext.fs.*）稳定 → 构建 30 任务 Agent 
 
 | Day   | 日期  | Task                                      | 当日 P0 产出                                                       | 模块            | 状态 |
 | ----- | ----- | ----------------------------------------- | ------------------------------------------------------------------ | --------------- | ---- |
-| Day46 | 11-12 | Task 1：MCP Server（stdio）+ Inspector    | `apps/mcp-server/server.py` 3 个工具在 Inspector 中调用成功        | M8.1            | TODO |
-| Day47 | 11-13 | Task 2：IDE 接入 + HTTP 传输 + MCP Client | VS Code 调用成功；HTTP 无 token 返回 401；`ext.fs.*` 被 Agent 调用 | M8.1 M8.2       | TODO |
-| Day48 | 11-14 | Task 3：MCP Demo + 文档 + JD 追踪         | 录屏 + `docs/mcp.md` + tag `v0.9.0` + 5 道 MCP 面试题              | M8 / v0.9 / M13 | TODO |
+| Day46 | 12-21 | Task 1：MCP Server（stdio）+ Inspector    | `apps/mcp-server/server.py` 3 个工具在 Inspector 中调用成功        | M8.1            | TODO |
+| Day47 | 12-22 | Task 2：IDE 接入 + HTTP 传输 + MCP Client | VS Code 调用成功；HTTP 无 token 返回 401；`ext.fs.*` 被 Agent 调用 | M8.1 M8.2       | TODO |
+| Day48 | 12-23 | Task 3：MCP Demo + 文档 + JD 追踪         | 录屏 + `docs/mcp.md` + tag `v0.9.0` + 5 道 MCP 面试题              | M8 / v0.9 / M13 | TODO |
 
 ## 6. 本周必须留下的资产
 

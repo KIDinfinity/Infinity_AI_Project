@@ -1,6 +1,6 @@
 # Week 11 · TASKS
 
-## Task 1：LangGraph 迁移（Day40 · 11-06）
+## Task 1：LangGraph 迁移（Day40 · 12-07）
 
 ### 做什么
 
@@ -46,7 +46,7 @@ LangGraph StateGraph、reducer、条件路由 → AI Agent Engineer（JD 高频�
 
 ---
 
-## Task 2：重试 / 降级 / checkpoint（Day41 · 11-07）
+## Task 2：重试 / 降级 / checkpoint（Day41 · 12-08）
 
 ### 做什么
 
@@ -96,11 +96,11 @@ Ollama 实测跳过（只做 mock 单测）；RetryPolicy 单测推迟到 Day42 
 
 ---
 
-## Task 3：v0 vs v1 对比 + ADR + JD 追踪（Day42 · 11-08）
+## Task 3：v0 vs v1 对比 + ADR + JD 追踪（Day42 · 12-09）
 
 ### 做什么
 
-1. `eval/runners/compare_agents.py`：`agent_smoke.jsonl` 10 任务 × 两版，对比成功率、步数、延迟、tokens、成本、失败类型，报告写 `eval/reports/20261108-agent-v0-vs-v1.md`。
+1. `eval/runners/compare_agents.py`：`agent_smoke.jsonl` 10 任务 × 两版，对比成功率、步数、延迟、tokens、成本、失败类型，报告写 `eval/reports/20261209-agent-v0-vs-v1.md`。
 2. `docs/adr/0006-why-langgraph.md`：显式状态、checkpoint、interrupt、可视化 vs 手写的代价。
 3. `/v1/agent/run` 默认切到 v1，`AGENT_VERSION=v0` 可回退。
 4. JD 追踪第 2 轮 + 能力矩阵更新；周复盘。
@@ -134,7 +134,7 @@ Task 1–2 完成；phase_01 的 `eval/judge.py`（LLM-as-a-judge）。
 
 ### 完成后的产出（文件路径）
 
-`eval/runners/compare_agents.py`、`eval/reports/20261108-agent-v0-vs-v1.md`、`docs/adr/0006-why-langgraph.md`、`apps/api/app/routes/agent.py`（改）、`~/lab/projects/career/{job-market,capability-matrix}.md`
+`eval/runners/compare_agents.py`、`eval/reports/20261209-agent-v0-vs-v1.md`、`docs/adr/0006-why-langgraph.md`、`apps/api/app/routes/agent.py`（改）、`~/lab/projects/career/{job-market,capability-matrix}.md`
 
 ### 求职映射
 

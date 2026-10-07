@@ -1,6 +1,6 @@
 # Week 03 · TASKS
 
-## Task 1：Structured Output + Prompt 版本化（Day11 · 10-08）
+## Task 1：Structured Output + Prompt 版本化（Day11 · 10-12）
 
 ### 做什么
 
@@ -52,7 +52,7 @@ AI Engineer / LLM Application Engineer：「Structured Output + 校验重试」�
 
 ---
 
-## Task 2：Streaming SSE + 成本记录 + CLI 聊天（Day12 · 10-09）
+## Task 2：Streaming SSE + 成本记录 + CLI 聊天（Day12 · 10-13）
 
 ### 做什么
 
@@ -105,7 +105,7 @@ P0 = stream + SSE 路由 + jsonl 日志；`scripts/chat.py` 的 `/cost` 可简�
 
 ---
 
-## Task 3：DA-01 决策——场景包选型（Day13 · 10-10）
+## Task 3：DA-01 决策——场景包选型（Day13 · 10-14）
 
 ### 做什么
 
@@ -156,7 +156,7 @@ AI Product Engineer / Solutions Engineer：能讲清「为什么做这个而不�
 
 ---
 
-## Task 4：LLM 应用 v0 + 10 题冒烟（Day14 · 10-11）
+## Task 4：LLM 应用 v0 + 10 题冒烟（Day14 · 10-15）
 
 ### 做什么
 
@@ -187,14 +187,14 @@ Task 1–3。
 ### 验收标准
 
 - [ ] `/v1/ask` 返回 `StructuredAnswer` + `source_note`
-- [ ] `eval/reports/20261011-smoke-v0.1.md` 有 10 行结果 + 平均延迟 + 总成本
+- [ ] `eval/reports/20261015-smoke-v0.1.md` 有 10 行结果 + 平均延迟 + 总成本
 - [ ] `badcases.md` ≥ 3 条，每条有「现象 / 期望 / 根因：数据缺失或生成幻觉」
 - [ ] `git tag` 有 `v0.1.0` 且已 push
 - [ ] Week 3 README 第 11 节已填写
 
 ### 完成后的产出（文件路径）
 
-`prompts/qa_answer.v0.md`、`apps/api/app/routes/ask.py`、`eval/datasets/smoke_v0.jsonl`、`scripts/run_smoke.py`、`eval/reports/20261011-smoke-v0.1.md`、`eval/badcases/badcases.md`、`README.md`
+`prompts/qa_answer.v0.md`、`apps/api/app/routes/ask.py`、`eval/datasets/smoke_v0.jsonl`、`scripts/run_smoke.py`、`eval/reports/20261015-smoke-v0.1.md`、`eval/badcases/badcases.md`、`README.md`
 
 ### 求职映射
 

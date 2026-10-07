@@ -1,6 +1,6 @@
 # Week 05 · TASKS
 
-## Task 1：评测集 50 题 + 检索指标 runner（Day19 · 10-16）
+## Task 1：评测集 50 题 + 检索指标 runner（Day19 · 10-26）
 
 ### 做什么
 
@@ -32,13 +32,13 @@ W4 的 `kb_qa.jsonl`（20 题）、`retrieve.search`、`answer.ask`、`data/inde
 ### 验收标准
 
 - [ ] 50 题、比例正确、schema 校验通过、无重复问题
-- [ ] `make eval-rag` 输出 `eval/reports/20261016-rag-baseline.{json,md}`
+- [ ] `make eval-rag` 输出 `eval/reports/20261026-rag-baseline.{json,md}`
 - [ ] 报告含 hit@1/3/5、MRR、拒答正确率、P50/P95、成本、配置快照（含 git sha）
 - [ ] 每题记录 top1 分数（Day21 定阈值用）
 
 ### 完成后的产出（文件路径）
 
-`eval/datasets/kb_qa.jsonl`、`prompts/seed_question.v1.md`、`scripts/seed_eval.py`、`eval/runners/run_rag_eval.py`、`Makefile`、`eval/reports/20261016-rag-baseline.{json,md}`
+`eval/datasets/kb_qa.jsonl`、`prompts/seed_question.v1.md`、`scripts/seed_eval.py`、`eval/runners/run_rag_eval.py`、`Makefile`、`eval/reports/20261026-rag-baseline.{json,md}`
 
 ### 求职映射
 
@@ -50,7 +50,7 @@ seed 脚本可省（手写 30 题）；runner 中生成相关指标（拒答）�
 
 ---
 
-## Task 2：检索实验（Day20 · 10-17）
+## Task 2：检索实验（Day20 · 10-27）
 
 ### 做什么
 
@@ -81,13 +81,13 @@ Task 1 runner 支持 `--config`；ingest 支持 `--collection/--chunk-size/--ove
 ### 验收标准
 
 - [ ] ≥ 4 个变体有完整结果
-- [ ] 实验对比表 `eval/reports/20261017-retrieval-experiments.md`
+- [ ] 实验对比表 `eval/reports/20261027-retrieval-experiments.md`
 - [ ] ADR 0003：背景 / 选项 / 数据 / 决定 / 代价 / 放弃方案
 - [ ] `kb_default` 未被实验覆盖（points_count 与实验前一致）
 
 ### 完成后的产出（文件路径）
 
-`eval/configs/*.yaml`、`scripts/run_experiments.sh`、`eval/reports/20261017-retrieval-experiments.md`、`docs/adr/0003-chunking-retrieval.md`、（P1）`apps/api/app/rag/sparse.py`
+`eval/configs/*.yaml`、`scripts/run_experiments.sh`、`eval/reports/20261027-retrieval-experiments.md`、`docs/adr/0003-chunking-retrieval.md`、（P1）`apps/api/app/rag/sparse.py`
 
 ### 求职映射
 
@@ -99,13 +99,13 @@ Task 1 runner 支持 `--config`；ingest 支持 `--collection/--chunk-size/--ove
 
 ---
 
-## Task 3：LLM-judge + Badcase 分类 + 定配置（Day21 · 10-18）
+## Task 3：LLM-judge + Badcase 分类 + 定配置（Day21 · 10-28）
 
 ### 做什么
 
 - `eval/runners/judge.py` + `prompts/judge_answer.v1.md`：correctness（0/1/2 对照 expected）、faithfulness（yes/partial/no：是否全部有上下文支持）、citation_correct（bool），用 M1.3 结构化输出。
 - 先人工标 10 条（`eval/datasets/judge_gold.jsonl`），计算 judge 与人工一致率（目标 ≥ 80%）。
-- 完整报告 `eval/reports/20261018-rag-v0.3.{json,md}`（检索 + 生成指标）；Badcase 分类统计，修复前 2 类并回归。
+- 完整报告 `eval/reports/20261028-rag-v0.3.{json,md}`（检索 + 生成指标）；Badcase 分类统计，修复前 2 类并回归。
 - 默认配置写入 `.env.example`（含 `SCORE_THRESHOLD`）；README v0.3；tag `v0.3.0`；更新 `career/capability-matrix.md` 的 RAG/Eval 证据列；Week 5 复盘。
 
 ### 为什么做
@@ -137,7 +137,7 @@ Task 1 runner、Task 2 选定配置。
 
 ### 完成后的产出（文件路径）
 
-`prompts/judge_answer.v1.md`、`eval/runners/judge.py`、`eval/datasets/judge_gold.jsonl`、`eval/reports/20261018-rag-v0.3.{json,md}`、`eval/badcases/badcases.md`、`.env.example`、`README.md`、`~/lab/projects/career/capability-matrix.md`
+`prompts/judge_answer.v1.md`、`eval/runners/judge.py`、`eval/datasets/judge_gold.jsonl`、`eval/reports/20261028-rag-v0.3.{json,md}`、`eval/badcases/badcases.md`、`.env.example`、`README.md`、`~/lab/projects/career/capability-matrix.md`
 
 ### 求职映射
 

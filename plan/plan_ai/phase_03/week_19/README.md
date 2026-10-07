@@ -1,4 +1,4 @@
-# Week 19 · Postgres + 认证 + 多空间 + 自动部署（Phase 3 · Day62–Day63 · 11-28 → 11-29）
+# Week 19 · Postgres + 认证 + 多空间 + 自动部署（Phase 3 · Day62–Day63 · 02-01 → 02-02）
 
 ## 1. 本周核心目标
 
@@ -32,8 +32,8 @@
 
 | Day   | 日期  | Task                                         | 当日 P0 产出                                                                               | 模块        | 状态 |
 | ----- | ----- | -------------------------------------------- | ------------------------------------------------------------------------------------------ | ----------- | ---- |
-| Day62 | 11-28 | Task 1：Postgres + Alembic + 认证 + 空间隔离 | compose postgres:16 + 首个 Alembic 迁移 + login/logout/me + `get_workspace` + 隔离测试通过 | M11.1 M11.2 | TODO |
-| Day63 | 11-29 | Task 2：异步导入 + 自动部署（v1.2）          | Job 表 + worker + `.gitea/workflows/deploy.yml` 跑通一次 + tag `v1.2.0`                    | M5.4 / v1.2 | TODO |
+| Day62 | 02-01 | Task 1：Postgres + Alembic + 认证 + 空间隔离 | compose postgres:16 + 首个 Alembic 迁移 + login/logout/me + `get_workspace` + 隔离测试通过 | M11.1 M11.2 | TODO |
+| Day63 | 02-02 | Task 2：异步导入 + 自动部署（v1.2）          | Job 表 + worker + `.gitea/workflows/deploy.yml` 跑通一次 + tag `v1.2.0`                    | M5.4 / v1.2 | TODO |
 
 ## 6. 本周必须留下的资产
 
