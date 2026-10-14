@@ -29,8 +29,8 @@
 | 当前阶段   | 阶段一 · 探索与沉淀期（第 1–8 周）                                                                      |
 | 当前周     | 第 3 周                                                                                                 |
 | DA-01 定义 | 第一个智能解决方案资产（Intelligent Solution Asset 01），可组合软件 / AI / 自动化 / 视觉 / IoT / 机器人 |
-| DA-01 状态 | 方向已定：WorkPilot 研发工作 AI 助手平台（见目标资产蓝图）；主场景包（M10）待第 3 周 Day13 从痛点池选出 |
-| DA-01 路径 | `~/lab/workpilot`（Gitea 仓库 `workpilot`，tag `v0.0.0`） |
+| DA-01 状态 | 已定义：WorkPilot；主场景 SP-A 深化「团队规范与组件库用法问答（带引用 Grounded Q&A）」（2026-10-14 选定，Score 3.90 / 3.85）；W4 语料 30–80 篇；定义文档 `~/lab/workpilot/docs/product/da01-definition.md` |
+| DA-01 路径 | `~/lab/workpilot`（Gitea 仓库 `workpilot`，tag `v0.0.0`）                                                          |
 
 ---
 

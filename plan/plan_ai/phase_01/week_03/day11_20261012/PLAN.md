@@ -31,12 +31,12 @@ curl -s localhost:8000/health
 
 ## 3. 验收对齐（做完要能勾掉）
 
-- [ ] `gateway.chat()` 返回 `ChatResult`，`/v1/chat` 仍可用
-- [ ] `prompts/structured_answer.v1.md`、`prompts/task_breakdown.v1.md` 存在且带 front matter（id / version / model / changelog）
-- [ ] `uv run pytest -m "not llm" -q` 全绿（含 prompt 渲染、结构化重试两个单测）
-- [ ] `uv run pytest -m llm -s` 打印「structured pass rate: x/5」，x ≥ 4
-- [ ] curl `/v1/structured/answer`、`/v1/structured/breakdown` 均返回 200 且字段合法
-- [ ] 已 push 到 Gitea
+- [x] `gateway.chat()` 返回 `ChatResult`，`/v1/chat` 仍可用
+- [x] `prompts/structured_answer.v1.md`、`prompts/task_breakdown.v1.md` 存在且带 front matter（id / version / model / changelog）
+- [x] `uv run pytest -m "not llm" -q` 全绿（含 prompt 渲染、结构化重试两个单测）
+- [x] `uv run pytest -m llm -s` 打印「structured pass rate: x/5」，x ≥ 4
+- [x] curl `/v1/structured/answer`、`/v1/structured/breakdown` 均返回 200 且字段合法
+- [ ] 已 push 到 Gitea → ⏭️ **按用户要求未提交**（改动保留在工作区）
 
 ## 4. 时间块（≤ 120 分钟）
 
@@ -347,12 +347,22 @@ WorkPilot 从「能聊天」变成「能产出可被程序消费的结构化结�
 
 ## 11. 产出记录（执行时填写）
 
-- `ChatResult` 改造后 `/v1/chat` 是否正常：\_\_\_\_
-- 结构化通过率（最终 / 首次）：\_**\_ / \_\_**
-- 一次典型调用的 tokens / 延迟：\_**\_ / \_\_** ms
-- 发现的 schema 设计问题（如字段太多、枚举不清）：\_\_\_\_
-- 卡点记录：\_\_\_\_
-- 用时：\_\_\_\_ 分钟
+- `ChatResult` 改造后 `/v1/chat` 是否正常：**正常**。`POST /v1/chat {"messages":[{"role":"user","content":"只回复 pong"}],"max_tokens":8}` → `200`，`content="pong"`、`model=deepseek-flash`、`usage={prompt:8, completion:2, total:10, cache_hit:0}`、`latency_ms=857`。`usage` 已由平铺改为嵌套对象（破坏性变更，旧测试 3 处断言同步更新）。
+- 结构化通过率（最终 / 首次）：**5/5 / 5/5**（`uv run pytest -m llm -s`，13.7 s，0 次重试）。明细：通用问题 calls=1 332+215 tok、团队内部问题 calls=1 326+218 tok（`confidence=low / needs_more_context=true`，符合 prompt 要求）、模糊问题 calls=1 321+199 tok（同为 low/true）、文档上传拆解 8 任务 476+836 tok、JWT 拆解 6 任务 482+535 tok；两个 breakdown 的 `type` 全部落在四种枚举内。
+- 一次典型调用的 tokens / 延迟：**520 tok / 1588 ms**（answer，`React useEffect` 空依赖问题，326+194）；breakdown 为 **1461 tok / 4781 ms**（476+985）。
+- 发现的 schema 设计问题（如字段太多、枚举不清）：**schema 比 prompt 松，约束只写在自然语言里，越界不会被拦**——共 3 处：
+  1. `key_points` 只写了 `max_length=8`，没有下限；prompt 说「列 2–5 条」→ 模型返回 0 条也能通过。建议 v2 改 `Field(min_length=2, max_length=5)`。
+  2. `estimate_hours: Field(gt=0, le=40)` vs prompt「0.5–16」→ 实测 2–6 落在 prompt 内，但 schema 拦不住 30。建议两边对齐到 `ge=0.5, le=16`。
+  3. `StructuredAnswer.answer` 的「≤ 300 字」只在 prompt，schema 无 `maxLength`（实测 172–236 字未超标）；`TaskItem.title` 无 `min_length=1`，空标题可过校验。
+  反向结论：`Literal[...]` → JSON Schema `enum` 是**最有效**的一条，5 个输入的 `confidence` 与 `type` 全部合规、0 次枚举违规。
+- 卡点记录：
+  1. **marker 二义性**：项目原有 `live` marker，PLAN Step 3 要求 `llm`。统一改成 `llm`（`pyproject` + `test_llm_gateway.py` 同名改造），避免两套并存；`addopts` 改为 `-m 'not llm'`，并加 `asyncio_mode = "auto"` + `pytest-asyncio`。
+  2. **gateway 单例形态**：PLAN 示例用模块级单例 `gateway`，项目实际是 `app.state.gateway` + `Depends(get_gateway)`。按 PLAN §2 的授权「按实际改，不要两套并存」，`generate_structured` 采用 `*, gw: LLMGateway` 显式传参（不走全局 monkeypatch），单测直接传 `FakeGW`。
+  3. **`_envelope` / 错误码**：PLAN 说 `HTTPException(502, ...)`，项目已有 `AppError(code, message, status)` + 统一 handler，改用 `AppError("structured_output_failed", "结构化输出校验失败", 502)`，与 Day07/08 一致，同样不外泄模型原文。
+  4. **ruff UP047**：`TypeVar("T", bound=BaseModel)` 被判「应使用类型参数」，改成 PEP 695 `async def generate_structured[T: BaseModel](...)`。
+  5. `ChatResult` 加嵌套 `Usage` 是破坏性变更 → `test_llm_gateway.py` 的 fake usage 补 `total_tokens`、断言改 `r.usage.prompt_tokens`。
+  6. 服务无卡点：`make dev` 的 `uvicorn --reload` 自动加载了新路由，未重启进程。
+- 用时：**≈45 分钟**（本次由 AI 代执行，按步骤等价估算：前置确认 5 + Step1 5 + Step2 10 + Step3 10 + Step4 5 + Step5 5 + 记录 5；未逐段真实计时）。
 
 ## 12. 完成判定
 
