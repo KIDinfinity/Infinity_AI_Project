@@ -1,0 +1,3 @@
+现在/Users/infinity/Documents/a_future/draft/bye这里有五张图片是一首曲子的谱子，我想要在三个月之内学完，每天一小时分配，需要你帮我订一个计划，要输出的东西有：
+1.先帮我输出一个md文档吧，我想要后面也有这种任务，以学会一个xxx为目标，然后做计划，文档输出在/Users/infinity/Documents/a_future/prompt，最好可以参考/Users/infinity/Documents/a_future/history/AI半年稳态成长_求职能力_实际应用_资产化_新版计划.md这种计划把目标分的细化一点，最终一定要每一周有四天固定计划，然后把每一天的计划都定好，要是也有几个阶段就很好了（注意详细计划也固定都输出到/Users/infinity/Documents/a_future/plan）
+2.关于诀别书的计划就参考/Users/infinity/Documents/a_future/prompt/项目结构变更.md这里面，把详细计划跟当前的ai_plan一样放到/Users/infinity/Documents/a_future/plan就好,最好参考一下练琴的基础技巧相关书籍，循序渐进，要求每一天的plan也要有这一天练的东西跟最终目标有什么关系
