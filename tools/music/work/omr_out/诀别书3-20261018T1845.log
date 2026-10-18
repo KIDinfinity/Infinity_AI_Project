@@ -1,0 +1,63 @@
+2026-10-18 18:45:49,244 INFO [诀别书3]                 Book.java:560  | 1 sheet in /Users/infinity/Documents/a_future/draft/bye/诀别书3.jpg
+2026-10-18 18:45:49,324 INFO []                 Book.java:2565 | Stored /book.xml
+2026-10-18 18:45:49,324 INFO []                 Book.java:2525 | Book stored as omr_out/诀别书3.omr
+2026-10-18 18:45:49,326 INFO []                 Book.java:1929 | Book reaching PAGE on sheets:[#1]
+2026-10-18 18:45:49,327 INFO [诀别书3]       StepMonitoring.java:98   | LOAD
+2026-10-18 18:45:49,364 INFO [诀别书3]            SheetStub.java:1278 | Loaded image #1 1653x2339 from /Users/infinity/Documents/a_future/draft/bye/诀别书3.jpg
+2026-10-18 18:45:49,366 INFO [诀别书3]       StepMonitoring.java:98   | BINARY
+2026-10-18 18:45:49,526 INFO [诀别书3]       StepMonitoring.java:98   | SCALE
+2026-10-18 18:45:49,543 INFO [诀别书3]         ScaleBuilder.java:254  | Beam  guessed height:  8 -- 0.25 of [6..13] range
+2026-10-18 18:45:49,543 INFO [诀别书3]         ScaleBuilder.java:271  | Beam measured height:  8 -- 0.29 of [6..13] range at 344% of needed quorum
+2026-10-18 18:45:49,544 INFO [诀别书3]         ScaleBuilder.java:401  | Normalized black jitter: 14.29 %
+2026-10-18 18:45:49,544 INFO [诀别书3]            ScaleStep.java:65   | Scale{ interline(13,14,14) line(1,2,3) beam(8)}
+2026-10-18 18:45:49,544 INFO [诀别书3]       StepMonitoring.java:98   | GRID
+2026-10-18 18:45:49,815 INFO [诀别书3]       LinesRetriever.java:1508 | Global slope: 0.00000
+2026-10-18 18:45:49,850 INFO [诀别书3]    ClustersRetriever.java:326  | Retrieved raw line clusters: 12 of sizes [5] with interline(13,14,14)
+2026-10-18 18:45:50,008 INFO [诀别书3]            PeakGraph.java:310  | Systems: #1[1, 2] #2[3, 4] #3[5, 6] #4[7, 8] #5[9, 10] #6[11, 12]
+2026-10-18 18:45:50,228 INFO [诀别书3]        SystemManager.java:800  | 1 part along 6 systems
+2026-10-18 18:45:50,229 INFO [诀别书3]                 Book.java:543  | Created scores: [{Score 1}]
+2026-10-18 18:45:50,229 INFO [诀别书3]       StepMonitoring.java:98   | HEADERS
+2026-10-18 18:45:50,714 INFO [诀别书3]       StepMonitoring.java:98   | STEM_SEEDS
+2026-10-18 18:45:50,745 INFO [诀别书3]        StemSeedsStep.java:86   | stem(2 max:4)
+2026-10-18 18:45:50,782 INFO [诀别书3]       StepMonitoring.java:98   | BEAMS
+2026-10-18 18:45:51,584 INFO [诀别书3]       StepMonitoring.java:98   | LEDGERS
+2026-10-18 18:45:51,759 INFO [诀别书3]       StepMonitoring.java:98   | HEADS
+2026-10-18 18:45:53,388 INFO [诀别书3]        HeadSeedTally.java:235  | Scale information: HeadSeeds{NOTEHEAD_VOID[L:0.6,R:0.1] NOTEHEAD_BLACK[L:0.8,R:0.3]}
+2026-10-18 18:45:53,388 INFO [诀别书3]       StepMonitoring.java:98   | STEMS
+2026-10-18 18:45:54,128 INFO [诀别书3]       StepMonitoring.java:98   | REDUCTION
+2026-10-18 18:45:54,253 INFO [诀别书3]        ReductionStep.java:105  | Stems free length median value: 45 pixels, 3.2 interlines
+2026-10-18 18:45:54,257 INFO [诀别书3]       StepMonitoring.java:98   | CUE_BEAMS
+2026-10-18 18:45:54,257 INFO [诀别书3]         CueBeamsStep.java:81   | Step CUE_BEAMS is skipped because small heads switch is off
+2026-10-18 18:45:54,257 INFO [诀别书3]       StepMonitoring.java:98   | TEXTS
+2026-10-18 18:45:54,337 WARN [诀别书3]         TesseractOCR.java:335  | The collection of supported languages is empty
+2026-10-18 18:45:54,337 INFO [诀别书3]              OcrUtil.java:106  | Missing support for 'eng' language(s)
+2026-10-18 18:45:54,342 INFO [诀别书3]       StepMonitoring.java:98   | MEASURES
+2026-10-18 18:45:54,349 INFO [诀别书3]                 Page.java:307  | 24 raw measures: [4 in system#1, 4 in system#2, 4 in system#3, 4 in system#4, 4 in system#5, 4 in system#6]
+2026-10-18 18:45:54,349 INFO [诀别书3]       StepMonitoring.java:98   | CHORDS
+2026-10-18 18:45:54,362 INFO [诀别书3]       StepMonitoring.java:98   | CURVES
+2026-10-18 18:45:54,960 INFO [诀别书3]         SlursBuilder.java:240  | Slurs: 33
+2026-10-18 18:45:55,019 INFO [诀别书3]      SegmentsBuilder.java:155  | Segments: 44
+2026-10-18 18:45:55,026 INFO [诀别书3]       StepMonitoring.java:98   | SYMBOLS
+2026-10-18 18:45:55,406 INFO [诀别书3]       StepMonitoring.java:98   | LINKS
+2026-10-18 18:45:55,476 INFO [诀别书3]       StepMonitoring.java:98   | RHYTHMS
+2026-10-18 18:45:55,530 INFO [诀别书3]       StepMonitoring.java:98   | PAGE
+2026-10-18 18:45:55,531 INFO [诀别书3]       SheetReduction.java:154  | Gutter. Different glyphs 4/5 PedalInter#13496{(0.788/0.788) PEDAL_MARK} vs ArticulationInter#13602{(0.581/0.736) STACCATO}
+2026-10-18 18:45:55,532 INFO [诀别书3]       SheetReduction.java:154  | Gutter. Different glyphs 4/5 PedalInter#13512{(0.788/0.788) PEDAL_MARK} vs ArticulationInter#13622{(0.607/0.721) STACCATO}
+2026-10-18 18:45:55,534 WARN [诀别书3]         MeasureFixer.java:343  | System#1 No target duration for measures local IDs [1, 2, 3, 4], please check time signatures
+2026-10-18 18:45:55,534 WARN [诀别书3]         MeasureFixer.java:343  | System#2 No target duration for measures local IDs [5, 6, 7, 8], please check time signatures
+2026-10-18 18:45:55,534 WARN [诀别书3]         MeasureFixer.java:343  | System#3 No target duration for measures local IDs [9, 10, 11, 12], please check time signatures
+2026-10-18 18:45:55,534 WARN [诀别书3]         MeasureFixer.java:343  | System#4 No target duration for measures local IDs [13, 14, 15, 16], please check time signatures
+2026-10-18 18:45:55,534 WARN [诀别书3]         MeasureFixer.java:343  | System#5 No target duration for measures local IDs [17, 18, 19, 20], please check time signatures
+2026-10-18 18:45:55,534 WARN [诀别书3]         MeasureFixer.java:343  | System#6 No target duration for measures local IDs [21, 22, 23, 24], please check time signatures
+2026-10-18 18:45:55,535 INFO [诀别书3]                 Book.java:2584 | Book{诀别书3} storing
+2026-10-18 18:45:55,594 INFO [诀别书3]                 Book.java:2565 | Stored /book.xml
+2026-10-18 18:45:55,642 INFO [诀别书3]           DataHolder.java:348  | Stored /sheet#1/BINARY.png
+2026-10-18 18:45:56,575 INFO [诀别书3]                Sheet.java:1583 | Stored /sheet#1/sheet#1.xml
+2026-10-18 18:45:56,575 INFO [诀别书3]                 Book.java:2525 | Book stored as omr_out/诀别书3.omr
+2026-10-18 18:45:56,576 INFO [诀别书3]            SheetStub.java:1655 | Sheet disposed
+2026-10-18 18:45:56,598 INFO [诀别书3]                 Book.java:2050 | End of Stub#1
+2026-10-18 18:45:56,599 INFO [诀别书3]                 Book.java:2057 | End of Book{诀别书3}
+2026-10-18 18:45:56,856 INFO [诀别书3]            SheetStub.java:1000 | Loaded /sheet#1/sheet#1.xml
+2026-10-18 18:45:57,041 INFO [诀别书3]      PartwiseBuilder.java:2707 | Exporting sheet(s): [#1]
+2026-10-18 18:45:57,109 INFO [诀别书3]        ScoreExporter.java:164  | Score 诀别书3 exported to omr_out/诀别书3.mxl
+2026-10-18 18:45:57,139 INFO [诀别书3]                Score.java:181  | Closing {Score 1}

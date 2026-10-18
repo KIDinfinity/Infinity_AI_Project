@@ -1,0 +1,61 @@
+2026-10-18 18:46:08,459 INFO [诀别书5]                 Book.java:560  | 1 sheet in /Users/infinity/Documents/a_future/draft/bye/诀别书5.jpg
+2026-10-18 18:46:08,547 INFO []                 Book.java:2565 | Stored /book.xml
+2026-10-18 18:46:08,548 INFO []                 Book.java:2525 | Book stored as omr_out/诀别书5.omr
+2026-10-18 18:46:08,549 INFO []                 Book.java:1929 | Book reaching PAGE on sheets:[#1]
+2026-10-18 18:46:08,550 INFO [诀别书5]       StepMonitoring.java:98   | LOAD
+2026-10-18 18:46:08,574 INFO [诀别书5]            SheetStub.java:1278 | Loaded image #1 1653x2339 from /Users/infinity/Documents/a_future/draft/bye/诀别书5.jpg
+2026-10-18 18:46:08,576 INFO [诀别书5]       StepMonitoring.java:98   | BINARY
+2026-10-18 18:46:08,719 INFO [诀别书5]       StepMonitoring.java:98   | SCALE
+2026-10-18 18:46:08,730 INFO [诀别书5]         ScaleBuilder.java:254  | Beam  guessed height:  8 -- 0.25 of [6..13] range
+2026-10-18 18:46:08,731 INFO [诀别书5]         ScaleBuilder.java:271  | Beam measured height:  8 -- 0.29 of [6..13] range at 155% of needed quorum
+2026-10-18 18:46:08,731 INFO [诀别书5]         ScaleBuilder.java:401  | Normalized black jitter: 14.29 %
+2026-10-18 18:46:08,731 INFO [诀别书5]            ScaleStep.java:65   | Scale{ interline(13,14,14) line(1,2,3) beam(8)}
+2026-10-18 18:46:08,731 INFO [诀别书5]       StepMonitoring.java:98   | GRID
+2026-10-18 18:46:08,853 INFO [诀别书5]       LinesRetriever.java:1508 | Global slope: 0.00000
+2026-10-18 18:46:08,868 INFO [诀别书5]    ClustersRetriever.java:326  | Retrieved raw line clusters: 4 of sizes [5] with interline(13,14,14)
+2026-10-18 18:46:08,910 INFO [诀别书5]            PeakGraph.java:310  | Systems: #1[1, 2] #2[3, 4]
+2026-10-18 18:46:09,014 INFO [诀别书5]        SystemManager.java:800  | 1 part along 2 systems
+2026-10-18 18:46:09,015 INFO [诀别书5]                 Book.java:543  | Created scores: [{Score 1}]
+2026-10-18 18:46:09,015 INFO [诀别书5]       StepMonitoring.java:98   | HEADERS
+2026-10-18 18:46:09,515 INFO [诀别书5]       StepMonitoring.java:98   | STEM_SEEDS
+2026-10-18 18:46:09,536 INFO [诀别书5]        StemSeedsStep.java:86   | stem(2 max:4)
+2026-10-18 18:46:09,555 INFO [诀别书5]       StepMonitoring.java:98   | BEAMS
+2026-10-18 18:46:10,300 INFO [诀别书5]       StepMonitoring.java:98   | LEDGERS
+2026-10-18 18:46:10,366 INFO [诀别书5]       StepMonitoring.java:98   | HEADS
+2026-10-18 18:46:10,894 INFO [诀别书5]        HeadSeedTally.java:235  | Scale information: HeadSeeds{NOTEHEAD_BLACK[L:0.8]}
+2026-10-18 18:46:10,894 INFO [诀别书5]       StepMonitoring.java:98   | STEMS
+2026-10-18 18:46:11,061 INFO [诀别书5]       StepMonitoring.java:98   | REDUCTION
+2026-10-18 18:46:11,093 INFO [诀别书5]        ReductionStep.java:105  | Stems free length median value: 49 pixels, 3.5 interlines
+2026-10-18 18:46:11,094 INFO [诀别书5]       StepMonitoring.java:98   | CUE_BEAMS
+2026-10-18 18:46:11,095 INFO [诀别书5]         CueBeamsStep.java:81   | Step CUE_BEAMS is skipped because small heads switch is off
+2026-10-18 18:46:11,095 INFO [诀别书5]       StepMonitoring.java:98   | TEXTS
+2026-10-18 18:46:11,132 WARN [诀别书5]         TesseractOCR.java:335  | The collection of supported languages is empty
+2026-10-18 18:46:11,132 INFO [诀别书5]              OcrUtil.java:106  | Missing support for 'eng' language(s)
+2026-10-18 18:46:11,137 INFO [诀别书5]       StepMonitoring.java:98   | MEASURES
+2026-10-18 18:46:11,142 INFO [诀别书5]                 Page.java:307  | 8 raw measures: [4 in system#1, 4 in system#2]
+2026-10-18 18:46:11,142 INFO [诀别书5]       StepMonitoring.java:98   | CHORDS
+2026-10-18 18:46:11,148 INFO [诀别书5]       StepMonitoring.java:98   | CURVES
+2026-10-18 18:46:11,494 INFO [诀别书5]         SlursBuilder.java:240  | Slurs: 7
+2026-10-18 18:46:11,506 INFO [诀别书5]      SegmentsBuilder.java:155  | Segments: 16
+2026-10-18 18:46:11,514 INFO [诀别书5]       StepMonitoring.java:98   | SYMBOLS
+2026-10-18 18:46:11,711 INFO [诀别书5]       StepMonitoring.java:98   | LINKS
+2026-10-18 18:46:11,714 INFO [诀别书5]        SymbolsLinker.java:258  | No chord linked to OctaveShiftInter#2937{(0.302) staff:2 QUINDICESIMA BASSA} at java.awt.Point[x=112,y=647]
+2026-10-18 18:46:11,727 INFO [诀别书5]        SymbolsLinker.java:258  | No chord linked to OctaveShiftInter#3070{(0.302) staff:3 QUINDICESIMA ALTA} at java.awt.Point[x=112,y=647]
+2026-10-18 18:46:11,739 INFO [诀别书5]       StepMonitoring.java:98   | RHYTHMS
+2026-10-18 18:46:11,756 INFO [诀别书5]       StepMonitoring.java:98   | PAGE
+2026-10-18 18:46:11,757 INFO [诀别书5]       SheetReduction.java:154  | Gutter. Different glyphs 1/2 OrnamentInter#2957{(0.474/0.553) TR} vs EndingInter#1857{(0.626/0.867) staff:3 ENDING}
+2026-10-18 18:46:11,757 INFO [诀别书5]       SheetReduction.java:154  | Gutter. Different glyphs 1/2 ArticulationInter#2964{(0.793/0.849) STACCATO} vs EndingInter#1857{(0.626/0.867) staff:3 ENDING}
+2026-10-18 18:46:11,759 WARN [诀别书5]         MeasureFixer.java:343  | System#1 No target duration for measures local IDs [1, 2, 3, 4], please check time signatures
+2026-10-18 18:46:11,760 WARN [诀别书5]         MeasureFixer.java:343  | System#2 No target duration for measures local IDs [5, 6, 7, 8], please check time signatures
+2026-10-18 18:46:11,760 INFO [诀别书5]                 Book.java:2584 | Book{诀别书5} storing
+2026-10-18 18:46:11,782 INFO [诀别书5]                 Book.java:2565 | Stored /book.xml
+2026-10-18 18:46:11,822 INFO [诀别书5]           DataHolder.java:348  | Stored /sheet#1/BINARY.png
+2026-10-18 18:46:12,127 INFO [诀别书5]                Sheet.java:1583 | Stored /sheet#1/sheet#1.xml
+2026-10-18 18:46:12,127 INFO [诀别书5]                 Book.java:2525 | Book stored as omr_out/诀别书5.omr
+2026-10-18 18:46:12,128 INFO [诀别书5]            SheetStub.java:1655 | Sheet disposed
+2026-10-18 18:46:12,148 INFO [诀别书5]                 Book.java:2050 | End of Stub#1
+2026-10-18 18:46:12,149 INFO [诀别书5]                 Book.java:2057 | End of Book{诀别书5}
+2026-10-18 18:46:12,263 INFO [诀别书5]            SheetStub.java:1000 | Loaded /sheet#1/sheet#1.xml
+2026-10-18 18:46:12,449 INFO [诀别书5]      PartwiseBuilder.java:2707 | Exporting sheet(s): [#1]
+2026-10-18 18:46:12,484 INFO [诀别书5]        ScoreExporter.java:164  | Score 诀别书5 exported to omr_out/诀别书5.mxl
+2026-10-18 18:46:12,509 INFO [诀别书5]                Score.java:181  | Closing {Score 1}

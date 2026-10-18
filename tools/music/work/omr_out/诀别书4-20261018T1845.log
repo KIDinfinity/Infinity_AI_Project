@@ -1,0 +1,84 @@
+2026-10-18 18:45:58,673 INFO [诀别书4]                 Book.java:560  | 1 sheet in /Users/infinity/Documents/a_future/draft/bye/诀别书4.jpg
+2026-10-18 18:45:58,752 INFO []                 Book.java:2565 | Stored /book.xml
+2026-10-18 18:45:58,752 INFO []                 Book.java:2525 | Book stored as omr_out/诀别书4.omr
+2026-10-18 18:45:58,754 INFO []                 Book.java:1929 | Book reaching PAGE on sheets:[#1]
+2026-10-18 18:45:58,754 INFO [诀别书4]       StepMonitoring.java:98   | LOAD
+2026-10-18 18:45:58,789 INFO [诀别书4]            SheetStub.java:1278 | Loaded image #1 1653x2339 from /Users/infinity/Documents/a_future/draft/bye/诀别书4.jpg
+2026-10-18 18:45:58,791 INFO [诀别书4]       StepMonitoring.java:98   | BINARY
+2026-10-18 18:45:58,946 INFO [诀别书4]       StepMonitoring.java:98   | SCALE
+2026-10-18 18:45:58,962 INFO [诀别书4]         ScaleBuilder.java:254  | Beam  guessed height:  8 -- 0.25 of [6..13] range
+2026-10-18 18:45:58,962 INFO [诀别书4]         ScaleBuilder.java:271  | Beam measured height:  8 -- 0.29 of [6..13] range at 441% of needed quorum
+2026-10-18 18:45:58,963 INFO [诀别书4]         ScaleBuilder.java:401  | Normalized black jitter: 14.29 %
+2026-10-18 18:45:58,963 INFO [诀别书4]            ScaleStep.java:65   | Scale{ interline(13,14,14) line(1,2,3) beam(8)}
+2026-10-18 18:45:58,963 INFO [诀别书4]       StepMonitoring.java:98   | GRID
+2026-10-18 18:45:59,195 INFO [诀别书4]       LinesRetriever.java:1508 | Global slope: 0.00000
+2026-10-18 18:45:59,222 INFO [诀别书4]    ClustersRetriever.java:326  | Retrieved raw line clusters: 10 of sizes [5] with interline(13,14,14)
+2026-10-18 18:45:59,368 INFO [诀别书4]            PeakGraph.java:310  | Systems: #1[1, 2] #2[3, 4] #3[5, 6] #4[7, 8] #5[9, 10]
+2026-10-18 18:45:59,555 INFO [诀别书4]        SystemManager.java:800  | 1 part along 5 systems
+2026-10-18 18:45:59,556 INFO [诀别书4]                 Book.java:543  | Created scores: [{Score 1}]
+2026-10-18 18:45:59,556 INFO [诀别书4]       StepMonitoring.java:98   | HEADERS
+2026-10-18 18:46:00,044 INFO [诀别书4]       StepMonitoring.java:98   | STEM_SEEDS
+2026-10-18 18:46:00,071 INFO [诀别书4]        StemSeedsStep.java:86   | stem(2 max:4)
+2026-10-18 18:46:00,109 INFO [诀别书4]       StepMonitoring.java:98   | BEAMS
+2026-10-18 18:46:00,931 INFO [诀别书4]       StepMonitoring.java:98   | LEDGERS
+2026-10-18 18:46:01,079 INFO [诀别书4]       StepMonitoring.java:98   | HEADS
+2026-10-18 18:46:02,329 INFO [诀别书4]        HeadSeedTally.java:235  | Scale information: HeadSeeds{NOTEHEAD_VOID[L:0.2,R:-0.4] NOTEHEAD_BLACK[L:0.7,R:-0.2]}
+2026-10-18 18:46:02,330 INFO [诀别书4]       StepMonitoring.java:98   | STEMS
+2026-10-18 18:46:03,199 INFO [诀别书4]       StepMonitoring.java:98   | REDUCTION
+2026-10-18 18:46:03,341 INFO [诀别书4]        ReductionStep.java:105  | Stems free length median value: 47 pixels, 3.4 interlines
+2026-10-18 18:46:03,344 INFO [诀别书4]       StepMonitoring.java:98   | CUE_BEAMS
+2026-10-18 18:46:03,344 INFO [诀别书4]         CueBeamsStep.java:81   | Step CUE_BEAMS is skipped because small heads switch is off
+2026-10-18 18:46:03,345 INFO [诀别书4]       StepMonitoring.java:98   | TEXTS
+2026-10-18 18:46:03,425 WARN [诀别书4]         TesseractOCR.java:335  | The collection of supported languages is empty
+2026-10-18 18:46:03,425 INFO [诀别书4]              OcrUtil.java:106  | Missing support for 'eng' language(s)
+2026-10-18 18:46:03,430 INFO [诀别书4]       StepMonitoring.java:98   | MEASURES
+2026-10-18 18:46:03,436 INFO [诀别书4]                 Page.java:307  | 20 raw measures: [4 in system#1, 4 in system#2, 4 in system#3, 4 in system#4, 4 in system#5]
+2026-10-18 18:46:03,436 INFO [诀别书4]       StepMonitoring.java:98   | CHORDS
+2026-10-18 18:46:03,449 INFO [诀别书4]       StepMonitoring.java:98   | CURVES
+2026-10-18 18:46:04,012 INFO [诀别书4]         SlursBuilder.java:240  | Slurs: 12
+2026-10-18 18:46:04,056 INFO [诀别书4]      SegmentsBuilder.java:155  | Segments: 29
+2026-10-18 18:46:04,063 INFO [诀别书4]       StepMonitoring.java:98   | SYMBOLS
+2026-10-18 18:46:04,346 WARN [诀别书4]       SymbolsBuilder.java:231  | Error in glyph evaluation java.lang.IndexOutOfBoundsException: Index: 0
+java.lang.IndexOutOfBoundsException: Index: 0
+	at java.base/java.util.Collections$EmptyList.get(Unknown Source)
+	at org.audiveris.omr.sig.inter.ArticulationInter.lookupLink(ArticulationInter.java:185)
+	at org.audiveris.omr.sig.inter.ArticulationInter.createValidAdded(ArticulationInter.java:312)
+	at org.audiveris.omr.sheet.symbol.DotFactory.instantCheckStaccato(DotFactory.java:490)
+	at org.audiveris.omr.sheet.symbol.DotFactory.instantDotChecks(DotFactory.java:531)
+	at org.audiveris.omr.sheet.symbol.InterFactory.doCreate(InterFactory.java:275)
+	at org.audiveris.omr.sheet.symbol.InterFactory.create(InterFactory.java:213)
+	at org.audiveris.omr.sheet.symbol.SymbolsBuilder.evaluateGlyph(SymbolsBuilder.java:220)
+	at org.audiveris.omr.sheet.symbol.SymbolsBuilder.processClusters(SymbolsBuilder.java:352)
+	at org.audiveris.omr.sheet.symbol.SymbolsBuilder.buildSymbols(SymbolsBuilder.java:173)
+	at org.audiveris.omr.sheet.symbol.SymbolsStep.doSystem(SymbolsStep.java:124)
+	at org.audiveris.omr.sheet.symbol.SymbolsStep.doSystem(SymbolsStep.java:51)
+	at org.audiveris.omr.step.AbstractSystemStep.lambda$doitPerSystem$0(AbstractSystemStep.java:158)
+	at org.audiveris.omr.step.AbstractSystemStep.doitPerSystem(AbstractSystemStep.java:178)
+	at org.audiveris.omr.step.AbstractSystemStep.doit(AbstractSystemStep.java:125)
+	at org.audiveris.omr.step.OmrStep.doit(OmrStep.java:138)
+	at org.audiveris.omr.sheet.SheetStub.lambda$doOneStep$0(SheetStub.java:503)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2026-10-18 18:46:04,361 INFO [诀别书4]       StepMonitoring.java:98   | LINKS
+2026-10-18 18:46:04,407 INFO [诀别书4]       StepMonitoring.java:98   | RHYTHMS
+2026-10-18 18:46:04,423 INFO [诀别书4]        MeasureRhythm.java:1276 | Measure{#1} Time inconsistency in {3/4=[HeadChordInter#9202{(0.963/0.963) staff:2 slot#9 off:3/4 dur:1/8}], 7/8=[HeadChordInter#9173{(0.949/0.949) staff:1 slot#9 off:7/8 dur:1/8}]}
+2026-10-18 18:46:04,465 INFO [诀别书4]       StepMonitoring.java:98   | PAGE
+2026-10-18 18:46:04,469 WARN [诀别书4]         MeasureFixer.java:343  | System#1 No target duration for measures local IDs [1, 2, 3, 4], please check time signatures
+2026-10-18 18:46:04,469 WARN [诀别书4]         MeasureFixer.java:343  | System#2 No target duration for measures local IDs [5, 6, 7, 8], please check time signatures
+2026-10-18 18:46:04,469 WARN [诀别书4]         MeasureFixer.java:343  | System#3 No target duration for measures local IDs [9, 10, 11, 12], please check time signatures
+2026-10-18 18:46:04,469 WARN [诀别书4]         MeasureFixer.java:343  | System#4 No target duration for measures local IDs [13, 14, 15, 16], please check time signatures
+2026-10-18 18:46:04,470 WARN [诀别书4]         MeasureFixer.java:343  | System#5 No target duration for measures local IDs [17, 18, 19, 20], please check time signatures
+2026-10-18 18:46:04,470 INFO [诀别书4]                 Book.java:2584 | Book{诀别书4} storing
+2026-10-18 18:46:04,519 INFO [诀别书4]                 Book.java:2565 | Stored /book.xml
+2026-10-18 18:46:04,576 INFO [诀别书4]           DataHolder.java:348  | Stored /sheet#1/BINARY.png
+2026-10-18 18:46:05,470 INFO [诀别书4]                Sheet.java:1583 | Stored /sheet#1/sheet#1.xml
+2026-10-18 18:46:05,470 INFO [诀别书4]                 Book.java:2525 | Book stored as omr_out/诀别书4.omr
+2026-10-18 18:46:05,471 INFO [诀别书4]            SheetStub.java:1655 | Sheet disposed
+2026-10-18 18:46:05,493 INFO [诀别书4]                 Book.java:2050 | End of Stub#1
+2026-10-18 18:46:05,493 INFO [诀别书4]                 Book.java:2057 | End of Book{诀别书4}
+2026-10-18 18:46:05,751 INFO [诀别书4]            SheetStub.java:1000 | Loaded /sheet#1/sheet#1.xml
+2026-10-18 18:46:05,940 INFO [诀别书4]      PartwiseBuilder.java:2707 | Exporting sheet(s): [#1]
+2026-10-18 18:46:06,025 INFO [诀别书4]        ScoreExporter.java:164  | Score 诀别书4 exported to omr_out/诀别书4.mxl
+2026-10-18 18:46:06,061 INFO [诀别书4]                Score.java:181  | Closing {Score 1}

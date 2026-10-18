@@ -9,3 +9,4 @@ planSummary_after : /Users/226838/Documents/privacy/Infinity_AI_Project/history/
 2.除了phase01的week01的day01和day02，所有的phase、week、day的 readme、tasks文件也需要做对应的修改，注意 day里面的PLAN需要做对应的修改（除了phase01的week01的day01和day02），注意需要给实际的实现step，要很具体，比如项目规范，要给出实际的有哪些目录，以及目录做什么的，要给出实际落地方案
 
 3.可以让你自行发挥做一些优化，目标包含最终目标就行，这个优化可以包含优化 1、2点
+

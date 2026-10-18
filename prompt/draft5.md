@@ -1,0 +1,1 @@
+/Users/infinity/Documents/a_future/prompt/target_plan_prompt.md这个prompt需要加上一条在plan根目录加上一个md文件来记录这个plan生成都用了哪些东西（tool、agent、skill等等）
