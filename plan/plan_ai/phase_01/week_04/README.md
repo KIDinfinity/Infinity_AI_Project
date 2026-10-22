@@ -35,10 +35,10 @@ W5 输入：kb_qa.jsonl（20 题 schema）、run_kb_smoke.py、Qdrant collection
 
 | Day   | 日期  | Task                                       | 当日 P0 产出                                                                                                                                 | 模块             | 状态 |
 | ----- | ----- | ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ---- |
-| Day15 | 10-19 | Task 1：语料准备 + Ingest                  | `data/corpus/` ≥30 篇 + `SOURCES.md` + 合规检查；`app/rag/models.py`、`loaders/{markdown,pdf,html}.py`；`ingest --dry-run` 统计；loader 单测 | M2.1             | TODO |
-| Day16 | 10-20 | Task 2：Chunking + Embedding + Qdrant 入库 | `chunking.py`、`embedding.py`、`store.py`、`ingest` 正式入库（幂等）、`scripts/ingest.sh`                                                    | M2.2 M2.3        | TODO |
-| Day17 | 10-21 | Task 3：检索 + 带引用回答 + KB API         | `retrieve.py`、`answer.py`、`prompts/qa_answer.v1.md`、`/v1/kb/ask`、`/v1/kb/search`（P1：`/ask/stream`、`/docs`）                           | M2.4 M2.5 M2.6   | TODO |
-| Day18 | 10-22 | Task 4：20 题种子集 + 首批 Badcase         | `eval/datasets/kb_qa.jsonl`(20)、`scripts/run_kb_smoke.py`、`eval/reports/20261022-rag-v0.2.md`、badcases ≥5、tag `v0.2.0`                   | M3.1 M3.4 / v0.2 | TODO |
+| Day15 | 10-19 | Task 1：语料准备 + Ingest                  | `data/corpus/` ≥30 篇 + `SOURCES.md` + 合规检查；`app/rag/models.py`、`loaders/{markdown,pdf,html}.py`；`ingest --dry-run` 统计；loader 单测 | M2.1             | DONE |
+| Day16 | 10-20 | Task 2：Chunking + Embedding + Qdrant 入库 | `chunking.py`、`embedding.py`、`store.py`、`ingest` 正式入库（幂等）、`scripts/ingest.sh`                                                    | M2.2 M2.3        | DONE |
+| Day17 | 10-21 | Task 3：检索 + 带引用回答 + KB API         | `retrieve.py`、`answer.py`、`prompts/qa_answer.v1.md`、`/v1/kb/ask`、`/v1/kb/search`（P1：`/ask/stream`、`/docs`）                           | M2.4 M2.5 M2.6   | DONE |
+| Day18 | 10-22 | Task 4：20 题种子集 + 首批 Badcase         | `eval/datasets/kb_qa.jsonl`(20)、`scripts/run_kb_smoke.py`、`eval/reports/20261022-rag-v0.2.md`、badcases ≥5、tag `v0.2.0`                   | M3.1 M3.4 / v0.2 | DONE（tag 待打） |
 
 ## 6. 本周必须留下的资产（文件路径级）
 
@@ -67,14 +67,14 @@ README.md（v0.2 章节）  git tag v0.2.0
 
 ## 7. 本周验收标准（PASS/FAIL 勾选）
 
-- [ ] 语料 ≥ 30 篇，合规检查清单全部勾选，`git status` 中看不到 `data/corpus`
-- [ ] `ingest --dry-run` 输出文档数 / 字符数 / 类型分布；`pytest -m "not llm"` 全绿
-- [ ] `curl localhost:6333/collections/kb_default` 的 `points_count` > 0；连续运行两次 `scripts/ingest.sh` 点数不变（幂等）
-- [ ] `/v1/kb/ask` 库内问题答案含 `[n]` 且 `citations` 非空；库外问题返回「知识库中没有找到…」
-- [ ] `/v1/kb/search` 返回带 `score/source/section` 的 top-k
-- [ ] `kb_qa.jsonl` 20 题（12 库内 / 5 库外 / 3 易混淆），报告存在
-- [ ] `badcases.md` ≥ 5 条，每条有根因分类
-- [ ] `v0.2.0` tag 已 push；README 有 v0.2 章节
+- [x] 语料 ≥ 30 篇，合规检查清单全部勾选，`git status` 中看不到 `data/corpus`
+- [x] `ingest --dry-run` 输出文档数 / 字符数 / 类型分布；`pytest -m "not llm"` 全绿
+- [x] `curl localhost:6333/collections/kb_default` 的 `points_count` > 0；连续运行两次 `scripts/ingest.sh` 点数不变（幂等）
+- [x] `/v1/kb/ask` 库内问题答案含 `[n]` 且 `citations` 非空；库外问题返回「知识库中没有找到…」
+- [x] `/v1/kb/search` 返回带 `score/source/section` 的 top-k
+- [x] `kb_qa.jsonl` 20 题（12 库内 / 5 库外 / 3 易混淆），报告存在
+- [x] `badcases.md` ≥ 5 条，每条有根因分类
+- [ ] `v0.2.0` tag 已 push（用户要求不提交，命令已备好）；README 有 v0.2 章节 ✅
 
 ## 8. 求职映射
 
@@ -104,11 +104,11 @@ README.md（v0.2 章节）  git tag v0.2.0
 
 ## 11. 周复盘（周末填写）
 
-- 完成：\_\_\_\_
-- 未完成及原因：\_\_\_\_
-- WorkPilot 本周多了什么可演示的东西：\_\_\_\_
-- 文档数 / 分块数 / 平均分块长度：\_**\_ / \_\_** / \_\_\_\_
-- 20 题：来源命中 **/15、库外拒答 **/5、人工判对 \_\_/20
-- v0.1 → v0.2 私有知识题对比：\_\_\_\_
-- 是否出现无效学习或范围扩张：\_\_\_\_
-- 下周调整：\_\_\_\_
+- 完成：Day15–18 全部 P0。语料 49 篇入库 → 分块/向量/幂等 → 检索+带引用回答+KB API（search/ask/ask/stream/docs）→ 20 题种子集 + badcase 12 条 + README v0.2。
+- 未完成及原因：`git tag v0.2.0` 与 push（用户要求不提交，命令已备好）；hybrid/rerank 属 W5 范围。
+- WorkPilot 本周多了什么可演示的东西：`POST /v1/kb/ask` 带 `[n]` 引用回答、库外拒答；`/v1/kb/search` 看检索分数；`/v1/kb/ask/stream` 先推 retrieved 再流式；`/v1/kb/docs` 文档列表；20 题报告 + 根因分类 badcase 库。
+- 文档数 / 分块数 / 平均分块长度：49 / 1077 / ≈600（chunk_size=600, overlap=100）
+- 20 题：来源命中 13/15、库外拒答 5/5、人工判对 16/20
+- v0.1 → v0.2 私有知识题对比：8 道私有题 v0.1 全「拒答/编造」；v0.2 复测 6 道：1 修复（BC-004）、2 召回排序靠后（BC-001/003）、3 数据缺失（BC-002/005/006）。
+- 是否出现无效学习或范围扩张：无。
+- 下周调整：W5 优先 hybrid/rerank 与语料补齐（`.env.example`、`llm_providers.py`、`routes/` 清单入库）；「环境变量」歧义题加上下文消歧。
