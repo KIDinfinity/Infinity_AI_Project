@@ -1,0 +1,23 @@
+{
+  "title": "潮汐 · Tide",
+  "composer": "原创 · AI 生成",
+  "style_ref": "弦乐四重奏（多拍号交替）",
+  "key": "D minor (-1 flat)",
+  "tempo_bpm": 88,
+  "instruments": ["Violin I", "Violin II", "Viola", "Cello"],
+  "rhythm": {
+    "meter_shift": "3/4 → 6/8 → 5/8 → 4/4 → 3/4 → 5/8",
+    "arp": "中提琴分解和弦八分",
+    "sustain": "小提琴 II / 大提琴长音",
+    "rit": "结尾渐慢"
+  },
+  "structure": {
+    "theme_34": "m1-8",
+    "flow_68": "m9-16",
+    "angular_58": "m17-24",
+    "climax_44": "m25-32",
+    "recap_34": "m33-40",
+    "coda_58": "m41-44"
+  },
+  "outputs": ["song.musicxml", "song.mid", "song.pdf", "song.mp3"]
+}

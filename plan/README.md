@@ -10,6 +10,7 @@
 | 项目目录             | 代号      | 描述                              | 状态         |
 | -------------------- | --------- | --------------------------------- | ------------ |
 | [plan_ai/](plan_ai/) | WorkPilot | 半年 AI 智能解决方案孵化（DA-01） | 执行中（W1） |
+| [plan_guitar_compose/](plan_guitar_compose/) | 宿命五章 | 5 首原创吉他曲（宿命感，每首 3 分钟，1 个月） | 待执行 |
 
 > 新增 project 时：在 `plan/` 下新建 `plan_<name>/`，按 `phase_XX/week_XX/dayNN_YYYYMMDD/` 三级结构组织。
 

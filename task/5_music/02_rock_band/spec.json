@@ -1,0 +1,25 @@
+{
+  "title": "裂变脉冲 · Split Pulse",
+  "composer": "原创 · AI 生成",
+  "style_ref": "摇滚（E 小调 power chord / 鼓组）",
+  "key": "E minor (+1 sharp)",
+  "tempo_bpm": 150,
+  "meter": "4/4",
+  "instruments": ["Electric Guitar", "Electric Bass", "Drums"],
+  "rhythm": {
+    "riff": "3+3+2 切分 riff",
+    "chorus": "强力和弦半音符 stabs",
+    "breakdown": "半速（half-time）",
+    "outro": "16 分双倍速冲刺 + 渐快",
+    "fills": "鼓组 16 分 fill"
+  },
+  "structure": {
+    "A": "m1-8",
+    "B": "m9-16",
+    "chorus": "m17-24",
+    "A_prime": "m25-32",
+    "breakdown": "m33-40",
+    "outro": "m41-48"
+  },
+  "outputs": ["song.musicxml", "song.mid", "song.pdf", "song.mp3"]
+}

@@ -1,0 +1,23 @@
+{
+  "title": "沙漠脉冲 · Desert Pulse",
+  "composer": "原创 · AI 生成",
+  "style_ref": "世界音乐 / 电影配乐（奇数拍号 ostinato）",
+  "key": "A minor / D dorian (0 flats)",
+  "tempo_bpm": 120,
+  "instruments": ["Marimba", "Vibraphone", "Cello", "Percussion"],
+  "rhythm": {
+    "meter_shift": "7/8 → 5/8 → 7/8 → 4/4 → 7/8 → 5/8",
+    "ostinato": "马林巴 3+2+2 / 2+3 分组",
+    "drone": "大提琴长音底",
+    "percussion": "doum/tek 手鼓型"
+  },
+  "structure": {
+    "ost_78": "m1-8",
+    "ost_58": "m9-16",
+    "ost_78_b": "m17-24",
+    "melody_44": "m25-32",
+    "ost_78_c": "m33-40",
+    "coda_58": "m41-44"
+  },
+  "outputs": ["song.musicxml", "song.mid", "song.pdf", "song.mp3"]
+}

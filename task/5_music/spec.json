@@ -1,0 +1,35 @@
+{
+  "title": "诀别 · 宿命",
+  "composer": "原创 · AI 生成",
+  "style_ref": "诀别书（宿命感 / 悲怆 / 无可挽回）",
+  "key": "D minor (F major keySig, -1 flat)",
+  "tempo_bpm": 60,
+  "meter": "4/4",
+  "duration_note": "48 小节 @ ♩=60 ≈ 3:12，含尾声渐慢",
+  "harmony": {
+    "fate_cycle": "i–VI–III–VII  =  Dm–B♭–F–C（宿命循环）",
+    "lament_bass": "D–C–B♭–A 下行四度链（无可挽回的下坠，B 段与尾声用）",
+    "cadence": "A 段结尾 Gm–A（ii–V 半终止，导向主音）"
+  },
+  "motif": {
+    "sigh": "下行二度叹息音型（A→G / F→E / A5→G5→F5 …），贯穿全曲，反复=宿命",
+    "rise": "B 段主题逐级上行，与哀歌低音反向，制造张力"
+  },
+  "texture": {
+    "intro": "右手分解琶音 + 左手长低音，pp",
+    "A": "右手长线条旋律 + 左手分解和弦（根-三-五-八 摇摆型八分），p→mp",
+    "B": "右手上行的叹息主题 + 左手分解和弦（哀歌低音），mf→f 渐强",
+    "C": "右手八度加厚旋律（高潮顶峰 A5）+ 左手八度低音，f→ff",
+    "A_prime": "主题破碎再现，稀疏休止，subito p",
+    "coda": "哀歌低音回归，长音消逝，rit + 泛音收束于 Dm，pp"
+  },
+  "structure": {
+    "intro": "m1-4",
+    "A": "m5-20 (两个 8 小节乐句)",
+    "B": "m21-32 (哀歌低音 ×3)",
+    "C": "m33-40 (高潮)",
+    "A_prime": "m41-44 (破碎再现)",
+    "coda": "m45-48 (消逝)"
+  },
+  "outputs": ["song.musicxml", "song.mid", "song.pdf", "song.mp3"]
+}

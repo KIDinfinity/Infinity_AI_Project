@@ -4,6 +4,16 @@
 
 ---
 
+## 2026-10-22 · 新增 plan_guitar_compose：5 首原创吉他曲创作计划
+
+- 原因：用户提出新 target——5 首原创吉他曲、宿命感强、每首 3 分钟、周期 1 个月，需要按 `target_plan_prompt.md` 生成与 plan_ai 同构的完整计划。
+- 改动：
+  1. 新建 `plan/plan_guitar_compose/`（README + TARGET + GENERATED_WITH + 3 phase + 4 week + 20 day PLAN）。
+  2. `plan/README.md` 项目列表新增 `plan_guitar_compose/`（宿命五章，待执行）。
+- 拆分：3 阶段（方法论+第1首打样 → 批量创作第2~5首 → 打磨+录音交付）；4 里程碑 M1–M4；每周 5 天、每天 60 分钟；起止 2026-10-26 → 11-20。
+- 受影响周：不涉及 plan_ai（独立 project）。
+- DA-01 变化：无（本计划为独立创作线，不影响 WorkPilot）。
+
 ## 2026-10-15 · Week 3 收尾：DA-01 主场景回填 + v0.1 基线评测落盘
 
 - 原因：Week 3（Day11–Day14）执行完毕，需把 Day13 选定结果回填到蓝图与配置，并追加本周计划演化记录。

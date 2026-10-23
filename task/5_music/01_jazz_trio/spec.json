@@ -1,0 +1,23 @@
+{
+  "title": "午夜漫步 · Midnight Stroll",
+  "composer": "原创 · AI 生成",
+  "style_ref": "爵士三重奏（摇摆 / swing / AABA 主题）",
+  "key": "B-flat major (-2 flats)",
+  "tempo_bpm": 132,
+  "meter": "4/4",
+  "instruments": ["Piano", "Double Bass", "Drums"],
+  "rhythm": {
+    "swing": "摇摆八分 + 三连音装饰",
+    "syncopation": "切分 anticipations",
+    "stop_time": "尾声停拍（stop-time）",
+    "fills": "鼓组乐句末 fill"
+  },
+  "structure": {
+    "A": "m1-8",
+    "A2": "m9-16",
+    "B_bridge": "m17-24",
+    "A3": "m25-32",
+    "outro_stop_time": "m33-40"
+  },
+  "outputs": ["song.musicxml", "song.mid", "song.pdf", "song.mp3"]
+}
