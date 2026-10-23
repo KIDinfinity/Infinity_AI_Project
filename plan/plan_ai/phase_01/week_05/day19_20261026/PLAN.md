@@ -115,7 +115,7 @@ def match(expected: str, hit) -> bool:
 
 def first_rank(expected: list[str], hits) -> int | None:
     return next((i for i, h in enumerate(hits, 1) if any(match(e, h) for e in expected)), None)
-
+# 类似取中位数
 def pct(xs: list[float], p: float) -> float:
     s = sorted(xs)
     return s[max(0, math.ceil(p * len(s)) - 1)] if s else 0.0
