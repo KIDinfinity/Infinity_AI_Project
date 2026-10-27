@@ -1,4 +1,4 @@
-
+控制配置变量测试
 
 - [✅] `eval/configs/` 下 ≥ 4 个 YAML 变体
 - [✅] 每个分块变体有独立 collection `kb_exp_<variant>`；`kb_default` 点数在选定配置重建前保持不变

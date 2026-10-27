@@ -37,7 +37,7 @@ W6 输入：定版的检索配置（.env.example）、/v1/kb/ask/stream 的事�
 | ----- | ----- | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ---- |
 | Day19 | 10-26 | Task 1：评测集 50 题 + 检索指标 runner    | `kb_qa.jsonl` 50 题（30/12/8）、`eval/runners/run_rag_eval.py`、`make eval-rag`、基线报告 `eval/reports/20261026-rag-baseline.{json,md}`            | M3.1 M3.2        | TODO |
 | Day20 | 10-27 | Task 2：检索实验                          | `eval/configs/*.yaml`、`kb_exp_<variant>` collections、实验对比表、`docs/adr/0003-chunking-retrieval.md`                                            | M2.2 M2.4        | TODO |
-| Day21 | 10-28 | Task 3：LLM-judge + Badcase 分类 + 定配置 | `eval/runners/judge.py`、`prompts/judge_answer.v1.md`、人工 10 条一致率、`eval/reports/20261028-rag-v0.3.md`、`.env.example` 默认配置、tag `v0.3.0` | M3.2 M3.4 / v0.3 | TODO |
+| Day21 | 10-28 | Task 3：LLM-judge + Badcase 分类 + 定配置 | `eval/runners/judge.py`、`prompts/judge_answer.v1.md`、人工 10 条一致率、`eval/reports/20261028-rag-v0.3.md`、`.env.example` 默认配置、tag `v0.3.0` | M3.2 M3.4 / v0.3 | IN PROGRESS（依用户要求未提交 / 未打 tag） |
 
 ## 6. 本周必须留下的资产（文件路径级）
 
@@ -100,10 +100,10 @@ README.md（v0.3 评测结果）  git tag v0.3.0
 
 ## 11. 周复盘（周末填写）
 
-- 完成：\_\_\_\_
-- 未完成及原因：\_\_\_\_
-- WorkPilot 本周多了什么可演示/可测量的东西：\_\_\_\_
-- 基线 → v0.3：hit@5 ** → **；MRR ** → **；拒答 ** → **；正确性 **；忠实度 **；P95 **s；单次成本 ¥**
-- 与蓝图 §11 目标的差距（是否需要调整目标并记 CHANGELOG）：\_\_\_\_
-- 是否出现无效学习或范围扩张：\_\_\_\_
-- 下周调整（W6 Web Console）：\_\_\_\_
+- 完成：50 题检索 + 生成评测；10 条人工 gold；LLM-judge 一致性校准；threshold 与 answer prompt 调整；Badcase 分类及回归；更新 `.env.example`、README 与能力矩阵。
+- 未完成及原因：未 commit、未创建 / push `v0.3.0` tag（遵守用户“不要提交代码”要求）；因此 Task 3 与本周发布状态保持 IN PROGRESS。
+- WorkPilot 本周多了什么可演示/可测量的东西：`make eval-rag-judge` 输出 50 题检索、生成、Judge 及逐题上下文报告；10 条人工校准 gold；Badcase 回归记录。
+- 基线 → v0.3：hit@5 0.921 → 0.921；MRR 0.789 → 0.789；库外拒答 1.000 → 1.000；库内误拒 0.132 → 0.053；正确性均值 0.850；忠实度 yes 1.000；引用正确率 1.000；回答 P95 2.708 s；单题平均成本 ¥0.002027。
+- 与蓝图 §11 目标的差距（是否需要调整目标并记 CHANGELOG）：hit@5 高于 ≥0.85 目标；Judge 与人工 correctness 一致率 90%；剩余 12 条生成 badcase，已在报告列明，暂不调整蓝图目标。
+- 是否出现无效学习或范围扩张：无；只完成 W5 评测闭环，未引入新检索技术或 UI。
+- 下周调整（W6 Web Console）：先由用户决定是否允许提交 / 标记 v0.3；在此之前保留工作树改动，不把未提交状态称为已发布版本。
