@@ -5,3 +5,5 @@ excludePlan=["plan_guitar_compose"]
 2.需要分开每天一个目录
 
 3.需要把plan里面的"验收对齐"总结进去，注意必要的上下文也放进去，比如plan/plan_piano/phase_01/week_02/day09_20261026/PLAN.md这个plan文件里面的
+
+4.再按照月份帮我整理一下比如 10月份的就是 2026-10，11月份就是2026-11
