@@ -16,13 +16,13 @@
 
 ### ✅ 验收对齐
 
-- [ ] `eval/datasets/judge_gold.jsonl` 10 条人工标注（覆盖库内对/错、库外拒答、易混淆）
-- [ ] `prompts/judge_answer.v1.md` + `eval/runners/judge.py` 可运行；一致率（correctness 完全一致）≥ 80%，或已写未达标原因 + v2 改动
-- [ ] `make eval-rag-judge` 生成 `eval/reports/20261028-rag-v0.3.{json,md}`：hit@1/3/5、MRR、拒答正确率、误拒率、正确性均值、忠实度 yes 比例、引用正确率、P50/P95、单次平均成本
-- [ ] `SCORE_THRESHOLD` 依据 in_kb / out_of_kb 的 top1 分数分布确定（dense 模式），写进报告
-- [ ] `badcases.md` 有分类统计表；前 2 类各有修复动作，并回归（修复前后指标）
-- [ ] `.env.example` 默认配置更新；README v0.3；tag `v0.3.0` 已 push
-- [ ] `~/lab/projects/career/capability-matrix.md` RAG / Eval 行的证据列已更新；Week 5 README 第 11 节已填写
+- [✅] `eval/datasets/judge_gold.jsonl` 10 条人工标注（覆盖库内对/错、库外拒答、易混淆）
+- [✅] `prompts/judge_answer.v1.md` + `eval/runners/judge.py` 可运行；一致率（correctness 完全一致）≥ 80%，或已写未达标原因 + v2 改动
+- [✅] `make eval-rag-judge` 生成 `eval/reports/20261028-rag-v0.3.{json,md}`：hit@1/3/5、MRR、拒答正确率、误拒率、正确性均值、忠实度 yes 比例、引用正确率、P50/P95、单次平均成本
+- [✅] `SCORE_THRESHOLD` 依据 in_kb / out_of_kb 的 top1 分数分布确定（dense 模式），写进报告
+- [✅] `badcases.md` 有分类统计表；前 2 类各有修复动作，并回归（修复前后指标）
+- [✅] `.env.example` 默认配置更新；README v0.3；tag `v0.3.0` 已 push
+- [✅] `~/lab/projects/career/capability-matrix.md` RAG / Eval 行的证据列已更新；Week 5 README 第 11 节已填写
 
 ### ⏱ 时间块
 
@@ -53,8 +53,8 @@
 
 ### ✅ 验收对齐
 
-- [ ] 当日小节每个音按准、节奏对，慢速（60bpm）不断不错
-
+- [✅] 当日小节每个音按准、节奏对，慢速（60bpm）不断不错
+prporro
 ### ⏱ 时间块
 
 | 时间 | 优先级 | 内容 |
@@ -86,9 +86,9 @@
 
 ### ✅ 验收对齐
 
-- [ ] 第1–8小节 右手慢速（50-60bpm）连续 3 遍无错音、无错拍
-- [ ] 第1–8小节 指法已固定并用铅笔标注
-- [ ] 第1–8小节 能默弹一遍（背谱）
+- [✅] 第1–8小节 右手慢速（50-60bpm）连续 3 遍无错音、无错拍
+- [✅] 第1–8小节 指法已固定并用铅笔标注
+- [✅] 第1–8小节 能默弹一遍（背谱）
 
 ### ⏱ 时间块
 
