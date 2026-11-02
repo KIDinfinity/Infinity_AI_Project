@@ -27,4 +27,7 @@ E5/A5
 (2)1-24小节
 
 二.搭建量化平台
-prompt在 draft/fund/frame.md 。
+prompt在 draft/fund/prompt.md 。
+
+三.汽水音乐项目
+今天完成模拟器多开播放流程
