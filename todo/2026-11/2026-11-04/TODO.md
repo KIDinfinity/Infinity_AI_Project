@@ -16,12 +16,12 @@
 
 ### ✅ 验收对齐
 
-- [ ] 启动 API 后自动生成 `apps/api/data/workpilot.db`，含 conversation / message / feedback 三张表
-- [ ] 问两轮 → 刷新浏览器 → 左侧出现该会话，点击恢复全部消息（含引用），可继续追问
-- [ ] 👎 时必须选原因（wrong / no_citation / irrelevant / incomplete / other）才能提交；同一消息再次评价为更新而非新增
-- [ ] `uv run python -m scripts.export_feedback` 生成 jsonl，每行含 question / answer / reason
-- [ ] `uv run pytest` 新增的会话 / 反馈测试通过
-- [ ] 已 commit + push
+- [✅] 启动 API 后自动生成 `apps/api/data/workpilot.db`，含 conversation / message / feedback 三张表
+- [✅] 问两轮 → 刷新浏览器 → 左侧出现该会话，点击恢复全部消息（含引用），可继续追问
+- [✅] 👎 时必须选原因（wrong / no_citation / irrelevant / incomplete / other）才能提交；同一消息再次评价为更新而非新增
+- [✅] `uv run python -m scripts.export_feedback` 生成 jsonl，每行含 question / answer / reason
+- [✅] `uv run pytest` 新增的会话 / 反馈测试通过
+- [✅] 已 commit + push
 
 ### ⏱ 时间块
 

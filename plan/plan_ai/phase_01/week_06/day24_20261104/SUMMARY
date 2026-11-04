@@ -1,0 +1,191 @@
+# Day 24 · 2026-11-04 · Week 06 Task 3 · 执行结果（SUMMARY）
+
+> 状态：✅ 全部 Step 完成并通过验证。
+> 按用户要求 **未提交代码**（不 commit / 不 push），本文件替代 PLAN「Step 7 · 提交」作为交付记录。
+> 仓库：`~/lab/workpilot`；后端 `apps/api`，前端 `apps/web`。
+
+---
+
+## 0. 一句话结论
+
+用 SQLModel + SQLite 落地了 `conversation` / `message` / `feedback` 三张表；后端 `ask` / `ask/stream` 自动落库并在 `done` 里回传 `conversation_id` / `message_id`；新增会话列表 / 消息列表 / 反馈 3 组路由；前端加了左侧历史会话栏（ConversationList）与每条答案下的 👍/👎 反馈栏（FeedbackBar）；差评可一键导出为 badcase 候选。后端 `pytest` 50 passed、`ruff check` 通过、前端 `pnpm build` 通过。
+
+---
+
+## 1. 各 Step 执行结果
+
+| Step | 内容 | 结果 |
+| --- | --- | --- |
+| 0 前置 | `uv add sqlmodel`；确认 main.py 无 lifespan（自建）；`apps/api/data/` 未 gitignore（已加） | ✅ sqlmodel 0.0.48 / sqlalchemy 2.1.7 |
+| 1 数据模型 | `app/db/models.py` 三张表 + 字段设计 | ✅ 见下方字段设计 |
+| 2 Session | `app/db/session.py`（engine / init_db / get_session）+ lifespan 建表 | ✅ `SQLModel.metadata.create_all` 幂等建表 |
+| 3 落库 | `app/db/crud.py` 的 `save_turn` + 接入 ask / stream | ✅ 见下方落库细节 |
+| 4 路由 | `app/routes/conversations.py`（会话/消息/反馈）+ 测试 | ✅ 4 例通过 |
+| 5 前端 | ConversationList + FeedbackBar + ChatPage 改版 | ✅ `pnpm build` 通过 |
+| 6 导出 | `scripts/export_feedback.py` | ✅ 自测通过 |
+| 7 提交 | commit + push | ⏭️ 按用户要求跳过（本文件替代） |
+
+### 字段设计（Step 1，自定）
+
+- `Conversation`：`id`(uuid4.hex) / `title`(默认「新会话」) / `created_at` / `updated_at`(index)。
+- `Message`：`id` / `conversation_id`(FK, index) / `role`(user|assistant) / `content` / `citations_json` / `usage_json` / `created_at`。JSON 列存字符串快照，只读不查询。
+- `Feedback`：`id` / `message_id`(FK, **unique** + index，一条答案只保留最终评价) / `rating`(up|down, StrEnum) / `reason`(wrong|no_citation|irrelevant|incomplete|other, StrEnum) / `comment` / `created_at`。
+
+### 落库细节（Step 3）
+
+- 非流式 `/v1/kb/ask`：用请求级 `Depends(get_session)` 的 Session 调 `save_turn`，把 `conversation_id`/`message_id` 写回 `KBAnswer` 返回。
+- 流式 `/v1/kb/ask/stream`：生成器里 **不开** 请求级依赖，`with Session(engine) as s:` 独立会话；在 `done` 事件 **之前** 落库，`done` 里回传两个 id（前端靠 `message_id` 提交反馈）。
+- `KBAnswer` 增加 `conversation_id` / `message_id`（默认 None），不破坏 `rag/answer.py` 既有契约。
+
+### 关键问题与解决（卡点）
+
+1. **测试隔离被破坏**：`test_ask.py` 等既有测试在 `finally` 里 `app.dependency_overrides.clear()`，会清掉其它测试文件的模块级 override，导致 `test_conversations.py` 404。→ 改用 `@pytest.fixture(autouse=True)` 逐测试 `pop`，不用 `.clear()`。
+2. **FastAPI Query 默认参数报错**：`Annotated[int, Query(50, le=200)]` 会报「Query default value cannot be set in Annotated」。→ 改为 `limit: Annotated[int, Query(le=200)] = 50`，且默认参数放在非默认依赖参数 `s` 之后。
+3. **ruff**：UP017(`datetime.UTC`)、UP042(`enum.StrEnum`)、E501(超长)、B008(`Depends` 默认参数) 共 8 处 → 全部修复，`ruff check` 通过。
+4. **数据库文件名与 PLAN 不一致**：见下方「⚠️ 关于数据库文件名」。
+
+---
+
+## 2. 测试 / 质量结果
+
+- 后端：`cd ~/lab/workpilot/apps/api && uv run pytest -q` → **50 passed, 2 deselected**。
+- 后端 lint：`uv run ruff check .` → **All checks passed!**（新文件已 `ruff format`）。
+- 前端：`cd ~/lab/workpilot/apps/web && pnpm build` → **成功**。
+- 端到端：真实 ask/stream 链路（deepseek LLM + Qdrant + Ollama bge-m3）可拿到 `done` 事件与两个 id。
+
+---
+
+## 3. 验收对齐（PLAN §3 逐条 + 可执行命令）
+
+> 说明：以下命令均**可在任意目录**直接复制执行（已用绝对路径 / 绝对 URL），唯一前置是 API 已启动（见命令 A）。
+> 其中 `$CID` / `$MID` 用命令 D 的输出来替换。
+
+### A. 启动 API（唯一需要 `cd` 的一条）
+
+```bash
+cd ~/lab/workpilot/apps/api && uv run uvicorn app.main:app --reload --port 8000
+```
+
+### B. 三张表自动生成 ✅（对应验收「workpilot.db 含三张表」）
+
+```bash
+sqlite3 ~/lab/workpilot/apps/api/data/app.db ".tables"
+```
+预期输出：`conversation     feedback     message`
+
+### C. 会话列表（空 / 已有）
+
+```bash
+curl -s http://localhost:8000/v1/conversations | python3 -m json.tool
+```
+
+### D. 问一轮，拿到 `conversation_id` 与 `message_id`
+
+```bash
+curl -s -X POST http://localhost:8000/v1/kb/ask -H 'Content-Type: application/json' \
+  -d '{"question":"WorkPilot 是什么？"}' \
+  | python3 -c 'import sys,json; d=json.load(sys.stdin); print("CID="+d["conversation_id"]); print("MID="+d["message_id"]); print("answer="+d["answer"][:60])'
+```
+预期输出：三行，前两行是 32 位 hex 的 `CID=…` / `MID=…`，第三行是回答片段。
+
+### E. 续问（同一会话，验证「刷新后可续问」）
+
+```bash
+curl -s -X POST http://localhost:8000/v1/kb/ask -H 'Content-Type: application/json' \
+  -d '{"question":"它的多轮对话怎么用？","conversation_id":"$CID"}' | python3 -m json.tool
+```
+
+### F. 列出该会话全部消息（历史恢复）
+
+```bash
+curl -s http://localhost:8000/v1/conversations/$CID/messages | python3 -m json.tool
+```
+预期输出：`user` 与 `assistant` 交替，含 `content` 与 `citations_json`（对应「点击恢复全部消息（含引用）」）。
+
+### G. 👎 缺原因 → 422（验证「👎 必选原因」）
+
+```bash
+curl -s -o /dev/null -w '%{http_code}\n' -X POST "http://localhost:8000/v1/messages/$MID/feedback" \
+  -H 'Content-Type: application/json' -d '{"rating":"down"}'
+```
+预期输出：`422`
+
+### H. 👎 带原因 → 201（可提交）
+
+```bash
+curl -s -X POST "http://localhost:8000/v1/messages/$MID/feedback" -H 'Content-Type: application/json' \
+  -d '{"rating":"down","reason":"incomplete","comment":"回答不完整，缺操作步骤"}' | python3 -m json.tool
+```
+预期输出：含 `rating:"down"`、`reason:"incomplete"`、`message_id` 的 feedback 对象。
+
+### I. 再 👍 → 更新而非新增（验证「再评即更新」）
+
+```bash
+curl -s -X POST "http://localhost:8000/v1/messages/$MID/feedback" -H 'Content-Type: application/json' \
+  -d '{"rating":"up"}' | python3 -m json.tool
+```
+预期输出：**同一 `message_id`**，`rating:"up"`，`reason` 变 `null`（覆盖）。
+
+### J. 导出差评 → jsonl（对应验收「export_feedback 生成 jsonl」）
+
+> 需在存在 👎 时执行（若上一步 I 已覆盖成 👍，请重新执行 H 再导出）。
+
+```bash
+cd ~/lab/workpilot/apps/api && uv run python -m scripts.export_feedback
+```
+预期输出：`exported 1 candidates → ~/lab/workpilot/eval/badcases/candidates-YYYYMMDD.jsonl`。
+
+```bash
+cat ~/lab/workpilot/eval/badcases/candidates-$(date +%Y%m%d).jsonl | python3 -m json.tool
+```
+预期输出：每行含 `question` / `answer` / `citations` / `reason` / `comment` / `message_id` / `created_at`。
+
+### K. 测试通过 ✅
+
+```bash
+cd ~/lab/workpilot/apps/api && uv run pytest -q
+```
+预期输出：`50 passed, 2 deselected`。
+
+### L. 前端构建 ✅
+
+```bash
+cd ~/lab/workpilot/apps/web && pnpm build
+```
+预期输出：构建成功、无 TS 错误。
+
+---
+
+## 4. ⚠️ 关于数据库文件名（workpilot.db → app.db）
+
+PLAN §3 写的是 `apps/api/data/workpilot.db`，但仓库**已提交的 `.env.example`（第 69 行）早就规定**：
+
+```
+# ===== 业务库 =====
+# [必填] W6 起 SQLite；W19 改为 ******host:5432/db
+DATABASE_URL=sqlite:///./data/app.db
+```
+
+本机未跟踪的 `.env` 同样有 `DATABASE_URL=sqlite:///./data/app.db`，会**覆盖** `config.py` 的默认值。因此：
+
+- 实际数据库文件是 `~/lab/workpilot/apps/api/data/app.db`（含三张表）。
+- 我已把 `config.py` 的默认 `database_url` 对齐为 `sqlite:///./data/app.db`，与 `.env.example` 保持一致，避免出现 0 字节的 `workpilot.db` 空文件（已清理该空文件）。
+- 验收命令（见 §3 命令 B）统一指向 `app.db`。若你的 `.env` 里 DATABASE_URL 改成别的文件名，请相应替换路径。
+
+---
+
+## 5. 产出记录（PLAN §11）
+
+- 三张表行数（`sqlite3 ~/lab/workpilot/apps/api/data/app.db "select count(*) from conversation"` 等）：
+  - `conversation` = 4、`message` = 8、`feedback` = 1（均为执行与端到端验证产生的数据，验收运行会继续累加）。
+- 导出的候选条数：当前 0 条（`feedback` 里唯一一条已被后续 👍 覆盖为 up）；按 §3 命令 H→J 重跑即导出 1 条。
+- 卡点：测试隔离被 `dependency_overrides.clear()` 破坏；FastAPI `Annotated` 内 Query 默认值报错；ruff UP017/UP042/E501/B008；`.env` 的 DATABASE_URL 覆盖默认文件名。
+- 用时：约 2 小时（含上述排查与全量验证，未精确计时）。
+
+---
+
+## 6. 完成判定（PLAN §12）
+
+第 3 节验收清单除「已 commit + push」因用户明确要求跳过外，其余全部勾上；commit/push 由本文件 + 工作区未提交改动替代（用户可自行 `git add apps/api apps/web eval/badcases .gitignore && git commit` 后 push）。
+
+**结论：Task 3 DONE → 明天进入 Day25（知识库管理页 + E2E 冒烟 + v0.4.0）。**

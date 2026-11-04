@@ -1,0 +1,221 @@
+# Day 25 · 2026-11-05 · Week 06 Task 4 · 执行结果（SUMMARY）
+
+> 状态：✅ 全部 Step 完成并通过验证（含 Playwright E2E）。
+> 按用户要求 **未提交代码**（不 commit / 不 push / 不打 tag），本文件替代 PLAN「Step 7 · 打 tag + 提交」作为交付记录。
+> 仓库：`~/lab/workpilot`；后端 `apps/api`，前端 `apps/web`。
+
+---
+
+## 0. 一句话结论
+
+打通「浏览器拖拽上传 → 后台异步解析入库 → 状态变 ready → 问答可引用 → 删除级联清理（Qdrant + MinIO）」完整链路：后端新增 `KBDocument` 模型、MinIO 存储封装、`.txt/.md/.pdf/.html` 上传校验路由（415/413/文件名清洗）、后台 `ingest_document` 任务、docs/delete/chunks 路由；前端新增 `/kb` 知识库管理页（上传、2 秒状态轮询、删除确认、查看分块抽屉）；用 Playwright 覆盖「上传 → 就绪 → 提问 → 引用」一条 E2E 冒烟并跑通。后端 `pytest` 50 passed、`ruff` 通过、前端 `pnpm build` 通过、`playwright test` 1 passed。
+
+---
+
+## 1. 各 Step 执行结果
+
+| Step | 内容 | 结果 |
+| --- | --- | --- |
+| 1 数据模型 | `app/db/models.py` 新增 `KBDocument` 表 | ✅ 见下方字段设计 |
+| 2 上传路由 | `app/routes/kb.py` 新增 `/upload`（校验自己写） | ✅ 415/413/空文件/文件名清洗 |
+| 3 后台导入 | `app/rag/jobs.py` 的 `ingest_document` 异步任务 | ✅ pending→processing→ready/failed |
+| 4 列表/删除/分块 | `/docs`、`/docs/{id}`(DELETE)、`/docs/{id}/chunks` | ✅ 级联删 Qdrant+MinIO |
+| 5 前端页 | `KnowledgePage.tsx` + `client.ts` + `App.tsx` 路由 | ✅ `pnpm build` 通过 |
+| 6 E2E | `playwright.config.ts` + `kb-flow.spec.ts` + `sample.md` | ✅ 1 passed |
+| 7 打 tag + 提交 | commit + tag + push | ⏭️ 按用户要求跳过（本文件替代） |
+
+### 字段设计（Step 1）
+
+- `KBDocument`：`id`(uuid4.hex, PK) / `filename` / `object_key` / `size`(int) / `status`(pending|processing|ready|failed) / `error`(nullable) / `chunks`(int) / `created_at` / `updated_at`。建表走 `SQLModel.metadata.create_all`（启动时幂等创建，无需迁移）。
+
+### 上传校验（Step 2，全部自己写）
+
+- `clean_filename`：先 `Path(name).name` 去掉目录（防路径穿越），再把非 `\w.-` 字符替换为 `_`、截断 120 字符、去前导 `.`；如 `../../evil.md` → `evil.md`。
+- `ALLOWED_EXT = {".md",".pdf",".html",".txt"}`；后缀不符 → 415。
+- `MAX_BYTES = 10MB`；`await file.read(MAX_BYTES+1)` 多读 1 字节判断超限 → 413，避免大文件撑爆内存；空文件 → 400。
+- 对象键 `uploads/{doc.id}/{filename}`，写入 MinIO bucket `workpilot`（首次写惰性建桶）。
+
+### 后台导入（Step 3）
+
+- `ingest_document(doc_id)`：从 MinIO 读原始字节 → 写临时文件 → `load_file`（覆盖 `doc.id=doc_id`、`doc.title=filename`）→ `chunk_document` → `embedder.embed` → `store.upsert`（payload 必含 `doc_id`，供删除/分块过滤）；任一步异常把状态置 `failed` 并记录 `error`。
+- `POST /upload` 返回 **202**（Accepted），`BackgroundTasks.add_task(ingest_document, doc.id)`；状态需前端轮询。
+- 依赖：`uv add python-multipart`（0.0.33）。
+
+### 删除一致性（Step 4）
+
+- `DELETE /docs/{id}`：先 `store.delete_by_doc("kb_default", doc_id)` 删 Qdrant 点（避免孤儿向量）→ 再 `storage.remove(object_key)` 删 MinIO 原始对象 → 最后删 DB 行；任一失败留痕，返回 204。
+
+### 前端（Step 5）
+
+- `client.ts`：`uploadDoc`（**不**复用 `request()`，用原生 `fetch` + FormData，不设 Content-Type）、`deleteDoc`（204 无 body，单独处理）、`api.listDocs`、`api.listChunks`、`KBDocument`/`KBChunk` 类型。
+- `KnowledgePage.tsx`：拖拽区 + `input[type=file]`、上传、`useEffect` 检测到 pending/processing 时 2 秒轮询、状态徽章（failed 时 `title` 显示 error）、`查看分块` 抽屉、`删除`（`window.confirm`）。行 `data-testid="doc-row"`，input `data-testid="file-input"`。
+- `App.tsx` 增加 `<Route path="/kb" element={<KnowledgePage />} />`（Nav 的「知识库」链接原已存在）。
+
+### 关键问题与解决（卡点）
+
+1. **boto3 client 没有 `bucket_exists`**：`S3` client 只有 `head_bucket` / `create_bucket`（`bucket_exists` 是 resource 的方法）。→ 改用 `head_bucket` + 捕获 `ClientError` 的 404/NoSuchBucket/NotFound 后 `create_bucket`，其余错误上抛。
+
+---
+
+## 2. 测试 / 质量结果
+
+- 后端：`cd ~/lab/workpilot/apps/api && uv run pytest -q` → **50 passed, 2 deselected**。
+- 后端 lint：`uv run ruff check` → **All checks passed!**；`ruff format --check` 新文件全部通过（kb.py 的 2 处格式漂移来自 Day24 未提交改动，已一并 `ruff format` 修正）。
+- 前端：`cd ~/lab/workpilot/apps/web && pnpm build` → **成功**（tsc + vite，无 TS 错误）。
+- E2E：`cd ~/lab/workpilot/apps/web && pnpm exec playwright test` → **1 passed**（真实调用 Ollama LLM + Qdrant）。
+
+---
+
+## 3. 验收对齐（PLAN §3 逐条 + 完整可执行命令）
+
+> 说明：以下命令均可**在任意目录**直接复制执行，唯一前置是 API 已启动（命令 A）。`$DOC` 用命令 B 的输出来替换。
+> 上传用的 `sample.md` 位于 `~/lab/workpilot/apps/web/e2e/fixtures/sample.md`（含独有事实「WorkPilot 的吉祥物叫 Pilo」）。
+
+### A. 启动 API
+
+```bash
+cd ~/lab/workpilot/apps/api && uv run uvicorn app.main:app --reload --port 8000
+```
+
+### B. 上传 sample.md → 202 pending，轮询至 ready 且 chunks > 0 ✅
+
+```bash
+curl -s -X POST http://localhost:8000/v1/kb/upload \
+  -F "file=@/Users/infinity/lab/workpilot/apps/web/e2e/fixtures/sample.md"
+```
+预期输出：`{"id":"<32位hex>","status":"pending"}`，把 `id` 记作 `$DOC`。
+
+```bash
+sleep 3
+curl -s http://localhost:8000/v1/kb/docs | python3 -c 'import sys,json; d=json.load(sys.stdin); print([(x["filename"],x["status"],x["chunks"]) for x in d])'
+```
+预期输出：`[('sample.md', 'ready', 1)]`（status 为 ready 且 chunks ≥ 1）。
+
+### C. 聊天页问独有问题 → 答案引用该文档 ✅
+
+```bash
+curl -s -X POST http://localhost:8000/v1/kb/ask -H 'Content-Type: application/json' \
+  -d '{"question":"WorkPilot 的吉祥物叫什么？"}' \
+  | python3 -c 'import sys,json; d=json.load(sys.stdin); print("answer:",d["answer"]); print("cited_docs:",[c["doc_title"] for c in d["citations"]])'
+```
+预期输出：answer 含 `Pilo`，cited_docs 含 `sample.md`。
+
+### D. 查看分块 ✅
+
+```bash
+curl -s http://localhost:8000/v1/kb/docs/$DOC/chunks | python3 -m json.tool
+```
+预期输出：数组，元素含 `chunk_index` / `section` / `text`，text 里含「吉祥物叫 Pilo」。
+
+### E. `.exe` → 415 ✅
+
+```bash
+curl -s -o /dev/null -w '%{http_code}\n' -X POST http://localhost:8000/v1/kb/upload \
+  -F "file=@/Users/infinity/lab/workpilot/apps/web/e2e/fixtures/sample.md;filename=evil.exe"
+```
+预期输出：`415`（响应体 `{"detail":"unsupported file type: .exe"}`）。
+
+### F. 11MB 文件 → 413 ✅
+
+```bash
+head -c 11000000 /dev/zero > /tmp/big.md
+curl -s -o /dev/null -w '%{http_code}\n' -X POST http://localhost:8000/v1/kb/upload -F "file=@/tmp/big.md"
+rm -f /tmp/big.md
+```
+预期输出：`413`（响应体 `{"detail":"file too large (max 10MB)"}`）。
+
+### G. 文件名 `../../evil.md` → 清洗为 `evil.md` ✅
+
+```bash
+curl -s -X POST http://localhost:8000/v1/kb/upload \
+  -F "file=@/Users/infinity/lab/workpilot/apps/web/e2e/fixtures/sample.md;filename=../../evil.md"
+sleep 3
+curl -s http://localhost:8000/v1/kb/docs | python3 -c 'import sys,json; print([x["filename"] for x in json.load(sys.stdin)])'
+```
+预期输出：列表里出现 `evil.md`（目录部分被剥离，无 `../../`）。
+
+### H. 损坏 PDF → failed 且显示错误原因 ✅
+
+```bash
+printf 'not a real pdf' > /tmp/broken.pdf
+curl -s -X POST http://localhost:8000/v1/kb/upload -F "file=@/tmp/broken.pdf"
+sleep 4
+curl -s http://localhost:8000/v1/kb/docs | python3 -c 'import sys,json; print([(x["filename"],x["status"],x["error"]) for x in json.load(sys.stdin) if x["filename"]=="broken.pdf"])'
+rm -f /tmp/broken.pdf
+```
+预期输出：`[('broken.pdf', 'failed', 'PdfStreamError: Stream has ended unexpectedly')]`（error 非空即通过）。
+
+### I. 删除后：Qdrant 该 doc 计数为 0、MinIO 对象不存在、列表消失 ✅
+
+```bash
+curl -s -X POST http://localhost:6333/collections/kb_default/points/count -H 'Content-Type: application/json' \
+  -d "{\"filter\":{\"must\":[{\"key\":\"doc_id\",\"match\":{\"value\":\"$DOC\"}}]}}"
+```
+预期输出：`{"result":{"count":1},...}`（删除前有 1 个点）。
+
+```bash
+curl -s -o /dev/null -w '%{http_code}\n' -X DELETE http://localhost:8000/v1/kb/docs/$DOC
+```
+预期输出：`204`。
+
+```bash
+curl -s -X POST http://localhost:6333/collections/kb_default/points/count -H 'Content-Type: application/json' \
+  -d "{\"filter\":{\"must\":[{\"key\":\"doc_id\",\"match\":{\"value\":\"$DOC\"}}]}}"
+```
+预期输出：`{"result":{"count":0},...}`。
+
+```bash
+cd ~/lab/workpilot/apps/api && uv run python -c "from app.core.storage import storage; import botocore.exceptions as e
+try: storage.get_bytes('uploads/\$DOC/sample.md'); print('STILL EXISTS')
+except e.ClientError as ex: print('MinIO gone:', ex.response['Error']['Code'])"
+```
+预期输出：`MinIO gone: NoSuchKey`（对象已被删除）。
+
+```bash
+curl -s http://localhost:8000/v1/kb/docs
+```
+预期输出：列表里已无 `$DOC` 对应的文档。
+
+### J. E2E 通过一次 ✅
+
+```bash
+cd ~/lab/workpilot/apps/web && pnpm exec playwright test
+```
+预期输出：`1 passed`（先确保 `make dev` + `make web` 已在跑，见命令 A 与 vite 启动）。
+
+### K. 测试 / 构建 / lint ✅
+
+```bash
+cd ~/lab/workpilot/apps/api && uv run pytest -q
+cd ~/lab/workpilot/apps/api && uv run ruff check .
+cd ~/lab/workpilot/apps/web && pnpm build
+```
+预期输出：`50 passed, 2 deselected` / `All checks passed!` / 构建成功。
+
+---
+
+## 4. ⚠️ 说明
+
+- **状态徽章文案用英文枚举**（pending/processing/ready/failed）：与 PLAN §6 的 E2E 断言 `getByText("ready")` 及后端枚举一致；其余 UI 文案（上传/查看分块/删除）为中文。
+- **E2E 不进 CI**：`kb-flow.spec.ts` 真实调用 LLM（Ollama deepseek），按 PLAN 约定留作本地冒烟；Playwright 已加入 `apps/web` devDependencies。
+- **数据库**：沿用 `.env` 的 `DATABASE_URL=sqlite:///./data/app.db`，实际库文件 `~/lab/workpilot/apps/api/data/app.db`；`KBDocument` 表由启动时 `create_all` 自动创建。
+
+---
+
+## 5. 产出记录（PLAN §11）
+
+- 新增文件：
+  - 后端 `apps/api/app/core/storage.py`、`apps/api/app/rag/jobs.py`。
+  - 前端 `apps/web/src/pages/KnowledgePage.tsx`、`apps/web/playwright.config.ts`、`apps/web/e2e/kb-flow.spec.ts`、`apps/web/e2e/fixtures/sample.md`。
+- 修改文件：`apps/api/app/db/models.py`、`apps/api/app/rag/loaders/__init__.py`、`apps/api/app/routes/kb.py`、`apps/api/pyproject.toml` + `uv.lock`（python-multipart）、`apps/web/src/api/client.ts`、`apps/web/src/App.tsx`、`apps/web/package.json` + `pnpm-lock.yaml`（@playwright/test）、`apps/web/.gitignore`（忽略 Playwright 产物 `test-results/` / `playwright-report/`）。
+- 单文档入库耗时（本地实测）：约 0.9s（上传 202 → ready，含 bge-m3 embedding + Qdrant upsert）。
+- 卡点：boto3 `S3.bucket_exists` 不存在，改用 `head_bucket` + `create_bucket`。
+- 用时：约 1.5 小时（含前后端实现、curl 全链路验证、E2E、SUMMARY，未精确计时）。
+
+---
+
+## 6. 完成判定（PLAN §12）
+
+第 3 节验收清单除「`git tag v0.4.0` 已推送；周复盘已填写」因用户明确要求**不提交代码**而跳过外，其余全部勾上：上传→ready→可引用、415/413/文件名清洗、损坏 PDF→failed、删除级联清理、Playwright E2E 通过。
+
+**结论：Task 4 DONE → v0.4 功能齐备（Web Console：流式/引用/历史/反馈/上传），明日进入 Day26。**
