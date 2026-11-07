@@ -1,0 +1,51 @@
+# ========== 业务策略参数（对应 base_rule Target1/2/3）==========
+strategy:
+  base_profit_rate: 0.10 # 基础止盈目标 10%
+  min_hold_days: 30 # 默认最低持有天数
+  confidence_threshold: 70 # 暴涨预警最低置信分数线（<70 只标观察，不推荐买入）
+  surge_upper_target: 0.30 # 暴涨预期上限 30%
+
+# ========== 数据源接口 & 密钥配置 ==========
+api:
+  fund_data:
+    endpoint: "https://xxx/api/fund"
+    api_key: "${FUND_API_KEY}"
+    timeout: 15
+    retry_max: 3
+    backup_endpoints: ["https://backup-xxx/api/fund"]
+  stock_financial:
+    endpoint: "https://xxx/api/financial"
+    api_key: "${FINANCIAL_API_KEY}"
+    timeout: 15
+    retry_max: 3
+    backup_endpoints: []
+  macro_data:
+    endpoint: "https://xxx/api/macro"
+    api_key: "${MACRO_API_KEY}"
+    timeout: 15
+    retry_max: 3
+    backup_endpoints: []
+  financial_news:
+    endpoint: "https://xxx/api/news"
+    api_key: "${NEWS_API_KEY}"
+    timeout: 20
+    retry_max: 4
+    backup_endpoints: []
+
+# ========== API 自适应容错适配器参数 ==========
+api_adapter:
+  backoff_factor: 2 # 指数退避系数
+  rate_limit_sleep: 5 # 429 限流基础休眠秒数
+  auto_reduce_payload: true # 失败时自动精简请求参数
+  enable_switch_backup: true # 允许自动切换备用接口
+
+# ========== LLM 调用配置 ==========
+llm:
+  provider: "fake" # 先用 fake provider 跑通全链路，真实接入见 feature checklist F7.1
+  model: "gpt-4.1"
+  api_key: "${LLM_API_KEY}"
+  timeout: 60
+
+# ========== 系统固定路径常量 ==========
+path:
+  data_root: "./data" # 相对 project/fund/ 的路径
