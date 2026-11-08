@@ -1,0 +1,17 @@
+{
+  "lastUpdated": "2026-11-08",
+  "days": [
+    {
+      "date": "2026-11-08",
+      "summary": "这是一条示例资讯，运行 pnpm news:add 添加你的第一条真实资讯后即可替换。",
+      "top3": [
+        {
+          "title": "示例条目：替换为真实标题",
+          "source": "示例来源",
+          "link": "https://example.com",
+          "reason": "这里写为什么值得关注这条资讯"
+        }
+      ]
+    }
+  ]
+}

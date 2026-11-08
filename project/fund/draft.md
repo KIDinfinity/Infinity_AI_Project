@@ -1,0 +1,6 @@
+Phase 0–6 of the fund system are now fully implemented and tested (106 tests passing). Summary of what was completed in this session:
+
+F4.6 weekly_reviewer.py — tested and wired up; also fixed a type-hint accuracy issue in agents/\_common.py (collect_data_warning now uses a Protocol to correctly type both AdapterResult and AnalysisRecord inputs).
+F5.1/F5.2 agents/orchestrator.py::run_daily/run_weekly — merges position_analyst/bull_scanner/risk_alert outputs into full AnalysisRecords, enforces "暴跌优先于止盈" via rules.resolve_final_decision, writes trade_decision entries, and backfills performance_db on weekly review. Also added rules.cap_confidence_when_degraded (confidence capping when data is degraded, per design doc's explicit constraint).
+F6.1/F6.2 cli.py daily/weekly subcommands — fund daily reconstructs current holdings from the actual_operations ledger (weighted-average cost basis) so it's usable with zero extra arguments; fund weekly defaults to last ISO week. README updated with real executable usage instructions.
+Remaining work is Phase 7 (Optional): real LLM provider, real data source endpoints, local Web UI, and scheduled tasks — none of these are started, and per the project's own checklist they require explicit user confirmation before implementation (especially scheduled tasks). Let me know if you'd like me to proceed with any of these.

@@ -18,16 +18,25 @@
 
 其余文档（目录结构、配置、数据模型、容错适配器、Agent/Prompt 规范、Daily/Weekly 流程、CLI/UI、测试策略）见 [design/](design/) 目录索引。
 
-## 快速开始（骨架搭好、Phase 0 开始实现后可用）
+## 快速开始
 
 ```bash
 cd project/fund
-cp config.example.yaml config.yaml   # 按需填入真实 api_key / endpoint
+cp config.example.yaml config.yaml   # 按需填入真实 api_key / endpoint；不改时默认 llm.provider="fake"，全链路可离线跑通
 uv sync                              # 安装依赖
-uv run pytest                        # 跑单元测试
-uv run fund daily                    # 【Daily Button】等价命令（Phase 6 实现后可用）
-uv run fund weekly                   # 【Weekly Button】等价命令（Phase 6 实现后可用）
+uv run pytest                        # 跑单元测试（106 个用例全绿）
+
+# 先手工录入真实买卖操作（历史持仓的唯一数据来源，见 design/03_data_model.md 6.1）
+uv run fund record-operation --fund-code 000001 --type 买入 --date 2026-01-01 --amount 10000 --price 1.0
+
+uv run fund daily                      # 【Daily Button】：对当前持仓（从 actual_operations 重建）逐只跑研判，落盘 analysis_log
+uv run fund daily --fund-code 000001   # 可选：只跑单只基金，便于调试
+
+uv run fund weekly                     # 【Weekly Button】：复盘上一个 ISO 周，落盘 weekly_review_log + 回填 performance_db
+uv run fund weekly --week 2026-W43     # 可选：手动指定复盘周，便于补跑
 ```
+
+> `llm.provider` 保持默认的 `"fake"` 时，`daily`/`weekly` 的分析内容都是占位结构（不调用真实 LLM）；接入真实 LLM / 真实数据源属于 Feature checklist Phase 7（Optional），见下方「当前进度」。
 
 ## 目录速览
 
@@ -47,4 +56,4 @@ project/fund/
 
 ## 当前进度
 
-跟踪见 [design/09_feature_checklist.md](design/09_feature_checklist.md)，当前处于 **Phase 0（骨架）尚未开始**。
+跟踪见 [design/09_feature_checklist.md](design/09_feature_checklist.md)。Phase 0~6（骨架、容错适配器、四个数据源、知识库、规则引擎、LLM+Prompt+Agents、编排落盘、CLI 入口）均已实现并有单测覆盖；剩余 Phase 7 为 Optional（真实 LLM/真实数据源接入、本地 Web UI），按需触发。
