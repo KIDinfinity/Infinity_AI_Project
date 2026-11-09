@@ -16,13 +16,13 @@
 
 ### ✅ 验收对齐
 
-- [ ] 上传 `sample.md` → 列表显示 pending/processing → 2 分钟内 ready 且 chunks > 0
-- [ ] 聊天页问 sample.md 中的独有问题 → 答案引用该文档
-- [ ] `.exe` → 415；11MB 文件 → 413；文件名 `../../evil.md` 存储时被清洗为 `evil.md`
-- [ ] 导入失败（如上传损坏 PDF）→ 状态 failed 且显示错误原因
-- [ ] 删除文档后：Qdrant 中该 `doc_id` 计数为 0，MinIO 对象不存在，列表消失
-- [ ] E2E：Playwright 用例通过一次（或手工清单全部勾选，记录在 draft.md）
-- [ ] `git tag v0.4.0` 已推送；周复盘已填写
+- [✅] 上传 `sample.md` → 列表显示 pending/processing → 2 分钟内 ready 且 chunks > 0
+- [✅] 聊天页问 sample.md 中的独有问题 → 答案引用该文档
+- [✅] `.exe` → 415；11MB 文件 → 413；文件名 `../../evil.md` 存储时被清洗为 `evil.md`
+- [✅] 导入失败（如上传损坏 PDF）→ 状态 failed 且显示错误原因
+- [✅] 删除文档后：Qdrant 中该 `doc_id` 计数为 0，MinIO 对象不存在，列表消失
+- [✅] E2E：Playwright 用例通过一次（或手工清单全部勾选，记录在 draft.md）
+- [✅] `git tag v0.4.0` 已推送；周复盘已填写
 
 ### ⏱ 时间块
 

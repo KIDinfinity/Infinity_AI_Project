@@ -1,4 +1,4 @@
-planPath = /Users/infinity/Documents/a_future/plan/plan_ai/phase_01/week_06/day25_20261105/PLAN.md
+planPath = /Users/infinity/Documents/a_future/plan/plan_ai/phase_01/week_07/day26_20261109/PLAN.md
 
 这个promp中的执行步骤各个step执行一下，要求最后总结告诉我都做了什么输出文档在这个PLAN文件同级，文件名为 SUMMARY 。
 1.不用帮我提交代码！
