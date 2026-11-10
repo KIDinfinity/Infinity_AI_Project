@@ -16,13 +16,13 @@
 
 ### ✅ 验收对齐
 
-- [ ] `.env` 删掉 `LLM_API_KEY` 后启动：进程立即退出，错误信息指明缺少的字段（恢复后正常）
-- [ ] `APP_ENV=prod` 且 embedding 指向 `11434`（Ollama）时启动失败（prod 约束生效）
-- [ ] `curl -i localhost:8080/v1/kb/docs` 响应头含 `X-Request-ID`，`make logs` 中该请求的访问日志 `request_id` 相同
-- [ ] 带 `-H 'X-Request-ID: my-trace-0001'` 请求时被透传；带非法值（含空格 / 引号）时被替换为新 id
-- [ ] `docker compose -p workpilot stop qdrant` 后 `curl -s localhost:8080/ready` → 503 + `checks.qdrant` 失败；恢复后 200
-- [ ] 触发 404 / 422 / 500 时响应体均为统一格式，500 响应不含 Traceback 和密钥
-- [ ] `uv run pytest -q` 通过（新增 3 个测试）；已 commit + push
+- [✅] `.env` 删掉 `LLM_API_KEY` 后启动：进程立即退出，错误信息指明缺少的字段（恢复后正常）
+- [✅] `APP_ENV=prod` 且 embedding 指向 `11434`（Ollama）时启动失败（prod 约束生效）
+- [✅] `curl -i localhost:8080/v1/kb/docs` 响应头含 `X-Request-ID`，`make logs` 中该请求的访问日志 `request_id` 相同
+- [✅] 带 `-H 'X-Request-ID: my-trace-0001'` 请求时被透传；带非法值（含空格 / 引号）时被替换为新 id
+- [✅] `docker compose -p workpilot stop qdrant` 后 `curl -s localhost:8080/ready` → 503 + `checks.qdrant` 失败；恢复后 200
+- [✅] 触发 404 / 422 / 500 时响应体均为统一格式，500 响应不含 Traceback 和密钥
+- [✅] `uv run pytest -q` 通过（新增 3 个测试）；已 commit + push
 
 ### ⏱ 时间块
 
