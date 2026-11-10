@@ -16,13 +16,13 @@
 
 ### ✅ 验收对齐
 
-- [ ] `make up` 成功；`make ps` 显示 api / qdrant / minio 为 healthy，web 为 running
-- [ ] http://localhost:8080 上传样例 md → ready → 流式问答（逐字）带引用
-- [ ] 直接访问 http://localhost:8080/kb 并刷新，不出现 404
-- [ ] `docker compose -p workpilot exec api id` 显示 `uid=10001(app)`（非 root）
-- [ ] `make down && make up` 后会话历史与文档仍在
-- [ ] 镜像中不含 `.env`：`docker compose -p workpilot exec api ls -a /app | grep -c '^.env$'` 输出 0
-- [ ] 已 commit + push
+- [✅] `make up` 成功；`make ps` 显示 api / qdrant / minio 为 healthy，web 为 running
+- [✅] http://localhost:8080 上传样例 md → ready → 流式问答（逐字）带引用
+- [✅] 直接访问 http://localhost:8080/kb 并刷新，不出现 404
+- [✅] `docker compose -p workpilot exec api id` 显示 `uid=10001(app)`（非 root）
+- [✅] `make down && make up` 后会话历史与文档仍在
+- [✅] 镜像中不含 `.env`：`docker compose -p workpilot exec api ls -a /app | grep -c '^.env$'` 输出 0
+- [✅] 已 commit + push
 
 ### ⏱ 时间块
 

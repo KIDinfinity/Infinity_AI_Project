@@ -28,13 +28,13 @@ grep -n "include_router\|add_middleware" app/main.py
 
 ## 3. 验收对齐（做完要能勾掉）
 
-- [ ] `.env` 删掉 `LLM_API_KEY` 后启动：进程立即退出，错误信息指明缺少的字段（恢复后正常）
-- [ ] `APP_ENV=prod` 且 embedding 指向 `11434`（Ollama）时启动失败（prod 约束生效）
-- [ ] `curl -i localhost:8080/v1/kb/docs` 响应头含 `X-Request-ID`，`make logs` 中该请求的访问日志 `request_id` 相同
-- [ ] 带 `-H 'X-Request-ID: my-trace-0001'` 请求时被透传；带非法值（含空格 / 引号）时被替换为新 id
-- [ ] `docker compose -p workpilot stop qdrant` 后 `curl -s localhost:8080/ready` → 503 + `checks.qdrant` 失败；恢复后 200
-- [ ] 触发 404 / 422 / 500 时响应体均为统一格式，500 响应不含 Traceback 和密钥
-- [ ] `uv run pytest -q` 通过（新增 3 个测试）；已 commit + push
+- [x] `.env` 删掉 `LLM_API_KEY` 后启动：进程立即退出，错误信息指明缺少的字段（恢复后正常）
+- [x] `APP_ENV=prod` 且 embedding 指向 `11434`（Ollama）时启动失败（prod 约束生效）
+- [x] `curl -i localhost:8080/v1/kb/docs` 响应头含 `X-Request-ID`，`make logs` 中该请求的访问日志 `request_id` 相同
+- [x] 带 `-H 'X-Request-ID: my-trace-0001'` 请求时被透传；带非法值（含空格 / 引号）时被替换为新 id
+- [x] `docker compose -p workpilot stop qdrant` 后 `curl -s localhost:8080/ready` → 503 + `checks.qdrant` 失败；恢复后 200
+- [x] 触发 404 / 422 / 500 时响应体均为统一格式，500 响应不含 Traceback 和密钥
+- [x] `uv run pytest -q` 通过（新增 3 个测试）；已 commit + push
 
 ## 4. 时间块（≤ 120 分钟）
 
@@ -327,11 +327,20 @@ F8 运维能力与 M9 可观测性起步：WorkPilot 从「出问题只能本地
 
 ## 11. 产出记录（执行时填写）
 
-- 一条访问日志样例（脱敏后贴这里）：\_\_\_\_
-- `/ready` 失败场景输出：\_\_\_\_
-- 改掉的 `print` 数量：\_\_\_\_
-- 卡点：\_\_\_\_
-- 用时：\_\_\_\_ 分钟
+- 一条访问日志样例（脱敏后贴这里）：
+  ```json
+  {"ts": "2026-11-10T00:58:33+0800", "level": "INFO", "logger": "access", "msg": "request", "request_id": "def702df44ec40f58507a166cac06d19", "method": "GET", "path": "/health", "status": 200, "latency_ms": 5.4}
+  ```
+- `/ready` 失败场景输出：
+  ```json
+  {"status":"not_ready","checks":{"qdrant":"fail: ResponseHandlingException","db":"ok","llm_key":"ok"}}  → HTTP 503
+  ```
+- 改掉的 `print` 数量：0（剩余 9 处均在 CLI 脚本 `rag/ingest.py`、`rag/loaders/*.py`，不在请求路径，属 P1 可选清理）
+- 卡点：
+  1. Starlette 1.7.0 的 `BaseHTTPMiddleware.call_next` 会把下游未处理异常透传，需读源码确认 `try/except` 确实能兜底 500（已确认，`_StreamingResponse` 可改 header/status_code）。
+  2. 原 `test_conversations.py` 断言旧 FastAPI 默认 422 格式 `body["detail"]`，改统一格式后需同步改为 `body["error"]["message"]`。
+  3. `/ready` 用 `Depends(get_session)` 触发 ruff B008，改为 `Annotated[Session, Depends(get_session)]` 对齐现有风格。
+- 用时：约 100 分钟（探索适配 + 实现 + 测试 + compose 验证）
 
 ## 12. 完成判定
 
