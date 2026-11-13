@@ -16,12 +16,12 @@
 
 ### ✅ 验收对齐
 
-- [ ] `ssh root@<IP>` 与密码登录均被拒绝；`ssh -i ~/.ssh/workpilot_ed25519 deploy@<IP>` 可登录
-- [ ] `curl -sI https://wp.<域名> | head -1` 返回 `401`；`curl -vI` 显示证书由 Let's Encrypt 或 ZeroSSL 签发
-- [ ] 浏览器输入 basic auth 后：上传样例 → ready → 流式问答带引用 → 👎 反馈成功
-- [ ] `nc -zvw3 <IP> 6333 9000 9001 8000` 全部失败，`nc -zvw3 <IP> 443` 成功
-- [ ] 服务器 `stat -c %a ~/workpilot/.env` 输出 `600`
-- [ ] `docs/runbook.md` 有「部署」章节；已 commit + push（不含任何密钥）
+- [✅] `ssh root@<IP>` 与密码登录均被拒绝；`ssh -i ~/.ssh/workpilot_ed25519 deploy@<IP>` 可登录
+- [✅] `curl -sI https://wp.<域名> | head -1` 返回 `401`；`curl -vI` 显示证书由 Let's Encrypt 或 ZeroSSL 签发
+- [✅] 浏览器输入 basic auth 后：上传样例 → ready → 流式问答带引用 → 👎 反馈成功
+- [✅] `nc -zvw3 <IP> 6333 9000 9001 8000` 全部失败，`nc -zvw3 <IP> 443` 成功
+- [✅] 服务器 `stat -c %a ~/workpilot/.env` 输出 `600`
+- [✅] `docs/runbook.md` 有「部署」章节；已 commit + push（不含任何密钥）
 
 ### ⏱ 时间块
 

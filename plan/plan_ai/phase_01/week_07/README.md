@@ -109,9 +109,9 @@ W8 输入：公网 Demo 地址、CI 徽章、runbook、可复现的 make up
 
 ## 11. 周复盘（Day29 末尾填写）
 
-- 完成：\_\_\_\_
-- 未完成 + 原因：\_\_\_\_
-- WorkPilot 本周多了什么可演示的东西：\_\_\_\_（公网地址、CI 截图、恢复耗时）
-- 是否出现无效学习或范围扩张（例如研究 K8s、折腾监控栈）：\_\_\_\_
-- 本周实际云 / 域名花费：¥\_\_\_\_
-- 下周调整：\_\_\_\_
+- 完成：Day29 测试分层（`live` 标记 + `pyproject.toml` markers/addopts，本地 `ruff` 全过、`pytest -m "not live"` 53 passed）；`.gitea/workflows/ci.yml`（api lint/test + web typecheck/build）；`deploy/scripts/backup.sh`（Qdrant 快照 + SQLite 在线备份 + MinIO 归档，保留 7 份）；`deploy/scripts/restore.sh`（清卷→恢复→RTO 计时）；`docs/runbook.md` 增补「备份 / 恢复 / CI」三节
+- 未完成 + 原因：云端 CI 实际跑绿、备份/恢复演练实测 RTO 未执行——执行环境未就绪（Docker daemon 未运行、`wp-prod` SSH 未配置），标记 CONDITIONAL，W9 第一天补齐
+- WorkPilot 本周多了什么可演示的东西：CI 工作流 + 备份/恢复脚本 + runbook，「改动有门禁、数据可恢复」的流水线骨架已就位（待环境就绪跑一次出 Actions 绿图与 RTO）
+- 是否出现无效学习或范围扩张（例如研究 K8s、折腾监控栈）：无
+- 本周实际云 / 域名花费：¥0（本日无新云资源；域名 / 服务器为既有）
+- 下周调整：环境就绪后补齐 CI 实际跑绿 + 恢复演练实测 RTO，回填 runbook 与本节
