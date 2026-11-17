@@ -4,7 +4,7 @@
 
 把 v0.4 从「只能在我 Mac 上 `make dev` 跑」变成**任何人拿到仓库都能一键起、公网可访问、每次推送自动检查、数据可备份可恢复**的工程化交付物。
 
-一句话验收：**`make up` 本地一键起全栈；`https://<你的域名>` 带 basic auth 可问答；Gitea Actions CI 绿；云端备份 → 清空 → 恢复演练有耗时记录。**
+一句话验收：**`make up` 本地一键起全栈；`https://<公网IP>`（自签名 TLS，域名为后续可选升级）带 basic auth 可问答；Gitea Actions CI 绿；云端备份 → 清空 → 恢复演练有耗时记录。**
 
 ## 2. 资产锚点
 
@@ -59,7 +59,7 @@ W8 输入：公网 Demo 地址、CI 徽章、runbook、可复现的 make up
 ├── scripts/seed_sample.sh                # 批量上传样例
 ├── deploy/
 │   ├── Caddyfile                         # dev：:80
-│   ├── Caddyfile.prod                    # 域名 + 自动 HTTPS + basic_auth
+│   ├── Caddyfile.prod                    # IP 自签名 TLS（或域名自动 HTTPS）+ basic_auth
 │   ├── docker-compose.yml                # dev
 │   ├── docker-compose.prod.yml           # prod：不暴露 qdrant/minio
 │   └── scripts/{deploy.sh,backup.sh,restore.sh}
@@ -75,7 +75,7 @@ W8 输入：公网 Demo 地址、CI 徽章、runbook、可复现的 make up
 - [ ] PASS / FAIL：`/ready` 在 Qdrant 停止时返回 503 且指明 qdrant 失败
 - [ ] PASS / FAIL：日志为 JSON，同一请求的所有行 `request_id` 相同，且与响应头一致
 - [ ] PASS / FAIL：500 响应体不含堆栈 / 密钥，格式为 `{"error":{"code","message","request_id"}}`
-- [ ] PASS / FAIL：`https://<域名>` 证书有效；未带凭据返回 401；带凭据可问答
+- [ ] PASS / FAIL：`https://<公网IP>` 可用（自签名证书，浏览器需手动信任）；未带凭据返回 401；带凭据可问答；域名 + 受信证书为可选后续升级
 - [ ] PASS / FAIL：服务器 `ss -tlnp` 只有 22/80/443 对外；`.env` 权限 600
 - [ ] PASS / FAIL：Gitea Actions CI 在 main 上为绿色
 - [ ] PASS / FAIL：云端备份 → 清空卷 → 恢复 → 问答通过，耗时写入 runbook

@@ -20,7 +20,7 @@
 
 ```bash
 cd ~/lab/workpilot
-git tag | grep v1.0.0 && curl -s https://<你的域名>/health
+git tag | grep v1.0.0 && curl -sk https://<你的域名或公网IP>/health
 ls docs/product/ docs/assets/
 which gitleaks && gitleaks version
 ls ~/.private/sensitive-words.txt 2>/dev/null || echo "需要创建本地敏感词表（不入库）"

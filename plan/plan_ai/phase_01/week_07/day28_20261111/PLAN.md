@@ -2,7 +2,7 @@
 
 ## 0. 今天只做一件事
 
-把 WorkPilot 部署到一台 2C4G 云服务器：Caddy 自动 HTTPS、basic auth 保护 Demo、Qdrant / MinIO 不暴露公网、Embedding 切 SiliconFlow `BAAI/bge-m3`，用 `deploy.sh` 一条命令发布，公网带引用问答可用。
+把 WorkPilot 部署到一台 2C4G 云服务器：先用**公网 IP + Caddy 自签名 TLS**（`tls internal`）跑通全流程，basic auth 保护 Demo、Qdrant / MinIO 不暴露公网、Embedding 切 SiliconFlow `BAAI/bge-m3`，用 `deploy.sh` 一条命令发布，公网带引用问答可用；域名 + Let's Encrypt 受信证书留到后续（见第 12 节）按需切换，不卡今天的进度。
 
 不碰：自动部署（W19）、登录系统（W19）、监控告警、CDN、多台机器、把 `data/corpus` 或任何公司内容传上服务器。
 
@@ -10,18 +10,17 @@
 
 - 构建模块：M5.3 云部署 + HTTPS（Caddy）（见 plan/plan_ai/DA01_TARGET_ASSET.md §5）
 - 版本里程碑：为 v0.5 做准备（P1 验收「公网可访问」）
-- 今天之后 WorkPilot 多了什么（可演示/可测量）：`https://<域名>` 证书有效 → 输入 basic auth → 上传 / 流式问答 / 反馈全流程；外部扫描只开放 22/80/443
+- 今天之后 WorkPilot 多了什么（可演示/可测量）：`https://<公网IP>` 自签名证书（浏览器需手动「继续访问」）→ 输入 basic auth → 上传 / 流式问答 / 反馈全流程；外部扫描只开放 22/80/443；域名 + 受信证书是后续可选的无缝切换（见第 12 节）
 - 今日 AI 实际应用：Embedding 从本地 Ollama 切到 SiliconFlow 同模型 API——同一模型保证 dev / prod 检索行为一致，同时让服务器不需要 GPU / 大内存，单次导入成本可计量
 
 ## 2. 起点（前置确认）
 
 - 已有：Day26–27 的镜像、compose、`/ready`；`data/sample` 公开样例。
-- **需提前完成（不占今天时间）**：购买 2C4G 轻量服务器（香港 / 新加坡区，Ubuntu 22.04/24.04，≤ ¥100/月）；购买域名（约 ¥60/年，国内注册商需先完成实名认证，可能要 1–3 天）；注册 SiliconFlow 并创建 API Key。
+- **需提前完成（不占今天时间）**：购买 2C4G 轻量服务器（香港 / 新加坡区，Ubuntu 22.04/24.04，≤ ¥100/月）；注册 SiliconFlow 并创建 API Key。域名**今天不需要**，先用服务器的公网 IP 跑通全流程，后续想要受信证书 / 好记地址时再买域名（约 ¥60/年，国内注册商需先完成实名认证，可能要 1–3 天），切换步骤见第 12 节。
 - 需确认：
 
 ```bash
 ssh-keygen -t ed25519 -f ~/.ssh/workpilot_ed25519 -C "workpilot-deploy"   # 若还没有专用密钥
-dig +short wp.<你的域名>              # 今天要配置的子域名，预期为空或旧值
 curl -s https://api.siliconflow.cn/v1/embeddings -H "Authorization: Bearer $SILICONFLOW_KEY" \
   -H 'Content-Type: application/json' -d '{"model":"BAAI/bge-m3","input":"hello"}' | head -c 200
 ```
@@ -29,11 +28,11 @@ curl -s https://api.siliconflow.cn/v1/embeddings -H "Authorization: Bearer $SILI
 ## 3. 验收对齐（做完要能勾掉）
 
 - [ ] `ssh root@<IP>` 与密码登录均被拒绝；`ssh -i ~/.ssh/workpilot_ed25519 deploy@<IP>` 可登录
-- [ ] `curl -sI https://wp.<域名> | head -1` 返回 `401`；`curl -vI` 显示证书由 Let's Encrypt 或 ZeroSSL 签发
+- [ ] `curl -skI https://<IP> | head -1` 返回 `401`；`curl -vkI https://<IP>` 显示证书由 Caddy 本地 CA（自签名）签发——浏览器打开会提示「不安全 / 证书无效」属预期，点「高级 → 继续访问」即可
 - [ ] 浏览器输入 basic auth 后：上传样例 → ready → 流式问答带引用 → 👎 反馈成功
 - [ ] `nc -zvw3 <IP> 6333 9000 9001 8000` 全部失败，`nc -zvw3 <IP> 443` 成功
 - [ ] 服务器 `stat -c %a ~/workpilot/.env` 输出 `600`
-- [ ] `docs/runbook.md` 有「部署」章节；已 commit + push（不含任何密钥）
+- [ ] `docs/runbook.md` 有「部署」章节（含 IP 自签名现状 + 域名升级步骤）；已 commit + push（不含任何密钥）
 
 ## 4. 时间块（≤ 120 分钟）
 
@@ -41,7 +40,7 @@ curl -s https://api.siliconflow.cn/v1/embeddings -H "Authorization: Bearer $SILI
 | ------- | ------ | -------------------------------------------------------------------------- |
 | 0–10    | P0     | 方案 A / B 确认，记录理由                                                  |
 | 10–40   | P0     | 服务器初始化：deploy 用户、SSH 加固、ufw、Docker                           |
-| 40–50   | P0     | DNS A 记录；生成 basic auth 哈希                                           |
+| 40–50   | P0     | 确定公网 IP；生成 basic auth 哈希                                          |
 | 50–75   | P0     | `docker-compose.prod.yml` + `Caddyfile.prod` + `deploy.sh` + 服务器 `.env` |
 | 75–100  | P0     | 首次部署、seed 样例、逐项验证                                              |
 | 100–115 | P0     | runbook 部署章节 + 提交                                                    |
@@ -51,25 +50,26 @@ curl -s https://api.siliconflow.cn/v1/embeddings -H "Authorization: Bearer $SILI
 
 ## 5. 今日学习（只学完成任务必须的）
 
-- Caddy 站点地址写域名时，会自动向 ACME CA 申请并续期证书，前提是 DNS 已指向本机且 80/443 可达。
+- Caddy 站点地址写域名时，会自动向 ACME CA 申请并续期受信证书，前提是 DNS 已指向本机且 80/443 可达；地址写公网 IP 时公共 CA 一般不签发，Caddy 会用 `tls internal` 走本地 CA 签发**自签名证书**——同样是 TLS 加密，但客户端不会自动信任，浏览器会提示警告，需手动「继续访问」。
 - Docker 发布的端口会绕过 ufw 规则（直接写 iptables），所以「不暴露」必须靠 compose 不写 `ports`，而不是靠防火墙。
 - `sshd_config.d/` 中同一指令以**先读到的为准**，云镜像常带 `50-cloud-init.conf` 开启密码登录，自定义文件要用更小的序号。
-- basic auth 只适合 W19 前的 Demo 保护：凭据 bcrypt 哈希存服务器，传输依赖 HTTPS。
-- 资料：https://caddyserver.com/docs/automatic-https 、https://caddyserver.com/docs/caddyfile/directives/basic_auth 、https://docs.docker.com/engine/install/ubuntu/ 、https://docs.docker.com/engine/network/packet-filtering-firewalls/ 、https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/
+- basic auth 只适合 W19 前的 Demo 保护：凭据 bcrypt 哈希存服务器，传输依赖 TLS（哪怕是自签名）——**绝不能退化成纯 HTTP**，否则账号密码会以明文在公网传输。
+- 资料：https://caddyserver.com/docs/automatic-https 、https://caddyserver.com/docs/caddyfile/directives/basic_auth 、https://caddyserver.com/docs/caddyfile/directives/tls 、https://docs.docker.com/engine/install/ubuntu/ 、https://docs.docker.com/engine/network/packet-filtering-firewalls/ 、https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/
 
 ## 6. 执行步骤
 
 ### Step 1 · 方案选择（写进 runbook）
 
-| 维度       | A 轻量服务器 + Caddy（推荐）           | B Cloudflare Tunnel 暴露本机    |
-| ---------- | -------------------------------------- | ------------------------------- |
-| 成本       | ¥60–100/月 + 域名                      | 免费（域名需托管在 Cloudflare） |
-| 可用性     | 7×24                                   | Mac 合盖 / 断网即不可用         |
-| Embedding  | SiliconFlow API                        | 可继续用本机 Ollama             |
-| 学到的能力 | Linux 加固、HTTPS、生产配置（JD 高频） | 隧道 / Zero Trust               |
-| 适用       | P1 公网 Demo、面试演示                 | 预算为 0 或临时演示             |
+| 维度       | A 轻量服务器 + Caddy（推荐）                                                      | B Cloudflare Tunnel 暴露本机    |
+| ---------- | --------------------------------------------------------------------------------- | ------------------------------- |
+| 成本       | ¥60–100/月（域名可选，不买也行）                                                  | 免费（域名需托管在 Cloudflare） |
+| 可用性     | 7×24                                                                              | Mac 合盖 / 断网即不可用         |
+| 访问地址   | 今天：公网 IP + 自签名 TLS；后续可选：域名 + Let's Encrypt 受信证书（见第 12 节） | 域名（Cloudflare 托管）必须有   |
+| Embedding  | SiliconFlow API                                                                   | 可继续用本机 Ollama             |
+| 学到的能力 | Linux 加固、HTTPS、生产配置（JD 高频）                                            | 隧道 / Zero Trust               |
+| 适用       | P1 公网 Demo、面试演示                                                            | 预算为 0 或临时演示             |
 
-B 方案最小命令（仅备选）：`brew install cloudflared` → `cloudflared tunnel login` → `cloudflared tunnel create workpilot` → `cloudflared tunnel route dns workpilot wp.<域名>` → `cloudflared tunnel run --url http://localhost:8080 workpilot`；保护用 Cloudflare Access 或在 dev Caddyfile 加 basic_auth。
+B 方案最小命令（仅备选，需要域名）：`brew install cloudflared` → `cloudflared tunnel login` → `cloudflared tunnel create workpilot` → `cloudflared tunnel route dns workpilot wp.<域名>` → `cloudflared tunnel run --url http://localhost:8080 workpilot`；保护用 Cloudflare Access 或在 dev Caddyfile 加 basic_auth。
 
 ### Step 2 · 服务器初始化（用云厂商给的 root / ubuntu 账号登录）
 
@@ -101,21 +101,22 @@ Host wp-prod
   IdentityFile ~/.ssh/workpilot_ed25519
 ```
 
-### Step 3 · DNS + basic auth 哈希
+### Step 3 · 确认公网 IP + basic auth 哈希
 
-- 域名控制台添加 A 记录：`wp` → `<IP>`，TTL 600；`dig +short wp.<域名>` 返回 IP 再继续。
+- 记下服务器公网 IP（云厂商控制台可见），今天不需要买域名、不需要配 DNS。
 - 生成哈希（交互输入密码，不进 shell 历史）：`docker run --rm -it caddy:2-alpine caddy hash-password`，复制输出的 `$2a$14$...`。
 
 ### Step 4 · 生产配置
 
-`deploy/Caddyfile.prod`（Tab 缩进）：
+`deploy/Caddyfile.prod`（Tab 缩进）——地址和证书模式都用环境变量，今天填 IP + `internal`，以后换域名只改 `.env`，这个文件不用动：
 
 ```caddyfile
 {
 	email {$ACME_EMAIL}
 }
 
-{$WP_DOMAIN} {
+{$WP_SITE_ADDRESS} {
+	tls {$WP_TLS_DIRECTIVE}
 	basic_auth {
 		{$BASIC_AUTH_USER} {$BASIC_AUTH_HASH}
 	}
@@ -139,6 +140,8 @@ Host wp-prod
 }
 ```
 
+`WP_TLS_DIRECTIVE=internal` 时 Caddy 走本地 CA 签发自签名证书（今天用，浏览器会提示不信任）；留空（`WP_TLS_DIRECTIVE=`）时等价于裸 `tls` 指令，Caddy 按 `WP_SITE_ADDRESS` 是否为域名走正常 ACME 自动 HTTPS（后续换域名时用，见第 12 节）。
+
 `deploy/docker-compose.prod.yml`：以 dev compose 为底复制一份，**只改下面这些**（其余 healthcheck / depends_on / restart 保持一致）：
 
 ```yaml
@@ -156,7 +159,8 @@ services:
   web:
     ports: ["80:80", "443:443", "443:443/udp"]
     environment:
-      WP_DOMAIN: ${WP_DOMAIN}
+      WP_SITE_ADDRESS: ${WP_SITE_ADDRESS} # 今天填公网 IP，后续换域名时改这里
+      WP_TLS_DIRECTIVE: ${WP_TLS_DIRECTIVE} # 今天 internal，换域名时留空
       ACME_EMAIL: ${ACME_EMAIL}
       BASIC_AUTH_USER: ${BASIC_AUTH_USER}
       BASIC_AUTH_HASH: ${BASIC_AUTH_HASH}
@@ -176,7 +180,7 @@ volumes:
   }
 ```
 
-Mac 上准备 `.env.prod`（被 `.env.*` 忽略，**确认 `git check-ignore .env.prod` 有输出**）：在 `.env.example` 基础上填 `APP_ENV=prod`、LLM / SiliconFlow key、新的 MinIO 强密码、`WP_DOMAIN=wp.<域名>`、`ACME_EMAIL=`、`BASIC_AUTH_USER=`、`BASIC_AUTH_HASH='$2a$14$...'`（**单引号**：Compose 对单引号值不做 `$` 插值）。
+Mac 上准备 `.env.prod`（被 `.env.*` 忽略，**确认 `git check-ignore .env.prod` 有输出**）：在 `.env.example` 基础上填 `APP_ENV=prod`、LLM / SiliconFlow key、新的 MinIO 强密码、`WP_SITE_ADDRESS=<公网IP>`（今天直接写 IP，不写协议前缀）、`WP_TLS_DIRECTIVE=internal`、`ACME_EMAIL=`、`BASIC_AUTH_USER=`、`BASIC_AUTH_HASH='$2a$14$...'`（**单引号**：Compose 对单引号值不做 `$` 插值）。
 
 ### Step 5 · deploy/scripts/deploy.sh
 
@@ -211,17 +215,17 @@ Makefile 增加 `deploy:` → `DEPLOY_HOST=$(or $(DEPLOY_HOST),wp-prod) ./deploy
 ssh wp-prod 'mkdir -p ~/workpilot'
 scp .env.prod wp-prod:~/workpilot/.env && ssh wp-prod 'chmod 600 ~/workpilot/.env'
 chmod +x deploy/scripts/deploy.sh && make deploy           # 首次构建 5–10 分钟
-curl -sI https://wp.<域名> | head -1                       # HTTP/2 401
-curl -vI https://wp.<域名> 2>&1 | grep -iE 'issuer|expire'
-BASIC_AUTH='<user>:<pass>' make seed BASE=https://wp.<域名>  # 只导入 data/sample 公开样例
+curl -skI https://<IP> | head -1                           # HTTP/2 401（-k 跳过自签名证书校验）
+curl -vkI https://<IP> 2>&1 | grep -iE 'issuer|expire'      # issuer 应为 Caddy Local Authority
+BASIC_AUTH='<user>:<pass>' make seed BASE=https://<IP>      # 只导入 data/sample 公开样例（内部需带 -k/忽略证书校验）
 nc -zvw3 <IP> 6333 9000 9001 8000                          # 均应失败
 ```
 
-浏览器打开 `https://wp.<域名>` → 输入凭据 → 问一个样例中的问题 + 一个库外问题（应拒答）+ 一次 👎。
+浏览器打开 `https://<IP>` → 看到「连接不是私密连接 / 不安全」提示属预期（自签名证书），点「高级 → 继续前往」→ 输入凭据 → 问一个样例中的问题 + 一个库外问题（应拒答）+ 一次 👎。
 
 ### Step 7 · runbook + 提交
 
-`docs/runbook.md` 新建「部署」章节：服务器信息（不写 IP 也可，写别名）、首次初始化清单、`make deploy`、查看日志 `ssh wp-prod 'cd workpilot && docker compose -f deploy/docker-compose.prod.yml logs -f --tail=100 api'`、证书 / 401 排查、轮换 basic auth 密码步骤。
+`docs/runbook.md` 新建「部署」章节：服务器信息（不写 IP 也可，写别名）、首次初始化清单、当前用 IP + 自签名证书的现状说明（浏览器警告属预期）、`make deploy`、查看日志 `ssh wp-prod 'cd workpilot && docker compose -f deploy/docker-compose.prod.yml logs -f --tail=100 api'`、证书 / 401 排查、轮换 basic auth 密码步骤、第 12 节「域名升级」步骤的链接。
 
 ```bash
 git add deploy/ Makefile docs/runbook.md
@@ -233,7 +237,7 @@ git push
 ## 7. 概念自检（不看资料，口述，附答案）
 
 1. 为什么 qdrant / minio 不写 `ports` 比依赖 ufw 更可靠？（答：Docker 发布端口会直接改 iptables 绕过 ufw；不发布则只在 compose 内网可达）
-2. Caddy 自动 HTTPS 需要哪些前提？（答：域名 A 记录指向本机、80/443 从公网可达（HTTP-01 / TLS-ALPN 挑战）、证书目录持久化）
+2. Caddy 自动 HTTPS 需要哪些前提？（答：域名场景——DNS A 记录指向本机、80/443 从公网可达（HTTP-01 / TLS-ALPN 挑战）、证书目录持久化；IP 场景——公共 CA 一般不给 IP 签发受信证书，所以用 `tls internal` 换成本地 CA 自签名，牺牲「自动受信」换取「不依赖域名也能跑 TLS」）
 3. 为什么 prod 要换 SiliconFlow 而向量库要重新导入？（答：服务器无 Ollama；虽然同为 bge-m3，不同推理实现的向量存在细微数值差异，同一个 collection 内必须由同一来源生成）
 4. basic auth 的风险和适用边界？（答：凭据每次请求都发送，必须 HTTPS；无用户区分、无法单独吊销；只做 W19 前的 Demo 门禁）
 5. `rsync --delete` 为什么不会删掉服务器上的 `.env`？（答：被 `--exclude` 匹配的文件不参与删除，除非加 `--delete-excluded`）
@@ -253,24 +257,36 @@ F8「云端部署」落地，WorkPilot 第一次有公网地址——P1 作品�
 
 ## 10. 卡住时的处理
 
-| 现象                                                      | 处理                                                                                                                                        |
-| --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
-| Caddy 日志 `challenge failed` / `no such host`            | DNS 未生效或指错：`dig +short`；确认云控制台安全组放行 80/443                                                                               |
-| 证书申请过多被限流 `too many certificates`                | 没持久化 `caddy-data` 导致反复申请；加 volume，等待限流窗口，期间可用 `acme_ca https://acme-staging-v02.api.letsencrypt.org/directory` 调试 |
-| 改完 sshd 后 `Permission denied (publickey)` 且旧会话已关 | 用云厂商控制台的 VNC / 救援登录，恢复 `authorized_keys` 权限（700/600）                                                                     |
-| api 启动失败 `APP_ENV=prod 需要 EMBEDDING_API_KEY`        | Day27 的 prod 守卫生效：服务器 `.env` 补 key                                                                                                |
-| basic auth 一直 401（密码正确）                           | 哈希中的 `$` 被插值吃掉：`.env` 中改为单引号，或 `docker compose ... config                                                                 | grep BASIC` 检查展开结果 |
-| 服务器构建 web 时 OOM / 极慢                              | 2C4G 一般够；可临时加 2G swap（`fallocate -l 2G /swapfile` …）或在 Mac 构建好 `dist` 再传                                                   |
+| 现象                                                               | 处理                                                                                                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
+| `curl` 报 `SSL certificate problem: self signed certificate`       | IP 自签名阶段的预期现象：加 `-k` 跳过校验；浏览器同理需手动「继续访问」                                                                     |
+| Caddy 日志 `challenge failed` / `no such host`（换域名后才会出现） | DNS 未生效或指错：`dig +short`；确认云控制台安全组放行 80/443；确认 `.env` 的 `WP_TLS_DIRECTIVE` 已清空（不是 `internal`）                  |
+| 证书申请过多被限流 `too many certificates`（仅域名阶段）           | 没持久化 `caddy-data` 导致反复申请；加 volume，等待限流窗口，期间可用 `acme_ca https://acme-staging-v02.api.letsencrypt.org/directory` 调试 |
+| 改完 sshd 后 `Permission denied (publickey)` 且旧会话已关          | 用云厂商控制台的 VNC / 救援登录，恢复 `authorized_keys` 权限（700/600）                                                                     |
+| api 启动失败 `APP_ENV=prod 需要 EMBEDDING_API_KEY`                 | Day27 的 prod 守卫生效：服务器 `.env` 补 key                                                                                                |
+| basic auth 一直 401（密码正确）                                    | 哈希中的 `$` 被插值吃掉：`.env` 中改为单引号，或 `docker compose ... config                                                                 | grep BASIC` 检查展开结果 |
+| 服务器构建 web 时 OOM / 极慢                                       | 2C4G 一般够；可临时加 2G swap（`fallocate -l 2G /swapfile` …）或在 Mac 构建好 `dist` 再传                                                   |
 
 ## 11. 产出记录（执行时填写）
 
 - 方案 A / B 及理由：\_\_\_\_
-- 云厂商 / 区域 / 月费：\_**\_；域名 / 年费：\_\_**
+- 云厂商 / 区域 / 月费：\_**\_；今天是否买域名：否（公网 IP + 自签名）\_\_**
 - 首次构建耗时：\_**\_；`docker stats` 内存占用：\_\_**
 - 公网问答首 token 延迟：\_\_\_\_ s
 - 卡点：\_\_\_\_
 - 用时：\_\_\_\_ 分钟
+- 域名升级计划（是否需要 / 预计时间）：\_\_\_\_
 
-## 12. 完成判定
+## 12. 域名升级（后续可选）
 
-第 3 节全部勾上 → Task 3 DONE → 明天进入 Day29（CI + 云端备份恢复演练 + Week 7 复盘）。任一未通过 → 保持 IN PROGRESS，明天先补 P0。
+不影响今天的 DONE 判定；等需要受信证书（例如要把链接发给别人长期用、不想每次点「继续访问」）时再做，预计 10–15 分钟：
+
+1. 买域名，解析控制台加 A 记录：`wp` → `<公网IP>`，TTL 600；确认生效：`dig +short wp.<域名>` 返回该 IP。
+2. 编辑服务器 `.env`（`~/workpilot/.env`）：`WP_SITE_ADDRESS=wp.<域名>`（原来的 IP 换成域名）、`WP_TLS_DIRECTIVE=`（清空，不再是 `internal`）。
+3. 重新发布：`make deploy`（Caddy 读取新配置后会自动向 Let's Encrypt 申请证书）。
+4. 验证：`curl -sI https://wp.<域名> | head -1` 返回 `401`（不再需要 `-k`）；`curl -vI https://wp.<域名> 2>&1 | grep -i issuer` 显示 `Let's Encrypt`；浏览器打开不再有警告。
+5. `docs/runbook.md` 补一行「已切换域名 + 受信证书，日期：\_\_」。
+
+## 13. 完成判定
+
+第 3 节全部勾上 → Task 3 DONE → 明天进入 Day29（CI + 云端备份恢复演练 + Week 7 复盘）。任一未通过 → 保持 IN PROGRESS，明天先补 P0。域名升级（第 12 节）是可选项，不是 DONE 的前提。

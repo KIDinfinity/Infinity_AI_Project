@@ -136,7 +136,7 @@ ssh <云服务器>
 cd ~/workpilot && ./deploy/scripts/backup.sh                       # 部署前先备份
 git fetch --tags && git pull
 docker compose -f deploy/docker-compose.prod.yml up -d --build
-curl -s https://<你的域名>/health                                   # 预期含 "version":"1.0.0"
+curl -sk https://<你的域名或公网IP>/health                               # 预期含 "version":"1.0.0"；若仍是 IP + 自签名，加 -k 跳过证书校验
 ss -tlnp | grep 8100 || echo "OK: MCP HTTP 未在云端监听"
 ```
 
@@ -164,7 +164,7 @@ ss -tlnp | grep 8100 || echo "OK: MCP HTTP 未在云端监听"
 
 ## 升级
 
-- 新增环境变量：DAILY*BUDGET_CNY、RATELIMIT*_、MCP\__（见 .env.example）
+- 新增环境变量：DAILY*BUDGET_CNY、RATELIMIT*\_、MCP\_\_（见 .env.example）
 ```
 
 ```bash

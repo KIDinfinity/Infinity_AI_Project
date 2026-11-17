@@ -99,7 +99,7 @@ Task 1 完成（compose 可用，便于验证 /ready 失败场景）。
 
 ### 做什么
 
-对比方案 A 轻量服务器（推荐）/ B Cloudflare Tunnel；服务器初始化（SSH key、禁用密码登录、ufw 22/80/443、get.docker.com、deploy 用户）；域名 + A 记录；`deploy/docker-compose.prod.yml`（不暴露 qdrant / minio 端口，Caddy 域名自动 HTTPS，`basic_auth` 保护，embedding 切 SiliconFlow `BAAI/bge-m3`）；`deploy/scripts/deploy.sh`（rsync 排除 .env / data / node_modules / .venv → 远端 `up -d --build`）；服务器 `.env` chmod 600；云端只导入公开 / 脱敏样例。
+对比方案 A 轻量服务器（推荐）/ B Cloudflare Tunnel；服务器初始化（SSH key、禁用密码登录、ufw 22/80/443、get.docker.com、deploy 用户）；先用公网 IP + Caddy 自签名 TLS（`tls internal`）跑通全流程，域名 + 自动 HTTPS 作为后续可选升级；`deploy/docker-compose.prod.yml`（不暴露 qdrant / minio 端口，`basic_auth` 保护，embedding 切 SiliconFlow `BAAI/bge-m3`）；`deploy/scripts/deploy.sh`（rsync 排除 .env / data / node_modules / .venv → 远端 `up -d --build`）；服务器 `.env` chmod 600；云端只导入公开 / 脱敏样例。
 
 ### 为什么做
 
@@ -111,19 +111,19 @@ M5.3 · 为 v0.5 做准备
 
 ### 前置依赖
 
-Task 1–2 完成；已购买 2C4G 香港 / 新加坡轻量服务器与域名；SiliconFlow API key。
+Task 1–2 完成；已购买 2C4G 香港 / 新加坡轻量服务器；SiliconFlow API key。域名**不是前置依赖**，可之后大需要时再买。
 
 ### 具体执行步骤（概要，详见 day28 PLAN.md）
 
 1. 选 A / B，记录理由。
 2. 服务器初始化与加固（先验证 key 登录再禁密码）。
-3. DNS A 记录；`Caddyfile.prod` + `docker-compose.prod.yml`。
+3. 确认公网 IP；`Caddyfile.prod`（自签名 TLS）+ `docker-compose.prod.yml`。
 4. `deploy.sh` + 服务器 `.env`。
 5. 部署 → seed 样例 → 验证证书 / 401 / 问答。
 
 ### 验收标准
 
-- [ ] `curl -I https://<域名>` 返回 401，证书由 Let's Encrypt / ZeroSSL 签发
+- [ ] `curl -k -I https://<公网IP>` 返回 401，证书为 Caddy 自签名（后续换域名时可升级为 Let's Encrypt 受信证书，届时去掉 `-k`）
 - [ ] 带凭据可流式问答且引用样例文档
 - [ ] 服务器外部扫描仅 22/80/443 开放；qdrant / minio 无公网端口
 - [ ] `ssh root@<IP>` 与密码登录均被拒
