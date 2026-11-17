@@ -1,0 +1,160 @@
+# Day 30 总结（2026-11-16 · Week 08 Task 1）
+
+## 一、做了什么
+
+为 WorkPilot（DA-01）写了招聘方视角的完整文档，让陌生人 5 分钟看懂「是什么 / 怎么设计 / 效果多少 / 怎么跑」。产出：
+
+| 文件 | 动作 | 说明 |
+| --- | --- | --- |
+| `~/lab/workpilot/README.md` | 重写 | 招聘方视角，覆盖 Step 1 骨架全部内容，数字全部来自评测报告 |
+| `~/lab/workpilot/docs/architecture.md` | 重写 | 3 张 mermaid（flowchart / sequenceDiagram / erDiagram） |
+| `~/lab/workpilot/docs/adr/0001-llm-gateway.md` | 新建 | LLM 供应商与网关 |
+| `~/lab/workpilot/docs/adr/0002-qdrant.md` | 新建 | 向量库选 Qdrant |
+| `~/lab/workpilot/docs/adr/0004-handwritten-rag.md` | 新建 | 手写 RAG，不用 LangChain |
+| `~/lab/workpilot/docs/adr/0005-compose-caddy.md` | 新建 | Compose + Caddy，IP + HTTP（无 TLS） |
+| `~/lab/workpilot/docs/adr/README.md` | 更新 | 补 ADR 索引表（0001–0005） |
+| `~/lab/workpilot/docs/runbook.md` | 补全 | 新增「本地开发」「本地全栈」「常见故障」三节 |
+| `~/lab/workpilot/docs/assets/demo.gif` | 新建 | 1×1 占位图，Day31 替换真实录屏 |
+
+**未提交代码**（按你的要求）。提交命令见文末「六、待你操作」。
+
+## 二、评测数字来源（全部真实，无编造）
+
+| 指标 | 基线 v0.2 | 当前 v0.3 |
+| --- | ---: | ---: |
+| hit@5 / MRR | 0.921 / 0.789 | 0.921 / 0.789 |
+| 库外拒答正确率 | 1.000 | 1.000 |
+| 库内误拒率 | 0.132 | 0.053 |
+| 正确性均值 / 忠实度 / 引用正确率 | — | 0.850 / 1.000 / 1.000 |
+| 回答 P95 / 单题成本 | 2280 ms / ¥0.0008 | 2708 ms / ¥0.0020 |
+| 总评测成本 | ¥0.040968 | ¥0.101336 |
+
+- 基线 = `eval/reports/20261023-rag-baseline.md`（50 题首轮）
+- 当前 = `eval/reports/20261028-rag-v0.3.md`（50 题，LLM-as-a-judge）
+- 早期 20 题种子集 = `eval/reports/20261022-rag-v0.2.md`
+
+> 说明：PLAN 骨架的表格列名写「当前 v0.5」，但 v0.5 尚无评测报告；按 PLAN 第 10 节「用 W5 定配置那一版（v0.3）作为当前值」，README 用 **v0.3** 作为「当前」列，避免编造 v0.5 数字。
+
+## 三、验收对齐（逐条 + 完整可执行命令）
+
+以下命令均以绝对路径 `cd` 开头，**在任何目录复制粘贴执行即可**，附预期结果。
+
+### ① README 含 11 个部分，首屏有一句话定位 + GIF 占位 + 快速开始入口
+
+```bash
+cd /Users/infinity/lab/workpilot && grep -nE '^#{1,2} ' README.md
+```
+
+预期看到：`# WorkPilot`（首屏标题）以及 `## 功能 / 架构 / 评测结果 / 快速开始 / 前置条件 / 技术栈 / 设计决策 / 路线图 / License` 共 9 个二级标题，加上首屏（标题 + 一句话定位 + 英文摘要 + GIF + 导航）即完整 Step 1 骨架。
+
+验证首屏（定位 + GIF + 导航）逐字可见：
+
+```bash
+cd /Users/infinity/lab/workpilot && head -12 README.md
+```
+
+预期：`> 可私有部署的研发知识 AI 助手…`、`![demo](docs/assets/demo.gif)`、`[快速开始](#快速开始) · [架构](docs/architecture.md) …` 三行都在。
+
+### ② 评测表每个数字后有报告文件链接
+
+```bash
+cd /Users/infinity/lab/workpilot && sed -n '/## 评测结果/,/## 快速开始/p' README.md
+```
+
+预期：表格里每个数字都是 Markdown 链接（`[0.921](eval/reports/…)` 形式），命中 `20261023-rag-baseline.md` 或 `20261028-rag-v0.3.md` 两个真实报告文件；「引用正确率」基线列为 `待测`。
+
+### ③ 快速开始 3 条命令可执行（`make down` 后已重新验证）
+
+```bash
+cd /Users/infinity/lab/workpilot && make down && make up && make seed
+```
+
+预期：4 个容器（api / web / qdrant / minio）Up 且 healthy，`uploaded 5 files to http://localhost:8080`。
+
+健康检查（确认服务真的起来）：
+
+```bash
+curl -s http://localhost:8080/health && echo && curl -s http://localhost:8080/ready
+```
+
+预期：
+`{"status":"ok","env":"dev","version":"0.0.1"}`
+`{"status":"ready","checks":{"qdrant":"ok","db":"ok","llm_key":"ok"}}`
+
+### ④ architecture.md 有 3 张 mermaid，可渲染
+
+```bash
+cd /Users/infinity/lab/workpilot && grep -c '```mermaid' docs/architecture.md
+```
+
+预期：`3`。再确认三种图类型：
+
+```bash
+cd /Users/infinity/lab/workpilot && grep -nE 'flowchart LR|sequenceDiagram|erDiagram' docs/architecture.md
+```
+
+预期：三行分别命中 `flowchart LR`、`sequenceDiagram`、`erDiagram`。渲染方式：VS Code 打开该文件，点右上角「打开预览」，三张图均正常显示（本机预览需装 Markdown Preview Mermaid Support 扩展，或看 Gitea/GitHub 网页渲染）。
+
+### ⑤ ADR 0001 / 0002 / 0004 / 0005 已写，含五要素
+
+```bash
+cd /Users/infinity/lab/workpilot && ls docs/adr/0*.md
+```
+
+预期：`0000-template.md`、`0001-llm-gateway.md`、`0002-qdrant.md`、`0003-chunking-retrieval.md`、`0004-handwritten-rag.md`、`0005-compose-caddy.md` 六篇。
+
+逐篇核对「状态 / 背景 / 决策 / 备选方案 / 后果」五要素：
+
+```bash
+cd /Users/infinity/lab/workpilot && for f in docs/adr/0001-llm-gateway.md docs/adr/0002-qdrant.md docs/adr/0004-handwritten-rag.md docs/adr/0005-compose-caddy.md; do echo "== $f =="; grep -oE '状态：|## 背景|## 决策|## 备选方案|## 后果' "$f" | sort -u; done
+```
+
+预期：每篇都输出 `状态：`、`## 背景`、`## 决策`、`## 备选方案`、`## 后果` 五项。
+
+### ⑥ runbook 含 5 节（本地启动 / 部署 / 备份 / 恢复 / 常见故障）
+
+```bash
+cd /Users/infinity/lab/workpilot && grep -nE '^## ' docs/runbook.md
+```
+
+预期：`本地开发`、`本地全栈`（合起来即「本地启动」）、`备份`、`恢复`、`部署`、`常见故障` 各节都在。
+
+远程部署可达性（Caddy basic_auth 生效，未授权应 401）：
+
+```bash
+curl -sI http://8.148.216.61/ | head -1
+```
+
+预期：`HTTP/1.1 401 Unauthorized`（当前 IP + HTTP，无 TLS，符合「先不绑域名」的要求）。
+
+## 四、关键取舍（面试可讲）
+
+1. **评测数字放在架构前面**：招聘方先关心「效果是否真实」，再关心「怎么做」；数字 + 报告链接建立可信度。
+2. **`retrieved` 事件先于 LLM 调用**：先把引用给前端，降低感知延迟，也支持「低于阈值 → 拒答」分支。
+3. **部署用 IP + HTTP**：Caddyfile 监听 `http://8.148.216.61`（`http://` 前缀 = 不申请证书），域名/TLS 留作后续优化项，届时只需写站点地址自动 ACME。
+4. **ADR 每篇写「复审条件」**：说明决策不是教条，明确何时重新评估（如 Qdrant→pgvector 在 W19 有 Postgres 后复审）。
+
+## 五、实测记录
+
+- `make down && make up`：4 容器全部 healthy（api 等待 web 就绪后 healthy）
+- `make seed`：`uploaded 5 files`（fastapi / react×2 / vite×2 样例）
+- `/health` → `{"status":"ok","env":"dev","version":"0.0.1"}`；`/ready` → 三项 `ok`
+- 远程 `http://8.148.216.61/` → `401 Unauthorized`（basic_auth 生效，符合预期）
+
+## 六、待你操作（未做，按你的要求不提交）
+
+1. **提交与推送**（你决定何时执行）：
+
+```bash
+cd /Users/infinity/lab/workpilot && git add README.md docs/ && git commit -m "docs: recruiter-facing readme, architecture diagrams and ADRs 0001/0002/0004/0005" && git push
+```
+
+2. **Day31**：用真实录屏替换 `docs/assets/demo.gif`（当前是 1×1 占位图）。
+3. **v0.5 里程碑**：待 v0.5 评测报告出炉后，把 README 评测表「当前」列从 v0.3 升到 v0.5。
+
+## 七、产出记录（PLAN 第 11 节）
+
+- README 引用报告：`20261022-rag-v0.2.md` / `20261023-rag-baseline.md` / `20261028-rag-v0.3.md`
+- 评测数字：hit@5 0.921 / 引用正确率 1.000 / 拒答正确率 1.000 / P95 2708 ms / 单题成本 ¥0.0020
+- ADR 完成篇数：4（0001 / 0002 / 0004 / 0005）
+- 卡点：无

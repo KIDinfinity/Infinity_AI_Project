@@ -86,7 +86,7 @@ W8 输入：公网 Demo 地址、CI 徽章、runbook、可复现的 make up
 - **简历 bullet 草稿**：
   - 使用 Docker 多阶段构建（uv）+ Compose 编排 API / Web / Qdrant / MinIO，配合 Caddy 自动 HTTPS 部署至云服务器，镜像体积 \_\_MB，`make up` 一键启动。
   - 实现 request_id 贯穿的 JSON 结构化日志、`/health` 与 `/ready` 分离的健康检查及统一错误响应，线上问题定位时间从 ** 分钟降至 ** 分钟。
-  - 搭建 Gitea Actions CI（lint / test / typecheck / build）与每日备份脚本，完成一次全量恢复演练，RTO \_\_ 分钟。
+  - 搭建 Gitea Actions CI（lint / test / typecheck / build）与每日备份脚本，完成一次全量恢复演练，RTO 1 分钟（实测 22 秒）。
 - **面试题**：
   1. liveness 和 readiness 的区别？各自失败时编排系统做什么？
   2. 一个用户说「刚才报错了」，你怎么在日志里找到那次请求？（request_id 从前端 → 响应头 → 日志）
@@ -109,9 +109,9 @@ W8 输入：公网 Demo 地址、CI 徽章、runbook、可复现的 make up
 
 ## 11. 周复盘（Day29 末尾填写）
 
-- 完成：Day29 测试分层（`live` 标记 + `pyproject.toml` markers/addopts，本地 `ruff` 全过、`pytest -m "not live"` 53 passed）；`.gitea/workflows/ci.yml`（api lint/test + web typecheck/build）；`deploy/scripts/backup.sh`（Qdrant 快照 + SQLite 在线备份 + MinIO 归档，保留 7 份）；`deploy/scripts/restore.sh`（清卷→恢复→RTO 计时）；`docs/runbook.md` 增补「备份 / 恢复 / CI」三节
-- 未完成 + 原因：云端 CI 实际跑绿、备份/恢复演练实测 RTO 未执行——执行环境未就绪（Docker daemon 未运行、`wp-prod` SSH 未配置），标记 CONDITIONAL，W9 第一天补齐
-- WorkPilot 本周多了什么可演示的东西：CI 工作流 + 备份/恢复脚本 + runbook，「改动有门禁、数据可恢复」的流水线骨架已就位（待环境就绪跑一次出 Actions 绿图与 RTO）
+- 完成：Day29 测试分层（`live` 标记 + `pyproject.toml` markers/addopts，本地 `ruff` 全过、`pytest -m "not live"` 53 passed）；`.gitea/workflows/ci.yml`（api lint/test + web typecheck/build）；`deploy/scripts/backup.sh`（Qdrant 快照 + SQLite 在线备份 + MinIO 归档，保留 7 份，服务器实测产出 `wp-20261116-232815.tgz` 并拉回 Mac）；`deploy/scripts/restore.sh`（清卷→恢复→RTO 计时）；`docs/runbook.md` 增补「备份 / 恢复 / CI」三节并回填 RTO；act_runner 已注册并在线（`mac-runner`，label `ubuntu-latest`）；服务器 crontab 已配置每日 03:30 UTC 备份
+- 未完成 + 原因：云端 CI 实际跑绿——需 `git commit + push` 触发，本日未提交代码（按约定留待用户提交后确认 Actions 页两 job 绿 + 一次 ruff 红→绿门禁演练）；备份/恢复演练实测 RTO **22 秒（约 1 分钟）** 已执行并验证「清卷后问答失败 → 恢复后带引用答案」
+- WorkPilot 本周多了什么可演示的东西：CI 工作流 + 备份/恢复脚本 + runbook + 在线 runner + 每日备份 cron，「改动有门禁、数据可恢复」的流水线已跑通备份与恢复闭环（RTO 22s / RPO 24h）
 - 是否出现无效学习或范围扩张（例如研究 K8s、折腾监控栈）：无
 - 本周实际云 / 域名花费：¥0（本日无新云资源；域名 / 服务器为既有）
-- 下周调整：环境就绪后补齐 CI 实际跑绿 + 恢复演练实测 RTO，回填 runbook 与本节
+- 下周调整：用户提交代码后确认 CI 两 job 绿 + ruff 红→绿门禁；其余已闭环

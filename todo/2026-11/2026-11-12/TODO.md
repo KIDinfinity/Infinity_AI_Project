@@ -16,13 +16,13 @@
 
 ### ✅ 验收对齐
 
-- [ ] Gitea 站点管理 → Actions → Runners 中 runner 状态为 Idle / Online
-- [ ] push 后 Actions 页 `ci` 工作流 api / web 两个 job 均绿色
-- [ ] 故意引入一个 ruff 错误 push → CI 红 → 修复后绿（证明门禁有效）
-- [ ] 服务器 `~/backups/wp-*.tgz` 存在，内含 `qdrant-*.snapshot`、`workpilot.db`、`minio.tgz`
-- [ ] Mac `~/lab/backups/workpilot-cloud/` 有同一份副本
-- [ ] 恢复演练：清空卷后问答失败 → 恢复后同一问题返回带引用答案；RTO 写入 runbook
-- [ ] 服务器 `crontab -l` 含每日备份；Week 7 复盘已填；已 commit + push
+- [✅] Gitea 站点管理 → Actions → Runners 中 runner 状态为 Idle / Online
+- [✅] push 后 Actions 页 `ci` 工作流 api / web 两个 job 均绿色
+- [✅] 故意引入一个 ruff 错误 push → CI 红 → 修复后绿（证明门禁有效）
+- [✅] 服务器 `~/backups/wp-*.tgz` 存在，内含 `qdrant-*.snapshot`、`workpilot.db`、`minio.tgz`
+- [✅] Mac `~/lab/backups/workpilot-cloud/` 有同一份副本
+- [✅] 恢复演练：清空卷后问答失败 → 恢复后同一问题返回带引用答案；RTO 写入 runbook
+- [✅] 服务器 `crontab -l` 含每日备份；Week 7 复盘已填；已 commit + push
 
 ### ⏱ 时间块
 

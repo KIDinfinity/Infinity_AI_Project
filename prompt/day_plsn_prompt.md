@@ -1,6 +1,13 @@
-planPath = /Users/infinity/Documents/a_future/plan/plan_ai/phase_01/week_07/day29_20261112/PLAN.md
+planPath = /Users/infinity/Documents/a_future/plan/plan_ai/phase_01/week_08/day31_20261117/PLAN.md
 
 这个promp中的执行步骤各个step执行一下，要求最后总结告诉我都做了什么输出文档在这个PLAN文件同级，文件名为 SUMMARY 。
 1.不用帮我提交代码！
 2.验收对其那里需要给我详细的怎样执行的验收，比如给我完成的curl命令，让我在终端可以看到正确结果，不能只给我命令的一部分，严格按照"验收对齐"部份一条一条对应。
 （每一条执行哪些命令来验收，要完整的命令，在任何目录下执行都可以的拿到expect效果的命令）
+
+注意：
+1.先不使用域名
+使用公网ip：8.148.216.61 (user是root)
+我后面会把plan改成先完全基于公网ip来（ssh登陆公钥已经放到目标服务器，Caddyfile：改成监听 IP、关掉 tls 证书，走 HTTP），域名作为最后需要的时候才使用的优化项，你先不用帮我改后面的其他plan（我已经改好了，只是代码还没合进来）
+2.如果服务pull包比较慢，建议走国内的代理
+3.每一条执行哪些命令来验收，要完整的命令，在任何目录下执行都可以的拿到expect效果的命令(要先cd 到对应绝对路径目标目录下)

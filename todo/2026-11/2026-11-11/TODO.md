@@ -14,7 +14,7 @@
 
 不碰：自动部署（W19）、登录系统（W19）、监控告警、CDN、多台机器、把 `data/corpus` 或任何公司内容传上服务器。
 
-### ✅ 验收对齐
+### ✅ 验收对齐（先用公网ip跑通了，域名可以后期需要再优化）
 
 - [✅] `ssh root@<IP>` 与密码登录均被拒绝；`ssh -i ~/.ssh/workpilot_ed25519 deploy@<IP>` 可登录
 - [✅] `curl -sI https://wp.<域名> | head -1` 返回 `401`；`curl -vI` 显示证书由 Let's Encrypt 或 ZeroSSL 签发
