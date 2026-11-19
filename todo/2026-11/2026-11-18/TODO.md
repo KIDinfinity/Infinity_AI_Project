@@ -16,14 +16,14 @@
 
 ### ✅ 验收对齐
 
-- [ ] `gitleaks git --redact -v .`（含全部历史）结果 `no leaks found`，或误报已写入 `.gitleaksignore` 并逐条说明
-- [ ] 敏感词 grep（全部历史）0 命中；`/Users/<用户名>` 路径 0 命中
-- [ ] `.env`、`data/corpus/`、`*.db` 从未出现在任何提交中
-- [ ] 提交作者邮箱不是公司邮箱（或已决定处理方式并记录）
-- [ ] GitHub 公共仓库可访问：README、Demo GIF、mermaid 正常显示；`main` 与全部 tag 已推送；LICENSE 为 MIT
-- [ ] `career/resume/ai-fullstack-draft.md` 含 ≥ 3 条带数字的 P1 bullets
-- [ ] `career/interview-questions.md` 含 10 道 RAG 题，每题有要点 + WorkPilot 证据链接
-- [ ] 能力矩阵 ≥ 12 项填写「由 WorkPilot 哪个模块证明」；projects 仓库已提交
+- [✅] `gitleaks git --redact -v .`（含全部历史）结果 `no leaks found`，或误报已写入 `.gitleaksignore` 并逐条说明
+- [✅] 敏感词 grep（全部历史）0 命中；`/Users/<用户名>` 路径 0 命中
+- [✅] `.env`、`data/corpus/`、`*.db` 从未出现在任何提交中
+- [✅] 提交作者邮箱不是公司邮箱（或已决定处理方式并记录）
+- [✅] GitHub 公共仓库可访问：README、Demo GIF、mermaid 正常显示；`main` 与全部 tag 已推送；LICENSE 为 MIT
+- [✅] `career/resume/ai-fullstack-draft.md` 含 ≥ 3 条带数字的 P1 bullets
+- [✅] `career/interview-questions.md` 含 10 道 RAG 题，每题有要点 + WorkPilot 证据链接
+- [✅] 能力矩阵 ≥ 12 项填写「由 WorkPilot 哪个模块证明」；projects 仓库已提交
 
 ### ⏱ 时间块
 
