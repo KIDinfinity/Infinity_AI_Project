@@ -16,12 +16,12 @@
 
 ### ✅ 验收对齐
 
-- [ ] `tool_loop.py`：同一轮多个 tool_calls 用 `asyncio.gather` 并行执行；`max_steps=5`；达到上限后用 `tool_choice="none"` 强制收尾
-- [ ] 每步输出结构化日志（step、tool、args、ok、latency_ms、tokens）
-- [ ] `scripts/tool_demo.py` 跑 3 个问题，至少 1 个触发 ≥2 个工具
-- [ ] `eval/datasets/tool_selection.jsonl` 15 条；`run_tool_selection.py` 输出准确率与错选明细到 `eval/reports/20261125-tool-selection.md`
-- [ ] tag `v0.6.0` 推送到 Gitea 与 GitHub
-- [ ] `career/job-market.md` 新增第 1 轮 JD 追踪（10 个 JD + 关键词频次变化）
+- [✅] `tool_loop.py`：同一轮多个 tool_calls 用 `asyncio.gather` 并行执行；`max_steps=5`；达到上限后用 `tool_choice="none"` 强制收尾
+- [✅] 每步输出结构化日志（step、tool、args、ok、latency_ms、tokens）
+- [✅] `scripts/tool_demo.py` 跑 3 个问题，至少 1 个触发 ≥2 个工具
+- [✅] `eval/datasets/tool_selection.jsonl` 15 条；`run_tool_selection.py` 输出准确率与错选明细到 `eval/reports/20261125-tool-selection.md`
+- [✅] tag `v0.6.0` 推送到 Gitea 与 GitHub
+- [✅] `career/job-market.md` 新增第 1 轮 JD 追踪（10 个 JD + 关键词频次变化）
 
 ### ⏱ 时间块
 

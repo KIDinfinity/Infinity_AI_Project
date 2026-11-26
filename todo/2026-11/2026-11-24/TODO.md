@@ -16,12 +16,12 @@
 
 ### ✅ 验收对齐
 
-- [ ] `common.py`：`clip()`、`wrap_untrusted()`（转义 `</tool_output>`）
-- [ ] 4 个工具注册成功，`to_openai_tools()` 共 5 个
-- [ ] 每个工具都返回 `ToolOutput(text=wrap_untrusted(...), sources=[...])`
-- [ ] `gitea_repo_read` 拒绝白名单外仓库、拒绝 `..` 路径（单测）
-- [ ] mock 单测全绿（Gitea 用 respx，Tavily 用 monkeypatch）；`uv run pytest -m live` ≥ 3 个通过
-- [ ] `.env.example` 已加 4 个键（无真实值），已 push
+- [✅] `common.py`：`clip()`、`wrap_untrusted()`（转义 `</tool_output>`）
+- [✅] 4 个工具注册成功，`to_openai_tools()` 共 5 个
+- [✅] 每个工具都返回 `ToolOutput(text=wrap_untrusted(...), sources=[...])`
+- [✅] `gitea_repo_read` 拒绝白名单外仓库、拒绝 `..` 路径（单测）
+- [✅] mock 单测全绿（Gitea 用 respx，Tavily 用 monkeypatch）；`uv run pytest -m live` ≥ 3 个通过
+- [✅] `.env.example` 已加 4 个键（无真实值），已 push
 
 ### ⏱ 时间块
 

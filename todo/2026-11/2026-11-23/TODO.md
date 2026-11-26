@@ -16,12 +16,12 @@
 
 ### ✅ 验收对齐
 
-- [ ] `raw_tool_call.py` 输出：第一轮 `finish_reason=tool_calls` + tool_call 的 id/name/arguments；第二轮给出最终答案
-- [ ] `NOTES.md` 有消息序列图（mermaid）+ 3 条观察
-- [ ] Gateway 新增 `chat_with_tools()`，仍记录 tokens / 成本
-- [ ] `registry.py`：`@register` 重名报错；`to_openai_tools()` 格式正确；`execute()` 非法参数 / 超时 / 未知工具均返回 `ok=False`
-- [ ] `calculator` 用 ast 求值，`__import__("os")`、`2**99999` 被拒绝
-- [ ] `uv run pytest tests/tools -q` 全绿，已 push
+- [✅] `raw_tool_call.py` 输出：第一轮 `finish_reason=tool_calls` + tool_call 的 id/name/arguments；第二轮给出最终答案
+- [✅] `NOTES.md` 有消息序列图（mermaid）+ 3 条观察
+- [✅] Gateway 新增 `chat_with_tools()`，仍记录 tokens / 成本
+- [✅] `registry.py`：`@register` 重名报错；`to_openai_tools()` 格式正确；`execute()` 非法参数 / 超时 / 未知工具均返回 `ok=False`
+- [✅] `calculator` 用 ast 求值，`__import__("os")`、`2**99999` 被拒绝
+- [✅] `uv run pytest tests/tools -q` 全绿，已 push
 
 ### ⏱ 时间块
 
