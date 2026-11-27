@@ -8,11 +8,11 @@ Verse B Rhythm1（m59-74）完整
 
 | Day | 日期 | 任务 |
 | --- | --- | --- |
-| Day41 | 2026-12-14 | Verse B Rhythm1 m59-62 |
-| Day42 | 2026-12-15 | Verse B Rhythm1 m63-66 |
-| Day43 | 2026-12-16 | Verse B Rhythm1 m67-70 |
-| Day44 | 2026-12-17 | Verse B Rhythm1 m71-74 收尾 |
-| Day45 | 2026-12-18 | Verse B Rhythm1 全段（m59-74） |
+| Day41 | 2027-01-25 | Verse B Rhythm1 m59-62 |
+| Day42 | 2027-01-26 | Verse B Rhythm1 m63-66 |
+| Day43 | 2027-01-27 | Verse B Rhythm1 m67-70 |
+| Day44 | 2027-01-28 | Verse B Rhythm1 m71-74 收尾 |
+| Day45 | 2027-01-29 | Verse B Rhythm1 全段（m59-74） |
 
 ## 本周里程碑
 

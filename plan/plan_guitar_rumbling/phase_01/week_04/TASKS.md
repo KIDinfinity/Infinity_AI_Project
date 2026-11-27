@@ -8,11 +8,11 @@ Verse A Rhythm1（m13-24）+ Solo A 复练
 
 | Day | 日期 | 任务 |
 | --- | --- | --- |
-| Day16 | 2026-11-09 | Verse A Rhythm1 m13-16 |
-| Day17 | 2026-11-10 | Verse A Rhythm1 m17-20 |
-| Day18 | 2026-11-11 | Verse A Rhythm1 m21-24 |
-| Day19 | 2026-11-12 | Verse A Rhythm1 m13-24 串联 |
-| Day20 | 2026-11-13 | Solo A 复练 + 录音自检 |
+| Day16 | 2026-12-21 | Verse A Rhythm1 m13-16 |
+| Day17 | 2026-12-22 | Verse A Rhythm1 m17-20 |
+| Day18 | 2026-12-23 | Verse A Rhythm1 m21-24 |
+| Day19 | 2026-12-24 | Verse A Rhythm1 m13-24 串联 |
+| Day20 | 2026-12-25 | Solo A 复练 + 录音自检 |
 
 ## 本周里程碑
 
